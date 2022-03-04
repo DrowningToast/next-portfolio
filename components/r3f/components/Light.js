@@ -21,10 +21,10 @@ const Light = ({ target, mouseX, mouseY }) => {
         castShadow
         fov={80}
       />
-      <motion.mesh castShadow position={[posX, posY, 6]}>
+      {/* <motion.mesh castShadow position={[posX, posY, 6]}>
         <sphereBufferGeometry args={[0.1, 64, 64]} />
         <meshPhysicalMaterial clearcoat={1} attach="material" />
-      </motion.mesh>
+      </motion.mesh> */}
     </>
   );
 };

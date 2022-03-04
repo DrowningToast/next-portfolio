@@ -33,7 +33,7 @@ const Title: React.FC<Props> = ({ handleContinue }) => {
           handleContinue();
           setContinued(true);
         }}
-        initial="border"
+        initial="noBorder"
         animate={`${!isContinued ? "border" : "noBorder"}`}
         variants={{
           border: {
@@ -55,12 +55,14 @@ const Title: React.FC<Props> = ({ handleContinue }) => {
         }`}
       >
         <motion.div
-          initial="noBorder"
+          initial={{
+            borderWidth: "0px",
+          }}
           animate={`${!isContinued ? "border" : "noBorder"}`}
           variants={{
             border: {
               padding: "2.5rem 4.5rem",
-              borderWidth: 2,
+              borderWidth: "2px",
               transition: {
                 delay: transitionDelay,
                 duration: transitionDuration,
@@ -69,7 +71,7 @@ const Title: React.FC<Props> = ({ handleContinue }) => {
             noBorder: {
               padding: "2.5rem 4.5rem",
 
-              borderWidth: 0,
+              borderWidth: "0px",
               transition: {
                 duration: transitionDuration,
               },
@@ -244,13 +246,44 @@ const Title: React.FC<Props> = ({ handleContinue }) => {
                 }}
                 className="font-bold text-primary"
               >
-                <ReactTypingEffect
-                  text={websites_list.map((website) => {
-                    return website.toUpperCase();
-                  })}
-                  className="font-eb"
-                  cursor=" "
-                />
+                <AnimatePresence exitBeforeEnter>
+                  {!isContinued && (
+                    <motion.h1
+                      key="first"
+                      className="font-eb"
+                      animate={{ opacity: 1 }}
+                      exit={{
+                        opacity: 0,
+                        transition: {
+                          duration: 2,
+                        },
+                      }}
+                    >
+                      WEBSITES
+                    </motion.h1>
+                  )}
+
+                  {isContinued && (
+                    <motion.div
+                      key="second"
+                      initial={{ opacity: 0 }}
+                      animate={{
+                        opacity: 1,
+                        transition: {
+                          duration: 2,
+                        },
+                      }}
+                    >
+                      <ReactTypingEffect
+                        text={websites_list.map((website) => {
+                          return website.toUpperCase();
+                        })}
+                        className="font-eb"
+                        cursor=" "
+                      />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
             </motion.div>
           )}
@@ -263,7 +296,6 @@ const Title: React.FC<Props> = ({ handleContinue }) => {
 export default Title;
 
 const websites_list = [
-  "Websites",
   "เว็ปไซต์",
   "网站",
   "sitios web",
@@ -275,4 +307,5 @@ const websites_list = [
   "لمواقع",
   "siti web",
   "ιστοσελίδες",
+  "Websites",
 ];
