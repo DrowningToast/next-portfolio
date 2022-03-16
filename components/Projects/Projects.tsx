@@ -15,22 +15,22 @@ const Projects: React.FC = () => {
           duration: 0.75,
         }}
       >
-        <div className="w-full h-full">
+        <motion.div layout className="w-full h-full">
           <LittlePatient
             setAnimating={setAnimating}
             setSelected={setSelected}
             selected={selected}
             isAnimating={isAnimating}
           />
-        </div>
-        <div className="w-full h-full">
+        </motion.div>
+        <motion.div layout className="w-full h-full">
           <Intern
             setAnimating={setAnimating}
             setSelected={setSelected}
             selected={selected}
             animating={isAnimating}
           />
-        </div>
+        </motion.div>
       </MotionConfig>
     </section>
   );

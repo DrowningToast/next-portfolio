@@ -20,6 +20,7 @@ const LittlePatient: React.FC<Props> = ({
   return (
     <motion.div
       onClick={() => {
+        if (isAnimating === "Intern") return;
         setAnimating("LP");
         setSelected(selected === "LP" ? null : "LP");
       }}
@@ -28,7 +29,7 @@ const LittlePatient: React.FC<Props> = ({
         selected == "LP" ? "absolute inset-8 " : "relative w-full h-full "
       }`}
       onLayoutAnimationComplete={() => {
-        if (!selected) setAnimating(null);
+        if (selected !== "LP") setAnimating(null);
       }}
     >
       {/* Canvas */}
