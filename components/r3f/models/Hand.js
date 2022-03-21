@@ -16,7 +16,7 @@ export default React.forwardRef(
     const [transitionComplete, setTransitionComplete] = useState(false);
 
     const posX = useSpring(
-      useTransform(scrollY, [1.75, 1.9, 3.25, 3.75], [3, 0.9, 0.9, 3]),
+      useTransform(scrollY, [1.75, 1.9, 3.25, 3.75], [3, 0.9, 0.9, 12]),
       {
         stiffness: 600,
         damping: 30,

@@ -16,6 +16,7 @@ import useWindowSize from "@components/hooks/useWindowSize";
 import { useGLTF } from "@react-three/drei";
 import Skills from "@components/Skills/Skills";
 import Projects from "@components/Projects/Projects";
+import Contact from "@components/Contact/Contact";
 const Hero = dynamic(() => {
   return import("../components/r3f/Scenes/Hero");
 });
@@ -51,7 +52,10 @@ const Home: NextPage = () => {
     >
       <Head>
         <title>Gus' Portfolio</title>
-        <meta name="description" content="Gus' 3D Portfolio" />
+        <meta name="description" content="Gus' Portfolio" />
+        <meta name="author" content="Supratouch Suwatno" />
+        <meta name="keywords" content="Resume, Portfolio, Web Development" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -70,6 +74,7 @@ const Home: NextPage = () => {
             <Education />
             <Skills />
             <Projects />
+            <Contact />
           </>
         )}
       </main>
