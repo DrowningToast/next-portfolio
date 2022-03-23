@@ -1,6 +1,6 @@
 import { motion as motion3d } from "framer-motion-3d";
 import { Canvas, useThree } from "@react-three/fiber";
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import useWindowSize from "../../hooks/useWindowSize";
 import { OrbitControls, useHelper } from "@react-three/drei";
 import { CameraHelper } from "three";
@@ -9,6 +9,8 @@ import { useSpring, useTransform } from "framer-motion";
 const Camera = ({ control, mouseX, mouseY }) => {
   // Check browser size
   const [width, height] = useWindowSize();
+
+  const isMobile = useMemo(() => width < 1024, [width]);
 
   const set = useThree(({ set }) => set);
   const camera = useThree(({ camera }) => camera);
@@ -26,19 +28,15 @@ const Camera = ({ control, mouseX, mouseY }) => {
     damping: 30,
   });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const { current: cam } = cameraRef;
     if (cam) {
-      // console.log(`${width} ${height}`);
-      // size.width = width;
-      // size.height = height;
-      // console.log(`size ${width} ${height}`);
       cam.aspect = width / height;
       cam.updateProjectionMatrix();
     }
   }, [width, height]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (cameraRef.current) {
       const oldCam = camera;
       set(() => ({ camera: cameraRef.current }));
@@ -50,18 +48,18 @@ const Camera = ({ control, mouseX, mouseY }) => {
     <>
       {!control && (
         <motion3d.perspectiveCamera
-          fov={50}
+          fov={width < 1024 ? 65 : 50}
           ref={cameraRef}
-          position={[posX, posY, 8]}
+          position={!isMobile ? [posX, posY, 8] : [3, 0.45, 8]}
         />
       )}
-      {control && (
+      {/* {control && (
         <OrbitControls
           makeDefault
           minPolarAngle={0}
           maxPolarAngle={Math.PI / 1.75}
         />
-      )}
+      )} */}
     </>
   );
 };

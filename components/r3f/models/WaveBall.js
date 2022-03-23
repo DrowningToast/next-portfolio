@@ -32,7 +32,7 @@ const WaveBall = React.forwardRef(
     const scrollOpacity = useTransform(scrollYPage, inputRange, [1, 1, 0]);
 
     useEffect(() => {
-      if (!Ball?.current) return;
+      if (!Ball?.current?.geometry) return;
       setVertexCount(Ball.current.geometry.attributes.position.count);
       setPositionClone(
         JSON.parse(
@@ -44,7 +44,6 @@ const WaveBall = React.forwardRef(
           JSON.stringify(Ball.current.geometry.attributes.normal.array)
         )
       );
-      console.log(Ball.current);
     }, [Ball?.current]);
 
     const damping = 0.05;

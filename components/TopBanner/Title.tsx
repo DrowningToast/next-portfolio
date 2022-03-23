@@ -10,10 +10,11 @@ const transitionDuration = 2.25;
 // const fadeInDuration = 0.75;
 
 interface Props {
-  handleContinue: () => void;
+  handleContinue: () => Promise<null>;
+  finishedContinue: () => void;
 }
 
-const Title: React.FC<Props> = ({ handleContinue }) => {
+const Title: React.FC<Props> = ({ handleContinue, finishedContinue }) => {
   const [isTranslated, setTranslated] = useState<boolean>(false);
   const [isContinued, setContinued] = useState<boolean>(false);
 
@@ -27,123 +28,60 @@ const Title: React.FC<Props> = ({ handleContinue }) => {
     <>
       {/* Desktop */}
       <motion.section
+        key="title"
         layout
-        onClick={() => {
+        layoutId="title"
+        onClick={async () => {
           if (!isTranslated || isContinued) return;
-          handleContinue();
+          await handleContinue();
           setContinued(true);
         }}
-        initial="noBorder"
-        animate={`${!isContinued ? "border" : "noBorder"}`}
-        variants={{
-          border: {
-            padding: "2.25rem 2rem",
-            transition: {
-              delay: transitionDelay,
-              duration: transitionDuration,
-            },
-          },
-          noBorder: {
-            padding: "0rem 0rem",
-            transition: {
-              duration: transitionDuration,
-            },
-          },
+        transition={{
+          duration: transitionDuration,
         }}
         className={`w-full h-screen grid place-items-center relative ${
+          !isContinued ? "md:px-9 md:py-8 px-5 py-4" : "px-0 py-0"
+        } ${
           isTranslated && !isContinued ? "cursor-pointer" : "cursor-default"
         }`}
       >
         <motion.div
-          initial={{
-            borderWidth: "0px",
-          }}
-          animate={`${!isContinued ? "border" : "noBorder"}`}
-          variants={{
-            border: {
-              padding: "2.5rem 4.5rem",
-              borderWidth: "2px",
-              transition: {
-                delay: transitionDelay,
-                duration: transitionDuration,
-              },
-            },
-            noBorder: {
-              padding: "2.5rem 4.5rem",
-
-              borderWidth: "0px",
-              transition: {
-                duration: transitionDuration,
-              },
-            },
+          transition={{
+            duration: transitionDuration,
           }}
           layout
-          className={`border-tertiary w-full h-full relative ${
-            !isTranslated
-              ? "grid place-items-center flex-row"
-              : "flex items-start"
-          } `}
+          layoutId="border"
+          className={` ${
+            !isContinued ? "border-2" : "border-0"
+          } lg:px-10 md:px-6 px-4 lg:py-8 md:py-6 py-4 border-tertiary w-full h-full relative flex items-start`}
         >
+          {/* Frame */}
           <motion.div
-            initial={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-            animate={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "flex-start",
-              alignItems: "center",
-              transition: {
-                delay: transitionDelay,
-                duration: transitionDuration,
-              },
+            transition={{
+              duration: transitionDuration,
             }}
             layout
-            className={`gap-x-6 gap-y-8 relative z-20 ${
-              !isTranslated
-                ? "flex flex-col justify-center items-center"
-                : "flex flex-row justify-start items-center"
-            } `}
+            layoutId="frame"
+            className={`md:gap-x-6 gap-x-2 gap-y-8 relative z-20 flex flex-row justify-start items-center`}
           >
             {/* Emoji */}
             <motion.div
               layout
               layoutId="wave"
-              initial={{
-                width: 140,
-                height: 140,
+              transition={{
+                duration: transitionDuration / 2,
               }}
-              animate={{
-                width: 45,
-                height: 45,
-                transition: {
-                  delay: transitionDelay,
-                  duration: transitionDuration / 2,
-                },
-              }}
-              className="relative"
+              className="relative md:w-12 md:h-12 w-6 h-6"
             >
               <Image src="/assets/png/waving-hand.png" layout="fill" priority />
             </motion.div>
             <motion.h1
-              initial={{
-                display: "inline",
-                opacity: 1,
-                fontSize: "6rem",
-              }}
-              animate={{
-                fontSize: "2rem",
-                transition: {
-                  delay: transitionDelay,
-                  duration: transitionDuration / 2,
-                },
+              transition={{
+                duration: transitionDuration / 2,
               }}
               layout
               layoutId="introductionTitle"
-              className="text-tertiary text-8xl font-semibold gap-x-4"
+              className="text-tertiary lg:text-4xl md:text-3xl text-2xl font-semibold gap-x-4"
             >
               Hi, my name is{" "}
               <motion.span
@@ -151,33 +89,16 @@ const Title: React.FC<Props> = ({ handleContinue }) => {
                 animate={{
                   color: "rgb(149 179 238)",
                   transition: {
-                    delay: transitionDelay,
                     duration: transitionDuration,
                   },
                 }}
                 layout
+                layoutId="gus"
                 className="text-secondary"
               >
                 Gus
               </motion.span>
             </motion.h1>
-            <motion.h4
-              initial={{
-                display: "inline",
-                opacity: 1,
-              }}
-              animate={{
-                opacity: 0,
-                transition: {
-                  delay: transitionDelay * 0.9,
-                  duration: transitionDuration / 4,
-                },
-              }}
-              layout
-              className="font-helvetica font-extralight text-tertiary text-2xl tracking-widest	"
-            >
-              Full-stack Developer
-            </motion.h4>
           </motion.div>
           <motion.div
             initial={{
@@ -190,7 +111,7 @@ const Title: React.FC<Props> = ({ handleContinue }) => {
                 duration: transitionDuration,
               },
             }}
-            className="absolute inset-0 py-10 px-16 flex justify-between"
+            className="absolute inset-0 md:py-10 md:px-16 px-3 pt-16 pb-3 flex justify-between"
           >
             {/* Today Date */}
             <h5 className=" text-white self-end">
@@ -228,23 +149,34 @@ const Title: React.FC<Props> = ({ handleContinue }) => {
                   duration: transitionDuration / 3,
                 },
               }}
-              className="absolute inset-0 flex flex-col items-start justify-center text-tertiary font-eb left-20 z-20"
+              transition={{
+                duration: transitionDuration,
+              }}
+              className={`absolute inset-0 flex flex-col ${
+                !isContinued
+                  ? "items-start lg:left-20 left-5 "
+                  : "lg:items-start items-center lg:h-full h-1/2"
+              }  justify-center text-tertiary font-eb lg:left-20 z-20 `}
             >
-              <h3 className="font-semibold text-4xl">AND I MAKE</h3>
-              <motion.div
-                animate={`${!isContinued ? "big" : "small"}`}
-                variants={{
-                  big: {
-                    fontSize: "190px",
-                  },
-                  small: {
-                    fontSize: "170px",
-                    transition: {
-                      duration: transitionDuration,
-                    },
-                  },
+              <motion.h3
+                layout
+                onLayoutAnimationComplete={() => {
+                  if (isContinued) finishedContinue();
                 }}
-                className="font-bold text-primary"
+                className="font-semibold lg:text-4xl md:text-3xl text-2xl uppercase"
+              >
+                And I make
+              </motion.h3>
+              <motion.div
+                layout
+                transition={{
+                  duration: transitionDuration,
+                }}
+                className={`font-bold text-primary  ${
+                  !isContinued
+                    ? "lg:text-xxxl2 md:text-xxl2 text-6xl text-start"
+                    : "lg:text-xxxl md:text-xxl text-5xl md:text-start text-center"
+                }`}
               >
                 <AnimatePresence exitBeforeEnter>
                   {!isContinued && (

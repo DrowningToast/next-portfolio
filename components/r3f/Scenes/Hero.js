@@ -1,26 +1,13 @@
-import {
-  AdaptiveDpr,
-  Box,
-  Environment,
-  Loader,
-  OrbitControls,
-  Scroll,
-  ScrollControls,
-  softShadows,
-  Sphere,
-} from "@react-three/drei";
+import { AdaptiveDpr, Environment, Loader } from "@react-three/drei";
 import Light from "../components/Light";
-import { Suspense, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { motion as motion3d, MotionCanvas } from "framer-motion-3d";
 import WaveBall from "../models/WaveBall";
+
 import Hand from "../models/Hand";
 import Bust from "../models/Bust";
 import Camera from "../components/MainCamera";
-import {
-  PCFSoftShadowMap,
-  ReinhardToneMapping,
-  ACESFilmicToneMapping,
-} from "three";
+import { ReinhardToneMapping } from "three";
 import { useTransform } from "framer-motion";
 import useWindowSize from "@components/hooks/useWindowSize";
 
@@ -87,22 +74,26 @@ const Hero = ({ handleLoadComplete, isContinued, mouseX, mouseY, scrollY }) => {
             {/* Blue Wave Ball */}
             {/* Page : 1 */}
             {/*  0 , 0.5 , 0.75 */}
-            <WaveBall
-              ref={ball}
-              isContinued={isContinued}
-              Ball={ball}
-              scrollYPage={scrollYPage}
-              inputRange={[0, 0.5, 0.65]}
-            />
+            <Suspense fallback={null}>
+              <WaveBall
+                ref={ball}
+                isContinued={isContinued}
+                Ball={ball}
+                scrollYPage={scrollYPage}
+                inputRange={[0, 0.5, 0.65]}
+              />
+            </Suspense>
             {/* Marble Bust */}
             {/* Page : 2 */}
             {/* 0.75, 1, 1.5,  1.8 */}
-            <Bust
-              mouseX={mouseX}
-              mouseY={mouseY}
-              scrollY={scrollYPage}
-              inputRange={[0.65, 0.9, 1.4, 1.6]}
-            />
+            <Suspense fallback={null}>
+              <Bust
+                mouseX={mouseX}
+                mouseY={mouseY}
+                scrollY={scrollYPage}
+                inputRange={[0.65, 0.9, 1.4, 1.6]}
+              />
+            </Suspense>
             {target && (
               <Light mouseX={mouseX} mouseY={mouseY} target={target} />
             )}

@@ -113,16 +113,7 @@ export default function Television({ ...props }) {
             </motion.div>
           </MotionConfig>
         </Html>
-        {/* <Sphere scale={0.5}>
-          <meshBasicMaterial color="red" />
-        </Sphere> */}
       </group>
-
-      {/* <Image
-        position={[0, 0, 1]}
-        scale={[1.25, 0.65, 1]}
-        url={"/assets/png/MU_LP.png"}
-      /> */}
     </>
   );
 }

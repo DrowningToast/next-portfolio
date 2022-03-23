@@ -25,6 +25,7 @@ const Home: NextPage = () => {
   const [finishedLoading, setLoadingStatus] = useState<boolean>(false);
   const [introComplete, setIntroComplete] = useState<boolean>(false);
   const [isContinued, setContinued] = useState<boolean>(false);
+  const [finishedContinue, setFinishedContinue] = useState<boolean>(false);
   // Window Size
   const [width, height] = useWindowSize();
   const mouseX = useMotionValue(0);
@@ -61,14 +62,29 @@ const Home: NextPage = () => {
 
       <main className="min-h-screen font-eb relative overflow-x-hidden">
         {!(finishedLoading && introComplete) ? (
-          <Intro
-            handleAnimationComplete={() => {
-              setIntroComplete(true);
+          <>
+            <Intro
+              handleAnimationComplete={() => {
+                setIntroComplete(true);
+              }}
+            />
+            {/* <Title handleContinue={() => setContinued(true)} /> */}
+          </>
+        ) : (
+          <Title
+            handleContinue={() =>
+              new Promise(async (resolve, reject) => {
+                await setContinued(true);
+                resolve(null);
+              })
+            }
+            finishedContinue={() => {
+              console.log("Finished Continue");
+              setFinishedContinue(true);
             }}
           />
-        ) : (
-          <Title handleContinue={() => setContinued(true)} />
         )}
+
         {isContinued && (
           <>
             <Education />
@@ -98,7 +114,7 @@ const Home: NextPage = () => {
             mouseY={mouseY}
             scrollY={scrollY}
             handleLoadComplete={handleLoadComplete}
-            isContinued={isContinued}
+            isContinued={finishedContinue}
           />
         </motion.div>
       )}
