@@ -73,7 +73,12 @@ const Title: React.FC<Props> = ({ handleContinue, finishedContinue }) => {
               }}
               className="relative md:w-12 md:h-12 w-6 h-6"
             >
-              <Image src="/assets/png/waving-hand.png" layout="fill" priority />
+              <Image
+                src="/assets/png/waving-hand.png"
+                layout="fill"
+                priority
+                alt="Waving Emoji"
+              />
             </motion.div>
             <motion.h1
               transition={{

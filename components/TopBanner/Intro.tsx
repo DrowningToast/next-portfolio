@@ -45,7 +45,12 @@ const Intro: React.FC<Props> = ({ handleAnimationComplete }) => {
               layoutId="wave"
               className="relative md:w-xxxl2 md:h-xxxl2 w-xxxl h-xxxl"
             >
-              <Image src="/assets/png/waving-hand.png" layout="fill" priority />
+              <Image
+                src="/assets/png/waving-hand.png"
+                layout="fill"
+                priority
+                alt="Waving Emoji"
+              />
             </motion.div>
             )
             <motion.h1

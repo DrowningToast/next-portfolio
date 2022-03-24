@@ -191,6 +191,7 @@ const Intern: React.FC<Props> = ({
                   className="mt-auto mx-auto self-center md:mt-0 md:mx-0 mb-8 md:mb-0"
                   href="https://internship-five.vercel.app/"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <div className="bg-primary rounded-full font-eb md:text-4xl text-3xl font-semibold text-tertiary text-center lg:px-2 lg:py-2 px-14 py-3 mt-6">
                     Visit the site
