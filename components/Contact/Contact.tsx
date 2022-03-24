@@ -7,10 +7,10 @@ const Contact = () => {
   const [selected, setSelected] = useState<null | string>(null);
 
   return (
-    <section className="h-screen text-white w-full px-12 py-20 flex justify-start items-center z-20 relative">
+    <section className="h-screen text-white w-full lg:px-12 px-4 lg:py-20 pt-10 pb-0 flex justify-start lg:flex-row flex-col items-center z-20 relative">
       <div className="absolute inset-0 flex flex-row-reverse">
-        <div className="w-1/2 h-full relative flex flex-col-reverse">
-          <div className="w-full h-1/2 flex justify-center gap-x-24 items-center text-xl underline underline-offset-2">
+        <div className="lg:w-1/2 w-full h-full relative flex flex-col-reverse">
+          <div className="w-full lg:h-1/2 h-1/6 flex justify-center gap-x-24 items-center text-xl underline underline-offset-2">
             <Link href="https://github.com/DrowningToast">
               <a
                 onMouseEnter={() => setSelected("github")}
@@ -34,11 +34,11 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <div className="w-1/2 h-full flex flex-col justify-center items-start gap-y-2 pr-12">
+      <div className="lg:w-1/2 w-full lg:h-full h-1/2 flex flex-col justify-center items-start gap-y-2 lg:pr-12 lg:pl-0 px-16">
         <h2 className="text-4xl font-semibold text-white font-eb uppercase">
           I make
         </h2>
-        <h1 className="uppercase font-bold text-8xl text-primary self-center">
+        <h1 className="uppercase font-bold lg:text-8xl text-6xl text-primary self-center">
           <ReactTypingEffect
             text={words.map((word) => {
               return word.toUpperCase();
@@ -51,7 +51,7 @@ const Contact = () => {
           Website
         </h2>
       </div>
-      <div className="w-1/2 h-full relative">
+      <div className="lg:w-1/2 w-full lg:h-full h-1/2 relative">
         <ContactScene selected={selected} />
       </div>
     </section>

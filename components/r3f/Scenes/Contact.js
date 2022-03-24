@@ -1,18 +1,21 @@
 import { MotionCanvas } from "framer-motion-3d";
-import { useRef, useEffect, Suspense } from "react";
+import { useRef, useEffect, Suspense, useMemo } from "react";
 import useWindowSize from "@components/hooks/useWindowSize";
 import Television from "@components/r3f/models/Television_01_4k";
 import {
+  AdaptiveDpr,
   ContactShadows,
   Environment,
   PresentationControls,
 } from "@react-three/drei";
-import TelevisionScreen from "@components/r3f/components/TelevisionScreen";
 
 const ContactScene = ({ selected }) => {
   const Canvas = useRef();
 
   const [width, height] = useWindowSize();
+  const isMobile = useMemo(() => {
+    return width < 1024;
+  }, [width]);
 
   useEffect(() => {
     if (!Canvas.current) return;
@@ -33,13 +36,7 @@ const ContactScene = ({ selected }) => {
         >
           <Environment preset="night" />
           <ambientLight color="white" intensity={0.3} />
-          <spotLight
-            position={[10, 10, 10]}
-            angle={0.15}
-            penumbra={1}
-            shadow-mapSize={[512, 512]}
-            castShadow
-          />
+
           <Suspense fallback={null}>
             <PresentationControls
               config={{ mass: 2, tension: 900 }}
@@ -49,21 +46,28 @@ const ContactScene = ({ selected }) => {
               azimuth={[-Math.PI / 1.4, Math.PI / 2]}
               global
             >
-              <Television scale={5} position={[0, -1, 0]} selected={selected} />
+              <Television
+                scale={5}
+                position={[0, -1, !isMobile ? 0 : 1.7]}
+                selected={selected}
+              />
             </PresentationControls>
           </Suspense>
           {/* <Suspense fallback={null}>
             <TelevisionScreen />
           </Suspense> */}
-          <ContactShadows
-            rotation-x={Math.PI / 2}
-            position={[0, -1.8, 0]}
-            opacity={0.75}
-            width={10}
-            height={10}
-            blur={2.6}
-            far={2}
-          />
+          {isMobile && (
+            <ContactShadows
+              rotation-x={Math.PI / 2}
+              position={[0, -1.8, 0]}
+              opacity={0.75}
+              width={10}
+              height={10}
+              blur={2.6}
+              far={2}
+            />
+          )}
+          <AdaptiveDpr pixelated />
         </MotionCanvas>
       )}
     </>

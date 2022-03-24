@@ -18,24 +18,41 @@ export default function Model({ ...props }) {
 
   useEffect(() => api.position.subscribe((v) => (position.current = v)), [api]);
   useFrame(() => {
-    api.applyForce(
-      vec
-        .set(
-          ...[
-            position.current[0] - (props?.selected ? 6 : 0),
-            position.current[1] + (props?.selected ? 0 : 2),
-            position.current[2],
-          ]
-        )
-        .normalize()
-        .multiplyScalar(-1)
-        .multiplyScalar(7)
-        .toArray(),
-      [0, 0, 0]
-    );
+    if (props?.selected && !props?.isMobile) {
+      api.applyForce(
+        vec
+          .set(
+            ...[
+              position.current[0] - 6,
+              position.current[1] - 1,
+              position.current[2],
+            ]
+          )
+          .normalize()
+          .multiplyScalar(-1)
+          .multiplyScalar(7)
+          .toArray(),
+        [0, 0, 0]
+      );
+    } else {
+      api.applyForce(
+        vec
+          .set(
+            ...[
+              position.current[0],
+              position.current[1] + (props?.selected ? 7 : 0),
+              position.current[2],
+            ]
+          )
+          .normalize()
+          .multiplyScalar(-1)
+          .multiplyScalar(7)
+          .toArray(),
+        [0, 0, 0]
+      );
+    }
   });
-
-  const [ref, api] = useBox(() => ({ mass: 1, args: [3, 2.8, 1.25] }));
+  const [ref, api] = useBox(() => ({ mass: 2, args: [3, 2.8, 1.25] }));
   return (
     <group ref={ref} {...props} dispose={null}>
       <mesh

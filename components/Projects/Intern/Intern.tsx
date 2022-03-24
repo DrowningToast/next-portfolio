@@ -28,13 +28,16 @@ const Intern: React.FC<Props> = ({
     <motion.div
       layout
       onClick={() => {
+        console.log(animating === "LP");
         if (animating === "LP") return;
 
         setAnimating("Intern");
         setSelected(isSelected ? null : "Intern");
       }}
-      className={`cursor-pointer bg-intern ${isAnimating ? "z-30" : "z-20"} ${
-        isSelected ? "absolute inset-8" : "w-full h-full relative"
+      className={`bg-intern cursor-pointer lg:rounded-none rounded-xl overflow-hidden ${
+        isAnimating ? "z-30" : "z-20"
+      } ${
+        isSelected ? "absolute md:inset-8 inset-2 " : "relative w-full h-full "
       }`}
       onLayoutAnimationComplete={() => {
         if (selected !== "Intern") setAnimating(null);
@@ -42,8 +45,10 @@ const Intern: React.FC<Props> = ({
     >
       <motion.div
         layout
-        className={`absolute inset-0 z-40 ${
-          isSelected ? "" : "top-16 bottom-16"
+        className={`absolute inset-0 z-40 rounded-lg overflow-hidden lg:rounded-none md:overflow-auto ${
+          isSelected
+            ? ""
+            : "lg:inset-y-16 md:inset-y-4 inset-y-2 lg:inset-x-0 md:inset-x-4 inset-x-2 "
         }`}
       >
         <Suspense fallback={null}>
@@ -54,10 +59,10 @@ const Intern: React.FC<Props> = ({
           className={`absolute flex flex-col ${
             !isSelected
               ? "items-center inset-x-0 inset-y-10"
-              : "items-start px-20 gap-y-6 min-h-full inset-0 py-16"
+              : "items-start md:px-20 px-4 md:gap-y-6 gap-y-2 min-h-full inset-0 md:py-16 py-8"
           } justify-start `}
         >
-          <motion.div className="flex items-center gap-x-6" layout>
+          <motion.div className="flex items-center md:gap-x-6 gap-x-4" layout>
             {isSelected && (
               <FontAwesomeIcon
                 className="text-4xl text-primary inline w-auto cursor-pointer"
@@ -67,13 +72,18 @@ const Intern: React.FC<Props> = ({
             <motion.h1
               layout
               className={`font-eb font-bold ${
-                isSelected ? "text-8xl" : "text-6xl"
+                isSelected
+                  ? "lg:text-8xl md:text-6xl text-4xl md:text-start text-center"
+                  : "lg:text-6xl md:text-7xl text-4xl"
               }  text-primary`}
             >
               INTERNSHIP
             </motion.h1>
           </motion.div>
-          <motion.h2 layout className="text-secondary text-xl font-helvetica">
+          <motion.h2
+            layout
+            className="font-helvetica lg:text-xl md:text-2xl text-sm text-center text-secondary md:w-auto md:inline w-full inline-block"
+          >
             Computer major internship website
           </motion.h2>
           <AnimatePresence>
@@ -103,7 +113,7 @@ const Intern: React.FC<Props> = ({
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
-                className="w-full h-56 relative mt-auto"
+                className="w-full lg:h-56 h-40 relative mt-auto lg:flex hidden"
               ></motion.div>
             )}
             {isSelected && (
@@ -126,7 +136,7 @@ const Intern: React.FC<Props> = ({
                     duration: 0.1,
                   },
                 }}
-                className="text-lg mt-6 max-w-2xl text-secondary font-helvetica"
+                className="md:text-lg text-sm mt-6 text-secondary font-helvetica"
               >
                 During summer 2021, It’s required that for grade 11 students to
                 take an internship for a specific amount of hours. The
@@ -158,16 +168,16 @@ const Intern: React.FC<Props> = ({
                   },
                 }}
                 layout
-                className="mt-auto"
+                className="md:mt-auto mt-6 md:flex-grow-0 flex-grow md:block flex flex-col md:w-auto w-full"
               >
                 <motion.span
                   layout
-                  className="text-lg font-helvetica text-secondary"
+                  className="md:text-lg text-sm text-secondary font-helvetica"
                 >
                   Supported and deployed on
                 </motion.span>
-                <div className="flex flex-start items-center h-24 relative w-full gap-x-4 mt-4">
-                  <div className="">
+                <div className="flex-start items-center md:h-24 h-10 relative w-full gap-x-4 mt-4 ">
+                  <div className="md:w-auto w-28">
                     <Image
                       src="/assets/png/swu.png"
                       layout="intrinsic"
@@ -177,8 +187,12 @@ const Intern: React.FC<Props> = ({
                     />
                   </div>
                 </div>
-                <a href="https://internship-five.vercel.app/" target="_blank">
-                  <div className="bg-primary rounded-full font-eb text-4xl font-bol text-tertiary text-center px-2 py-2 mt-6">
+                <a
+                  className="mt-auto mx-auto self-center md:mt-0 md:mx-0 mb-8 md:mb-0"
+                  href="https://internship-five.vercel.app/"
+                  target="_blank"
+                >
+                  <div className="bg-primary rounded-full font-eb md:text-4xl text-3xl font-semibold text-tertiary text-center lg:px-2 lg:py-2 px-14 py-3 mt-6">
                     Visit the site
                   </div>
                 </a>

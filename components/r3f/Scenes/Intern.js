@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useMemo } from "react";
 import { LayoutCamera, MotionCanvas } from "framer-motion-3d";
 import { Environment, Sphere } from "@react-three/drei";
 import useWindowSize from "../../hooks/useWindowSize";
@@ -21,6 +21,10 @@ const Intern = ({ selected }) => {
   const Canvas = useRef();
 
   const [width, height] = useWindowSize();
+
+  const isMobile = useMemo(() => {
+    return width < 1024;
+  }, [width]);
 
   useEffect(() => {
     if (!Canvas.current) return;
@@ -48,18 +52,25 @@ const Intern = ({ selected }) => {
           <ambientLight color="white" intensity={0.8} />
           <color attach="background" args={["white"]} />
           <Physics gravity={[0, 0, 0]} iterations={1} broadphase="SAP">
-            <Plane position={[0, -4, 0]} rotation={[-Math.PI / 2, 0, 0]} />
-            <Plane position={[0, 4, 0]} rotation={[Math.PI / 2, 0, 0]} />
+            <Plane position={[0, -8, 0]} rotation={[-Math.PI / 2, 0, 0]} />
+            <Plane position={[0, 8, 0]} rotation={[Math.PI / 2, 0, 0]} />
             <Plane position={[0, 0, 0]} rotation={[0, 0, 0]} />
             <Plane position={[0, 0, 1.5]} rotation={[0, -Math.PI, 0]} />
-            <Artist_2D scale={0.9} position={[0, 0, -4]} selected={selected} />
+            <Artist_2D
+              isMobile={isMobile}
+              scale={0.9}
+              position={[0, 0, -4]}
+              selected={selected}
+            />
             <Briefcase_2D
               scale={0.9}
+              isMobile={isMobile}
               position={[0, 0, -4]}
               selected={selected}
             />
             <Controller_2D
               scale={0.9}
+              isMobile={isMobile}
               position={[0, 0, -4]}
               selected={selected}
             />
@@ -67,8 +78,14 @@ const Intern = ({ selected }) => {
               scale={0.9}
               position={[0, 0, -4]}
               selected={selected}
+              isMobile={isMobile}
             />
-            <Slate_2D scale={0.9} position={[0, 0, -4]} selected={selected} />
+            <Slate_2D
+              scale={0.9}
+              isMobile={isMobile}
+              position={[0, 0, -4]}
+              selected={selected}
+            />
           </Physics>
           <InternCamera />
         </MotionCanvas>

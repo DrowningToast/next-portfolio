@@ -77,7 +77,9 @@ const row4 = [
 const Skills: React.FC = () => {
   return (
     <section className="h-screen w-full flex flex-col gap-y-16 justify-start items-center py-10 ">
-      <h1 className="font-eb text-9xl text-white font-bold z-20">I can</h1>
+      <h1 className="font-eb md:text-9xl text-5xl text-white font-bold z-20">
+        I can
+      </h1>
       <div className="flex flex-col justify-center items-center gap-y-10 font-eb z-20 overflow-hidden max-w-full">
         <div className="flex justify-start items-center gap-x-80 overflow-hidden max-w-full">
           <motion.div
@@ -97,8 +99,8 @@ const Skills: React.FC = () => {
                   key={i}
                   className={`${
                     !element.highlighted
-                      ? "text-tertiary text-4xl"
-                      : "text-primary text-6xl"
+                      ? "text-tertiary md:text-4xl text-2xl"
+                      : "text-primary md:text-6xl text-4xl"
                   } font-semibold text-4xl w-max whitespace-nowrap`}
                 >
                   {element.value}
@@ -111,8 +113,8 @@ const Skills: React.FC = () => {
                   key={i * -1}
                   className={`${
                     !element.highlighted
-                      ? "text-tertiary text-4xl"
-                      : "text-primary text-6xl"
+                      ? "text-tertiary md:text-4xl text-2xl"
+                      : "text-primary md:text-6xl text-4xl"
                   } font-semibold text-4xl w-max whitespace-nowrap`}
                 >
                   {element.value}
@@ -139,8 +141,8 @@ const Skills: React.FC = () => {
                   key={i}
                   className={`${
                     !element.highlighted
-                      ? "text-tertiary text-4xl"
-                      : "text-primary text-6xl"
+                      ? "text-tertiary md:text-4xl text-2xl"
+                      : "text-primary md:text-6xl text-4xl"
                   } font-semibold text-4xl w-max whitespace-nowrap`}
                 >
                   {element.value}
@@ -153,8 +155,8 @@ const Skills: React.FC = () => {
                   key={i * -1}
                   className={`${
                     !element.highlighted
-                      ? "text-tertiary text-4xl"
-                      : "text-primary text-6xl"
+                      ? "text-tertiary md:text-4xl text-2xl"
+                      : "text-primary md:text-6xl text-4xl"
                   } font-semibold text-4xl w-max whitespace-nowrap`}
                 >
                   {element.value}
@@ -181,8 +183,8 @@ const Skills: React.FC = () => {
                   key={i}
                   className={`${
                     !element.highlighted
-                      ? "text-tertiary text-4xl"
-                      : "text-primary text-6xl"
+                      ? "text-tertiary md:text-4xl text-2xl"
+                      : "text-primary md:text-6xl text-4xl"
                   } font-semibold text-4xl w-max whitespace-nowrap`}
                 >
                   {element.value}
@@ -195,8 +197,8 @@ const Skills: React.FC = () => {
                   key={i * -1}
                   className={`${
                     !element.highlighted
-                      ? "text-tertiary text-4xl"
-                      : "text-primary text-6xl"
+                      ? "text-tertiary md:text-4xl text-2xl"
+                      : "text-primary md:text-6xl text-4xl"
                   } font-semibold text-4xl w-max whitespace-nowrap`}
                 >
                   {element.value}
@@ -223,8 +225,8 @@ const Skills: React.FC = () => {
                   key={i}
                   className={`${
                     !element.highlighted
-                      ? "text-tertiary text-4xl"
-                      : "text-primary text-6xl"
+                      ? "text-tertiary md:text-4xl text-2xl"
+                      : "text-primary md:text-6xl text-4xl"
                   } font-semibold text-4xl w-max whitespace-nowrap`}
                 >
                   {element.value}
@@ -237,8 +239,8 @@ const Skills: React.FC = () => {
                   key={i * -1}
                   className={`${
                     !element.highlighted
-                      ? "text-tertiary text-4xl"
-                      : "text-primary text-6xl"
+                      ? "text-tertiary md:text-4xl text-2xl"
+                      : "text-primary md:text-6xl text-4xl"
                   } font-semibold text-4xl w-max whitespace-nowrap`}
                 >
                   {element.value}
