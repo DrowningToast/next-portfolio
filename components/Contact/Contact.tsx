@@ -1,6 +1,6 @@
 import ReactTypingEffect from "react-typing-effect";
 import ContactScene from "@components/r3f/Scenes/Contact";
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 
 const Contact = () => {
@@ -38,17 +38,21 @@ const Contact = () => {
         <h2 className="text-4xl font-semibold text-white font-eb uppercase">
           I make
         </h2>
-        <h1 className="uppercase font-bold lg:text-8xl text-6xl text-primary self-center">
+        <h1 className="uppercase font-bold lg:text-8xl md:text-6xl text-5xl text-primary self-center">
           <ReactTypingEffect
             text={words.map((word) => {
               return word.toUpperCase();
             })}
             className="font-eb"
             cursor=" "
+            speed={200}
+            eraseDelay={3000}
+            eraseSpeed={250}
+            typingDelay={50}
           />
         </h1>
         <h2 className="text-4xl font-semibold text-white font-eb uppercase self-end">
-          Website
+          Websites
         </h2>
       </div>
       <div className="lg:w-1/2 w-full lg:h-full h-1/2 relative">

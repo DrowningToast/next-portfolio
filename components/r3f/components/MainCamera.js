@@ -1,9 +1,8 @@
 import { motion as motion3d } from "framer-motion-3d";
-import { Canvas, useThree } from "@react-three/fiber";
+import { useThree } from "@react-three/fiber";
 import { useEffect, useMemo, useRef } from "react";
 import useWindowSize from "../../hooks/useWindowSize";
-import { OrbitControls, useHelper } from "@react-three/drei";
-import { CameraHelper } from "three";
+
 import { useSpring, useTransform } from "framer-motion";
 
 const Camera = ({ control, mouseX, mouseY }) => {
@@ -14,8 +13,7 @@ const Camera = ({ control, mouseX, mouseY }) => {
 
   const set = useThree(({ set }) => set);
   const camera = useThree(({ camera }) => camera);
-  const size = useThree(({ size }) => size);
-  const scene = useThree(({ scene }) => scene);
+
   const cameraRef = useRef();
 
   const posX = useSpring(useTransform(mouseX, [0, 1], [-0.2, 0.2]), {

@@ -1,22 +1,32 @@
 import useWindowSize from "@components/hooks/useWindowSize";
-import { useFrame } from "@react-three/fiber";
+import { useThree } from "@react-three/fiber";
 import { LayoutOrthographicCamera } from "framer-motion-3d";
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
-const Camera = ({ selected }) => {
+const Camera = ({ selected, canvasWidth, canvasHeight, i }) => {
   const camera = useRef();
-  //   useFrame(() => {
-  //     camera.current.lookAt(0, camera.current.position.y, 0);
-  //   });
-
-  const [width, height] = useWindowSize();
+  const [width] = useWindowSize();
+  const renderer = useThree((state) => state.gl);
 
   const isMobile = useMemo(() => {
     return width < 768;
   }, [width]);
 
+  useEffect(() => {
+    if (!camera.current || !renderer) return;
+
+    camera.current.left = canvasWidth / -2;
+    camera.current.right = canvasWidth / 2;
+    camera.current.top = canvasHeight / 2;
+    camera.current.bottom = canvasHeight / -2;
+
+    camera.current.updateProjectionMatrix();
+    renderer.setSize(canvasWidth, canvasHeight);
+  }, [i]);
+
   return (
     <LayoutOrthographicCamera
+      key={i}
       ref={camera}
       makeDefault
       initial={false}
@@ -51,7 +61,6 @@ const Camera = ({ selected }) => {
               rotateY: 0.6,
             },
       }}
-      zoom={40}
     />
   );
 };

@@ -1,10 +1,9 @@
-import { useRef, useEffect, useMemo } from "react";
-import { LayoutCamera, MotionCanvas } from "framer-motion-3d";
-import { Environment, Sphere } from "@react-three/drei";
+import { useRef, useEffect, useMemo, useState, useCallback } from "react";
+import { MotionCanvas } from "framer-motion-3d";
+import { Environment } from "@react-three/drei";
 import useWindowSize from "../../hooks/useWindowSize";
-import { Debug, Physics, usePlane } from "@react-three/cannon";
+import { Physics, usePlane } from "@react-three/cannon";
 import InternCamera from "../components/InternCamera";
-import Camera from "../components/LPCamera";
 import Artist_2D from "../models/Artist_2D";
 import Briefcase_2D from "../models/Briefcase_2D";
 import Controller_2D from "../models/Controller_2D";
@@ -20,6 +19,8 @@ function Plane(props) {
 const Intern = ({ selected }) => {
   const Canvas = useRef();
 
+  const [canvasWidth, setWidth] = useState(0);
+  const [canvasHeight, setHeight] = useState(0);
   const [width, height] = useWindowSize();
 
   const isMobile = useMemo(() => {
@@ -28,10 +29,22 @@ const Intern = ({ selected }) => {
 
   useEffect(() => {
     if (!Canvas.current) return;
-    console.log("set the width");
     Canvas.current.style.width = "100%";
     Canvas.current.style.height = "100%";
+    setWidth(Canvas.current.scrollWidth);
+    setHeight(Canvas.current.scrollHeight);
   }, [Canvas.current, width, height]);
+
+  const [, updateState] = useState();
+  const forceUpdate = useCallback(() => {
+    return updateState({});
+  }, []);
+
+  useEffect(() => {
+    if (!Canvas.current) return;
+    window.addEventListener("orientationchange", forceUpdate);
+    forceUpdate();
+  }, []);
 
   return (
     <>
@@ -87,7 +100,7 @@ const Intern = ({ selected }) => {
               selected={selected}
             />
           </Physics>
-          <InternCamera />
+          <InternCamera canvasWidth={canvasWidth} canvasHeight={canvasHeight} />
         </MotionCanvas>
       )}
     </>

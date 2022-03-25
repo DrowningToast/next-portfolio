@@ -33,6 +33,14 @@ module.exports = {
         xxl2: "140px",
         xxl: "110px",
       },
+      screens: {
+        por: {
+          raw: "(orientation: portrait)",
+        },
+        lan: {
+          raw: "(orientation: landscape)",
+        },
+      },
     },
   },
   plugins: [],

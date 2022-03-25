@@ -36,18 +36,12 @@ const Home: NextPage = () => {
     setLoadingStatus(true);
   };
 
-  // mouseY.onChange(() => {
-  //   console.log(mouseY.get());
-  // });
-
   return (
     <motion.div
       className="bg-dark"
       onPointerMove={(e) => {
         mouseX.set(e.clientX / width);
-        // console.log(`${e.clientY} ${scrollY.get()}`);
-        // console.log(e.clientY - scrollY.get());
-        // console.log(scrollY.get());
+
         mouseY.set(e.clientY / height);
       }}
     >
@@ -59,7 +53,30 @@ const Home: NextPage = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      {/* Main Canvas */}
+      {introComplete && (
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          animate={{
+            opacity: 1,
+            transition: {
+              delay: 1,
+              duration: 2,
+            },
+          }}
+          className="top-0 fixed min-h-screen w-screen grid place-items-center"
+        >
+          <Hero
+            mouseX={mouseX}
+            mouseY={mouseY}
+            scrollY={scrollY}
+            handleLoadComplete={handleLoadComplete}
+            isContinued={finishedContinue}
+          />
+        </motion.div>
+      )}
       <main className="min-h-screen font-eb relative overflow-x-hidden">
         {!(finishedLoading && introComplete) ? (
           <>
@@ -68,7 +85,6 @@ const Home: NextPage = () => {
                 setIntroComplete(true);
               }}
             />
-            {/* <Title handleContinue={() => setContinued(true)} /> */}
           </>
         ) : (
           <Title
@@ -94,30 +110,6 @@ const Home: NextPage = () => {
           </>
         )}
       </main>
-      {/* Main Canvas */}
-      {introComplete && (
-        <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 1,
-            transition: {
-              delay: 1,
-              duration: 2,
-            },
-          }}
-          className="top-0 fixed min-h-screen w-screen grid place-items-center"
-        >
-          <Hero
-            mouseX={mouseX}
-            mouseY={mouseY}
-            scrollY={scrollY}
-            handleLoadComplete={handleLoadComplete}
-            isContinued={finishedContinue}
-          />
-        </motion.div>
-      )}
     </motion.div>
   );
 };

@@ -1,4 +1,4 @@
-import { motion, Transition, Variant } from "framer-motion";
+import { motion, Transition } from "framer-motion";
 import React from "react";
 
 interface Props {

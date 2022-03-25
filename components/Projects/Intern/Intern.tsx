@@ -28,7 +28,6 @@ const Intern: React.FC<Props> = ({
     <motion.div
       layout
       onClick={() => {
-        console.log(animating === "LP");
         if (animating === "LP") return;
 
         setAnimating("Intern");
@@ -59,13 +58,16 @@ const Intern: React.FC<Props> = ({
           className={`absolute flex flex-col ${
             !isSelected
               ? "items-center inset-x-0 inset-y-10"
-              : "items-start md:px-20 px-4 md:gap-y-6 gap-y-2 min-h-full inset-0 md:py-16 py-8"
+              : "items-start md:px-20 px-4 md:gap-y-6 gap-y-2 max-w-3xl min-h-full inset-0 md:py-16 py-8"
           } justify-start `}
         >
-          <motion.div className="flex items-center md:gap-x-6 gap-x-4" layout>
+          <motion.div
+            className="flex items-center md:gap-x-6 gap-x-4 text-4xl "
+            layout
+          >
             {isSelected && (
               <FontAwesomeIcon
-                className="text-4xl text-primary inline w-auto cursor-pointer"
+                className="text-primary inline w-auto cursor-pointer"
                 icon={["fas", "angle-left"]}
               />
             )}
@@ -74,7 +76,7 @@ const Intern: React.FC<Props> = ({
               className={`font-eb font-bold ${
                 isSelected
                   ? "lg:text-8xl md:text-6xl text-4xl md:text-start text-center"
-                  : "lg:text-6xl md:text-7xl text-4xl"
+                  : "xl:text-6xl lg:text-5xl md:text-7xl text-4xl"
               }  text-primary`}
             >
               INTERNSHIP
@@ -141,7 +143,7 @@ const Intern: React.FC<Props> = ({
                 During summer 2021, It’s required that for grade 11 students to
                 take an internship for a specific amount of hours. The
                 internship was a great opportunity for the students to step out
-                to the real field, subsequently students should be developedfor
+                to the real field, subsequently students should be developed for
                 the future market labor.
                 <br />
                 <br />I worked with developer team and in was in charged in

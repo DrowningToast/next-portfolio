@@ -7,7 +7,6 @@ import React, { useEffect, useRef, useMemo } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useBox, useSphere } from "@react-three/cannon";
 import { useFrame } from "@react-three/fiber";
-import useWindowSize from "@components/hooks/useWindowSize";
 
 const vec = new THREE.Vector3();
 

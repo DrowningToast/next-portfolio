@@ -1,9 +1,4 @@
-import {
-  motion,
-  AnimatePresence,
-  ForwardRefComponent,
-  HTMLMotionProps,
-} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import React, {
   Dispatch,
   SetStateAction,
@@ -29,8 +24,6 @@ const LittlePatient: React.FC<Props> = ({
   isAnimating,
 }) => {
   const frame = useRef<HTMLDivElement>(null);
-
-  console.log(typeof frame.current);
 
   useEffect(() => {
     if (!frame.current) return;

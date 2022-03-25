@@ -8,10 +8,6 @@ import { useSpring, useTransform } from "framer-motion";
 import { motion } from "framer-motion-3d";
 import handleGhost from "../utils/handleGhost";
 
-// Look
-// [0,0.5,0.825,1]
-// [-0.5233,-0.3586,0.199093]
-
 export default function Model({ mouseX, mouseY, scrollY, inputRange }) {
   const group = useRef();
   const lookX = useSpring(

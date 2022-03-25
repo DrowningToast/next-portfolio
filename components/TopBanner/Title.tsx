@@ -51,6 +51,15 @@ const Title: React.FC<Props> = ({ handleContinue, finishedContinue }) => {
           }}
           layout
           layoutId="border"
+          animate={!isContinued ? "border" : "noBorder"}
+          variants={{
+            border: {
+              borderWidth: "2px",
+            },
+            noBorder: {
+              borderWidth: "0px",
+            },
+          }}
           className={` ${
             !isContinued ? "border-2" : "border-0"
           } lg:px-10 md:px-6 px-4 lg:py-8 md:py-6 py-4 border-tertiary w-full h-full relative flex items-start`}
@@ -161,7 +170,7 @@ const Title: React.FC<Props> = ({ handleContinue, finishedContinue }) => {
                 !isContinued
                   ? "items-start lg:left-20 left-5 "
                   : "lg:items-start items-center lg:h-full h-1/2"
-              }  justify-center text-tertiary font-eb lg:left-20 z-20 `}
+              }  justify-center text-tertiary font-eb xl:left-20 lg:left-10 z-20 `}
             >
               <motion.h3
                 layout
@@ -179,8 +188,8 @@ const Title: React.FC<Props> = ({ handleContinue, finishedContinue }) => {
                 }}
                 className={`font-bold text-primary  ${
                   !isContinued
-                    ? "lg:text-xxxl2 md:text-xxl2 text-6xl text-start"
-                    : "lg:text-xxxl md:text-xxl text-5xl md:text-start text-center"
+                    ? "xl:text-xxxl2 md:text-xxl text-6xl text-start"
+                    : "xl:text-xxl2 lg:text-xxl md:text-xxl text-5xl md:text-start text-center"
                 }`}
               >
                 <AnimatePresence exitBeforeEnter>
@@ -192,6 +201,7 @@ const Title: React.FC<Props> = ({ handleContinue, finishedContinue }) => {
                       exit={{
                         opacity: 0,
                         transition: {
+                          delay: 2,
                           duration: 2,
                         },
                       }}
@@ -217,6 +227,10 @@ const Title: React.FC<Props> = ({ handleContinue, finishedContinue }) => {
                         })}
                         className="font-eb"
                         cursor=" "
+                        speed={400}
+                        eraseDelay={5000}
+                        eraseSpeed={275}
+                        typingDelay={1000}
                       />
                     </motion.div>
                   )}

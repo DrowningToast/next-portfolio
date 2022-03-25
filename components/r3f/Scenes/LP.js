@@ -1,21 +1,33 @@
 import useWindowSize from "@components/hooks/useWindowSize";
-import { Environment, softShadows, Sphere, SpotLight } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
-import { LayoutOrthographicCamera, MotionCanvas } from "framer-motion-3d";
-import { Suspense, useEffect, useRef } from "react";
+import { Environment } from "@react-three/drei";
+import { MotionCanvas } from "framer-motion-3d";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Patient from "../models/Patient";
 import Camera from "../components/LPCamera";
 
 const LP = ({ selected }) => {
   const Canvas = useRef();
 
-  const [width, height] = useWindowSize();
+  const [canvasWidth, setWidth] = useState(0);
+  const [canvasHeight, setHeight] = useState(0);
+
+  const [i, updateState] = useState(0);
+  const forceUpdate = useCallback(() => {
+    if (!Canvas.current) return;
+    setTimeout(() => {
+      Canvas.current.style.width = "100%";
+      Canvas.current.style.height = "100%";
+      setWidth(Canvas.current.parentNode.clientWidth);
+      setHeight(Canvas.current.parentNode.clientHeight);
+
+      return updateState(i++);
+    }, 0);
+  }, []);
 
   useEffect(() => {
-    if (!Canvas.current) return;
-    Canvas.current.style.width = "100%";
-    Canvas.current.style.height = "100%";
-  }, [Canvas.current, width, height]);
+    window.addEventListener("resize", forceUpdate);
+    forceUpdate();
+  }, []);
 
   return (
     <>
@@ -33,7 +45,13 @@ const LP = ({ selected }) => {
           <color attach="background" args={["#DCF9EF"]} />
           <Patient />
           <spotLight position={[8, 4, 8]} />
-          <Camera selected={selected} />
+
+          <Camera
+            selected={selected}
+            canvasHeight={canvasHeight}
+            canvasWidth={canvasWidth}
+            i={i}
+          />
         </MotionCanvas>
       )}
     </>

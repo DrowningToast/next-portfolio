@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import useWindowSize from "@components/hooks/useWindowSize";
 
 const waveDuration = 2.25;
 const fadeInDuration = 1.75;
@@ -12,10 +11,6 @@ interface Props {
 }
 
 const Intro: React.FC<Props> = ({ handleAnimationComplete }) => {
-  const [start, setStart] = useState<boolean>(false);
-  const [isLoaded, setIsLoaded] = useState<boolean>(false);
-  const [width, height] = useWindowSize();
-
   return (
     <>
       {/* Desktop */}
@@ -68,7 +63,7 @@ const Intro: React.FC<Props> = ({ handleAnimationComplete }) => {
               }}
               layout
               layoutId="introductionTitle"
-              className="text-tertiary md:text-8xl text-4xl font-semibold"
+              className="text-tertiary lg:text-8xl md:text-6xl text-4xl font-semibold"
             >
               Hi, my name is{" "}
               <motion.span layout layoutId="gus" className="text-primary">
