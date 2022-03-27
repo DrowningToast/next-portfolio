@@ -29,7 +29,6 @@ const Intern: React.FC<Props> = ({
       layout
       onClick={() => {
         if (animating === "LP") return;
-
         setAnimating("Intern");
         setSelected(isSelected ? null : "Intern");
       }}

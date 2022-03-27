@@ -66,5 +66,3 @@ export default function Model({ ...props }) {
     </group>
   );
 }
-
-useGLTF.preload("/assets/models/Artist_2D.gltf");

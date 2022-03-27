@@ -132,5 +132,3 @@ export default function Television({ ...props }) {
     </>
   );
 }
-
-useGLTF.preload("/assets/models/Television_01_4k.gltf");

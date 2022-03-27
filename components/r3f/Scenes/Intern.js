@@ -1,6 +1,13 @@
-import { useRef, useEffect, useMemo, useState, useCallback } from "react";
+import {
+  useRef,
+  useEffect,
+  useMemo,
+  useState,
+  useCallback,
+  Suspense,
+} from "react";
 import { MotionCanvas } from "framer-motion-3d";
-import { Environment } from "@react-three/drei";
+import { Environment, Loader } from "@react-three/drei";
 import useWindowSize from "../../hooks/useWindowSize";
 import { Physics, usePlane } from "@react-three/cannon";
 import InternCamera from "../components/InternCamera";
@@ -19,6 +26,7 @@ function Plane(props) {
 const Intern = ({ selected }) => {
   const Canvas = useRef();
 
+  const [initialLoad, setLoaded] = useState(false);
   const [canvasWidth, setWidth] = useState(0);
   const [canvasHeight, setHeight] = useState(0);
   const [width, height] = useWindowSize();
@@ -27,21 +35,18 @@ const Intern = ({ selected }) => {
     return width < 1024;
   }, [width]);
 
-  useEffect(() => {
-    if (!Canvas.current) return;
+  const [, updateState] = useState();
+  const forceUpdate = useCallback(() => {
+    if (!Canvas?.current) return;
     Canvas.current.style.width = "100%";
     Canvas.current.style.height = "100%";
     setWidth(Canvas.current.scrollWidth);
     setHeight(Canvas.current.scrollHeight);
-  }, [Canvas.current, width, height]);
-
-  const [, updateState] = useState();
-  const forceUpdate = useCallback(() => {
     return updateState({});
   }, []);
 
   useEffect(() => {
-    if (!Canvas.current) return;
+    window.addEventListener("resize", forceUpdate);
     window.addEventListener("orientationchange", forceUpdate);
     forceUpdate();
   }, []);
@@ -49,59 +54,65 @@ const Intern = ({ selected }) => {
   return (
     <>
       {process.browser && (
-        <MotionCanvas
-          ref={Canvas}
-          dpr={[1, 2]}
-          style={{
-            width: "100%",
-            height: "100%",
-          }}
-          gl={{
-            toneMapping: ReinhardToneMapping,
-            toneMappingExposure: 1.2,
-          }}
-        >
-          <Environment preset="warehouse" />
-          <ambientLight color="white" intensity={0.8} />
-          <color attach="background" args={["white"]} />
-          <Physics gravity={[0, 0, 0]} iterations={1} broadphase="SAP">
-            <Plane position={[0, -8, 0]} rotation={[-Math.PI / 2, 0, 0]} />
-            <Plane position={[0, 8, 0]} rotation={[Math.PI / 2, 0, 0]} />
-            <Plane position={[0, 0, 0]} rotation={[0, 0, 0]} />
-            <Plane position={[0, 0, 1.5]} rotation={[0, -Math.PI, 0]} />
-            <Artist_2D
-              isMobile={isMobile}
-              scale={0.9}
-              position={[0, 0, -4]}
-              selected={selected}
+        <Suspense fallback={null}>
+          <MotionCanvas
+            ref={Canvas}
+            dpr={[0.5, 1.5]}
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+            gl={{
+              toneMapping: ReinhardToneMapping,
+              toneMappingExposure: 1.2,
+            }}
+          >
+            <Environment preset="warehouse" />
+            <ambientLight color="white" intensity={0.8} />
+            <color attach="background" args={["white"]} />
+            <Physics gravity={[0, 0, 0]} iterations={1} broadphase="SAP">
+              <Plane position={[0, -8, 0]} rotation={[-Math.PI / 2, 0, 0]} />
+              <Plane position={[0, 8, 0]} rotation={[Math.PI / 2, 0, 0]} />
+              <Plane position={[0, 0, 0]} rotation={[0, 0, 0]} />
+              <Plane position={[0, 0, 1.5]} rotation={[0, -Math.PI, 0]} />
+
+              <Artist_2D
+                isMobile={isMobile}
+                scale={0.9}
+                position={[0, 0, -4]}
+                selected={selected}
+              />
+              <Briefcase_2D
+                scale={0.9}
+                isMobile={isMobile}
+                position={[0, 0, -4]}
+                selected={selected}
+              />
+              <Controller_2D
+                scale={0.9}
+                isMobile={isMobile}
+                position={[0, 0, -4]}
+                selected={selected}
+              />
+              <Programming_2D
+                scale={0.9}
+                position={[0, 0, -4]}
+                selected={selected}
+                isMobile={isMobile}
+              />
+              <Slate_2D
+                scale={0.9}
+                isMobile={isMobile}
+                position={[0, 0, -4]}
+                selected={selected}
+              />
+            </Physics>
+            <InternCamera
+              canvasWidth={canvasWidth}
+              canvasHeight={canvasHeight}
             />
-            <Briefcase_2D
-              scale={0.9}
-              isMobile={isMobile}
-              position={[0, 0, -4]}
-              selected={selected}
-            />
-            <Controller_2D
-              scale={0.9}
-              isMobile={isMobile}
-              position={[0, 0, -4]}
-              selected={selected}
-            />
-            <Programming_2D
-              scale={0.9}
-              position={[0, 0, -4]}
-              selected={selected}
-              isMobile={isMobile}
-            />
-            <Slate_2D
-              scale={0.9}
-              isMobile={isMobile}
-              position={[0, 0, -4]}
-              selected={selected}
-            />
-          </Physics>
-          <InternCamera canvasWidth={canvasWidth} canvasHeight={canvasHeight} />
-        </MotionCanvas>
+          </MotionCanvas>
+        </Suspense>
       )}
     </>
   );

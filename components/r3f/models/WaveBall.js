@@ -1,4 +1,4 @@
-import { shaderMaterial, useTexture } from "@react-three/drei";
+import { shaderMaterial, useDetectGPU, useTexture } from "@react-three/drei";
 import { extend, useFrame } from "@react-three/fiber";
 import { MotionConfig, useTransform } from "framer-motion";
 import { motion } from "framer-motion-3d";
@@ -26,6 +26,7 @@ const WaveBall = React.forwardRef(
     const [position_clone, setPositionClone] = useState();
     const [normals_clone, setNormalsClone] = useState();
     const [active, setActive] = useState(true);
+    const gpuTier = useDetectGPU();
 
     const [transitionAnimationComplete, seTransitionAnimation] =
       useState(false);
@@ -55,7 +56,7 @@ const WaveBall = React.forwardRef(
     }, []);
 
     useFrame(() => {
-      if (!normals_clone || !Ball.current?.geometry) return;
+      if (!normals_clone || !Ball.current?.geometry || gpuTier.isMobile) return;
       const now = Date.now() / 200;
       // Iterate through all vertices
       for (let i = 0; i < count; i++) {
@@ -108,9 +109,9 @@ const WaveBall = React.forwardRef(
                 opacity={!isContinued ? 1 : scrollOpacity}
                 map={waterBaseColor}
                 normalMap={waterNormalMap}
-                displacementMMap={waterHeightMap}
-                roughnessMap={waterRoughness}
-                aoMap={waterAmbientOcclusion}
+                displacementMMap={gpuTier?.tier >= 3 ? waterHeightMap : null}
+                roughnessMap={gpuTier?.tier >= 3 ? waterRoughness : null}
+                aoMap={gpuTier?.tier >= 3 ? waterAmbientOcclusion : null}
                 displacementScale={0.4}
                 roughness={0}
                 transparent={true}
@@ -127,9 +128,9 @@ const WaveBall = React.forwardRef(
                 onAnimationComplete={() => seTransitionAnimation(true)}
                 map={waterBaseColor}
                 normalMap={waterNormalMap}
-                displacementMMap={waterHeightMap}
-                roughnessMap={waterRoughness}
-                aoMap={waterAmbientOcclusion}
+                displacementMMap={gpuTier?.tier >= 3 ? waterHeightMap : null}
+                roughnessMap={gpuTier?.tier >= 3 ? waterRoughness : null}
+                aoMap={gpuTier?.tier >= 3 ? waterAmbientOcclusion : null}
                 displacementScale={0.4}
                 roughness={0}
                 transparent={true}

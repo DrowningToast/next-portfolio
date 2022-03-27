@@ -67,5 +67,3 @@ export default function Programming_2D({ ...props }) {
     </group>
   );
 }
-
-useGLTF.preload("/assets/models/Programming_2D.gltf");

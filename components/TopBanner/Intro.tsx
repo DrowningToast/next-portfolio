@@ -2,9 +2,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const waveDuration = 2.25;
-const fadeInDuration = 1.75;
-const staggerConstand = 1;
+const waveDuration = 1.5;
+const fadeInDuration = 1.25;
+const staggerConstand = 0.5;
 
 interface Props {
   handleAnimationComplete: () => void;

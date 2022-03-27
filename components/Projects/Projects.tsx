@@ -1,6 +1,5 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { AnimatePresence, motion, MotionConfig } from "framer-motion";
-import { Suspense, useState } from "react";
+import { motion, MotionConfig } from "framer-motion";
+import { useState } from "react";
 import Intern from "./Intern/Intern";
 import LittlePatient from "./LittlePatient/LittlePatient";
 
@@ -15,22 +14,26 @@ const Projects: React.FC = () => {
           duration: 0.75,
         }}
       >
-        <motion.div layout className="w-full h-full ">
-          <LittlePatient
-            setAnimating={setAnimating}
-            setSelected={setSelected}
-            selected={selected}
-            isAnimating={isAnimating}
-          />
-        </motion.div>
-        <motion.div layout className="w-full h-full">
-          <Intern
-            setAnimating={setAnimating}
-            setSelected={setSelected}
-            selected={selected}
-            animating={isAnimating}
-          />
-        </motion.div>
+        {process.browser && (
+          <motion.div layout className="w-full h-full ">
+            <LittlePatient
+              setAnimating={setAnimating}
+              setSelected={setSelected}
+              selected={selected}
+              isAnimating={isAnimating}
+            />
+          </motion.div>
+        )}
+        {process.browser && (
+          <motion.div layout className="w-full h-full">
+            <Intern
+              setAnimating={setAnimating}
+              setSelected={setSelected}
+              selected={selected}
+              animating={isAnimating}
+            />
+          </motion.div>
+        )}
       </MotionConfig>
     </section>
   );

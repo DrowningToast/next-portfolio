@@ -1,4 +1,4 @@
-import { AdaptiveDpr, Environment, Loader } from "@react-three/drei";
+import { AdaptiveDpr, Loader } from "@react-three/drei";
 import Light from "../components/Light";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { motion as motion3d, MotionCanvas } from "framer-motion-3d";
@@ -11,7 +11,15 @@ import { ReinhardToneMapping } from "three";
 import { useTransform } from "framer-motion";
 import useWindowSize from "@components/hooks/useWindowSize";
 
-const Hero = ({ handleLoadComplete, isContinued, mouseX, mouseY, scrollY }) => {
+const Hero = ({
+  handleLoadComplete,
+  handleFullLoaded,
+  isContinued,
+  finishedContinue,
+  mouseX,
+  mouseY,
+  scrollY,
+}) => {
   const [target, setTarget] = useState();
 
   const Canvas = useRef(null);
@@ -19,6 +27,7 @@ const Hero = ({ handleLoadComplete, isContinued, mouseX, mouseY, scrollY }) => {
   const ball = useRef(null);
 
   const [width, height] = useWindowSize();
+  const [loadStep, setLoadStep] = useState(0);
 
   const totalPages = 4;
 
@@ -45,32 +54,27 @@ const Hero = ({ handleLoadComplete, isContinued, mouseX, mouseY, scrollY }) => {
           <MotionCanvas
             gl={{
               toneMapping: ReinhardToneMapping,
-              toneMappingExposure: 1.2,
+              toneMappingExposure: 1.1,
+              antialias: false,
             }}
-            onCreated={(state) => {
-              handleLoadComplete(state);
-            }}
-            dpr={[1, 1.5]}
+            dpr={[0.1, 1.5]}
             style={{ height: "100%", width: "100vw" }}
-            shadows
-            // shadows={{
-            //   enabled: true,
-            //   needsUpdate: true,
-            //   // type: PCFSoftShadowMap,
-            // }}
             ref={Canvas}
             resize={{ scroll: true }}
           >
+            {/* <Stats /> */}
             <ambientLight color="white" intensity={0.1} />
-            <Environment preset="night" />
+            {/* <Environment preset="night" /> */}
             <Camera mouseX={mouseX} mouseY={mouseY} />
             {/* Hand */}
-            <Hand
-              handleAnimationComplete={() => setTarget(hand.current)}
-              ref={hand}
-              isContinued={isContinued}
-              scrollY={scrollYPage}
-            />
+            <Suspense fallback={null}>
+              <Hand
+                handleAnimationComplete={() => setTarget(hand.current)}
+                ref={hand}
+                isContinued={isContinued}
+                scrollY={scrollYPage}
+              />
+            </Suspense>
             {/* Blue Wave Ball */}
             {/* Page : 1 */}
             {/*  0 , 0.5 , 0.75 */}
@@ -99,7 +103,26 @@ const Hero = ({ handleLoadComplete, isContinued, mouseX, mouseY, scrollY }) => {
             )}
             <AdaptiveDpr pixelated />
           </MotionCanvas>
-          <Loader />
+          <Loader
+            initialState={(state) => {
+              if (finishedContinue && !state && loadStep === 1) {
+                setLoadStep(2);
+                return state;
+              } else if (!state && loadStep === 0) {
+                setLoadStep(1);
+                handleLoadComplete(state);
+                return state;
+              } else if (finishedContinue && !state && loadStep === 2) {
+                setLoadStep(3);
+                handleFullLoaded(true);
+                return state;
+              }
+              return state;
+            }}
+            containerStyles={{
+              transform: "scale(2)",
+            }}
+          />
         </Suspense>
       )}
     </>

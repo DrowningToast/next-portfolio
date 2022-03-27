@@ -103,5 +103,3 @@ export default function Patient({ ...props }) {
     </group>
   );
 }
-
-useGLTF.preload("/assets/models/patient.gltf");

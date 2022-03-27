@@ -2,13 +2,7 @@ import Intro from "@components/TopBanner/Intro";
 import Title from "@components/TopBanner/Title";
 import Education from "@components/Education/Education";
 import type { NextPage } from "next";
-import {
-  makeUseVisualState,
-  motion,
-  useElementScroll,
-  useMotionValue,
-  useViewportScroll,
-} from "framer-motion";
+import { motion, useMotionValue, useViewportScroll } from "framer-motion";
 import Head from "next/head";
 import { Suspense, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
@@ -26,6 +20,8 @@ const Home: NextPage = () => {
   const [introComplete, setIntroComplete] = useState<boolean>(false);
   const [isContinued, setContinued] = useState<boolean>(false);
   const [finishedContinue, setFinishedContinue] = useState<boolean>(false);
+  const [beginLoad3D, setBegin3D] = useState<boolean>(false);
+  const [scrollReady, setScrollReady] = useState<boolean>(false);
   // Window Size
   const [width, height] = useWindowSize();
   const mouseX = useMotionValue(0);
@@ -54,7 +50,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* Main Canvas */}
-      {introComplete && (
+      {beginLoad3D && (
         <motion.div
           initial={{
             opacity: 0,
@@ -73,12 +69,18 @@ const Home: NextPage = () => {
             mouseY={mouseY}
             scrollY={scrollY}
             handleLoadComplete={handleLoadComplete}
-            isContinued={finishedContinue}
+            handleFullLoaded={setScrollReady}
+            isContinued={isContinued}
+            finishedContinue={finishedContinue}
           />
         </motion.div>
       )}
-      <main className="min-h-screen font-eb relative overflow-x-hidden">
-        {!(finishedLoading && introComplete) ? (
+      <main
+        className={`min-h-screen font-eb relative overflow-x-hidden ${
+          scrollReady ? "" : "overflow-y-hidden max-h-screen"
+        }`}
+      >
+        {!introComplete ? (
           <>
             <Intro
               handleAnimationComplete={() => {
@@ -88,12 +90,14 @@ const Home: NextPage = () => {
           </>
         ) : (
           <Title
+            continueReady={finishedLoading}
             handleContinue={() =>
               new Promise(async (resolve, reject) => {
                 await setContinued(true);
                 resolve(null);
               })
             }
+            handleTransitionComplete={() => setBegin3D(true)}
             finishedContinue={() => {
               console.log("Finished Continue");
               setFinishedContinue(true);
@@ -102,12 +106,12 @@ const Home: NextPage = () => {
         )}
 
         {isContinued && (
-          <>
+          <div className={`${scrollReady ? "" : "opacity-0"}`}>
             <Education />
             <Skills />
             <Projects />
             <Contact />
-          </>
+          </div>
         )}
       </main>
     </motion.div>

@@ -65,5 +65,3 @@ export default function Controller_2D({ ...props }) {
     </group>
   );
 }
-
-useGLTF.preload("/assets/models/Controller_2D.gltf");

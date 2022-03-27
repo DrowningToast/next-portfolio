@@ -12,9 +12,16 @@ const transitionDuration = 2.25;
 interface Props {
   handleContinue: () => Promise<null>;
   finishedContinue: () => void;
+  handleTransitionComplete: () => void;
+  continueReady: boolean;
 }
 
-const Title: React.FC<Props> = ({ handleContinue, finishedContinue }) => {
+const Title: React.FC<Props> = ({
+  handleContinue,
+  finishedContinue,
+  handleTransitionComplete,
+  continueReady,
+}) => {
   const [isTranslated, setTranslated] = useState<boolean>(false);
   const [isContinued, setContinued] = useState<boolean>(false);
 
@@ -60,6 +67,7 @@ const Title: React.FC<Props> = ({ handleContinue, finishedContinue }) => {
               borderWidth: "0px",
             },
           }}
+          onLayoutAnimationComplete={handleTransitionComplete}
           className={` ${
             !isContinued ? "border-2" : "border-0"
           } lg:px-10 md:px-6 px-4 lg:py-8 md:py-6 py-4 border-tertiary w-full h-full relative flex items-start`}
@@ -135,7 +143,7 @@ const Title: React.FC<Props> = ({ handleContinue, finishedContinue }) => {
             <h5 className=" text-white self-start">Personal Portfolio</h5>
             {/* Continue Button */}
             <AnimatePresence exitBeforeEnter>
-              {!isContinued && (
+              {!isContinued && continueReady && (
                 <motion.h5
                   initial={{ opacity: 0 }}
                   animate={{

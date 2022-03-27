@@ -38,7 +38,7 @@ const Contact = () => {
         <h2 className="text-4xl font-semibold text-white font-eb uppercase">
           I make
         </h2>
-        <h1 className="uppercase font-bold lg:text-8xl md:text-6xl text-5xl text-primary self-center">
+        <h1 className="uppercase font-bold xl:text-8xl md:text-6xl text-5xl text-primary self-center">
           <ReactTypingEffect
             text={words.map((word) => {
               return word.toUpperCase();

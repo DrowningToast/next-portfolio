@@ -72,7 +72,7 @@ const LittlePatient: React.FC<Props> = ({
             className={`z-50 text-4xl text-primary flex flex-col md:pt-28 md:pb-14 justify-start ${
               selected !== "LP"
                 ? "items-center pt-28 pb-14"
-                : "items-start md:px-20 px-4 md:gap-y-6 gap-y-2 min-h-full inset-0 md:py-16 py-8"
+                : "items-start md:px-20 px-4 md:max-w-3xl md:gap-y-6 gap-y-2 min-h-full inset-0 md:py-16 py-8"
             } `}
           >
             <motion.div className="flex items-center md:gap-x-6 gap-x-4" layout>
