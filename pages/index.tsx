@@ -4,14 +4,15 @@ const Projects = dynamic(() => import("@components/Projects/Projects"));
 const Contact = dynamic(() => import("@components/Contact/Contact"));
 
 import Intro from "@components/TopBanner/Intro";
-const Title = dynamic(() => import("@components/TopBanner/Title"));
-// import Title from "@components/TopBanner/Title";
+// const Title = dynamic(() => import("@components/TopBanner/Title"));
+import Title from "@components/TopBanner/Title";
 import type { NextPage } from "next";
 import { motion, useMotionValue, useViewportScroll } from "framer-motion";
 import Head from "next/head";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import useWindowSize from "@components/hooks/useWindowSize";
+import { useGLTF } from "@react-three/drei";
 // import Skills from "@components/Skills/Skills";
 // import Projects from "@components/Projects/Projects";
 // import Contact from "@components/Contact/Contact";
@@ -120,5 +121,7 @@ const Home: NextPage = () => {
     </motion.div>
   );
 };
+
+// useGLTF.preload("/assets/models/hand.glb");
 
 export default Home;

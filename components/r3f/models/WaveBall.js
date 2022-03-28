@@ -144,9 +144,3 @@ const WaveBall = React.forwardRef(
 );
 
 export default WaveBall;
-
-useTexture.preload("/assets/textures/Water_002_COLOR.jpg");
-useTexture.preload("/assets/textures/Water_002_NORM.jpg");
-useTexture.preload("/assets/textures/Water_002_DISP.png");
-useTexture.preload("/assets/textures/Water_002_ROUGH.jpg");
-useTexture.preload("/assets/textures/Water_002_OCC.jpg");

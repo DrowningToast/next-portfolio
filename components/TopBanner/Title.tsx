@@ -41,7 +41,7 @@ const Title: FC<Props> = ({
         layout
         layoutId="title"
         onClick={async () => {
-          if (!isTranslated || isContinued) return;
+          if ((!isTranslated || isContinued) && continueReady) return;
           await handleContinue();
           setContinued(true);
         }}
@@ -51,7 +51,7 @@ const Title: FC<Props> = ({
         className={`w-full h-screen grid place-items-center relative ${
           !isContinued ? "md:px-9 md:py-8 px-5 py-4" : "px-0 py-0"
         } ${
-          isTranslated && !isContinued ? "cursor-pointer" : "cursor-default"
+          continueReady && !isContinued ? "cursor-pointer" : "cursor-default"
         }`}
       >
         <motion.div
