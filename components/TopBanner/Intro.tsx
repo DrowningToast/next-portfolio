@@ -1,16 +1,16 @@
-import React from "react";
+import { FC } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const waveDuration = 1.5;
-const fadeInDuration = 1.25;
-const staggerConstand = 0.5;
+const waveDuration = 0.125;
+const fadeInDuration = 0.75;
+const staggerConstand = 0.125;
 
 interface Props {
   handleAnimationComplete: () => void;
 }
 
-const Intro: React.FC<Props> = ({ handleAnimationComplete }) => {
+const Intro: FC<Props> = ({ handleAnimationComplete }) => {
   return (
     <>
       {/* Desktop */}

@@ -1,5 +1,5 @@
-import { shaderMaterial, useDetectGPU, useTexture } from "@react-three/drei";
-import { extend, useFrame } from "@react-three/fiber";
+import { useDetectGPU, useTexture } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 import { MotionConfig, useTransform } from "framer-motion";
 import { motion } from "framer-motion-3d";
 

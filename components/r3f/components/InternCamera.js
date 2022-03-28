@@ -1,7 +1,7 @@
 import useWindowSize from "@components/hooks/useWindowSize";
 import { useThree } from "@react-three/fiber";
 import { LayoutCamera } from "framer-motion-3d";
-import { useRef, useEffect, useMemo } from "react";
+import { useRef, useEffect } from "react";
 
 const InternCamera = ({ canvasWidth, canvasHeight }) => {
   const camera = useRef();

@@ -142,5 +142,3 @@ export default React.forwardRef(
     );
   }
 );
-
-useGLTF.preload("/assets/models/hand.glb");

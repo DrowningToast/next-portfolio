@@ -1,12 +1,14 @@
-import React from "react";
+import { FC } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect } from "react";
 import { useState } from "react";
-import ReactTypingEffect from "react-typing-effect";
+const ReactTypingEffect = dynamic(() => import("react-typing-effect"));
+// import ReactTypingEffect from "react-typing-effect";
+import dynamic from "next/dynamic";
 
-const transitionDelay = 1.25;
-const transitionDuration = 2.25;
+const transitionDelay = 0.65;
+const transitionDuration = 1;
 // const fadeInDuration = 0.75;
 
 interface Props {
@@ -16,7 +18,7 @@ interface Props {
   continueReady: boolean;
 }
 
-const Title: React.FC<Props> = ({
+const Title: FC<Props> = ({
   handleContinue,
   finishedContinue,
   handleTransitionComplete,
@@ -93,7 +95,6 @@ const Title: React.FC<Props> = ({
               <Image
                 src="/assets/png/waving-hand.png"
                 layout="fill"
-                priority
                 alt="Waving Emoji"
               />
             </motion.div>

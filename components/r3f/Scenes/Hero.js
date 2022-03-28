@@ -1,7 +1,7 @@
 import { AdaptiveDpr, Loader } from "@react-three/drei";
 import Light from "../components/Light";
 import { Suspense, useEffect, useRef, useState } from "react";
-import { motion as motion3d, MotionCanvas } from "framer-motion-3d";
+import { MotionCanvas } from "framer-motion-3d";
 import WaveBall from "../models/WaveBall";
 
 import Hand from "../models/Hand";

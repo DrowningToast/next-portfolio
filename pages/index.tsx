@@ -1,16 +1,20 @@
+const Education = dynamic(() => import("@components/Education/Education"));
+const Skills = dynamic(() => import("@components/Skills/Skills"));
+const Projects = dynamic(() => import("@components/Projects/Projects"));
+const Contact = dynamic(() => import("@components/Contact/Contact"));
+
 import Intro from "@components/TopBanner/Intro";
-import Title from "@components/TopBanner/Title";
-import Education from "@components/Education/Education";
+const Title = dynamic(() => import("@components/TopBanner/Title"));
+// import Title from "@components/TopBanner/Title";
 import type { NextPage } from "next";
 import { motion, useMotionValue, useViewportScroll } from "framer-motion";
 import Head from "next/head";
-import { Suspense, useEffect, useState } from "react";
+import { useState } from "react";
 import dynamic from "next/dynamic";
 import useWindowSize from "@components/hooks/useWindowSize";
-import { useGLTF } from "@react-three/drei";
-import Skills from "@components/Skills/Skills";
-import Projects from "@components/Projects/Projects";
-import Contact from "@components/Contact/Contact";
+// import Skills from "@components/Skills/Skills";
+// import Projects from "@components/Projects/Projects";
+// import Contact from "@components/Contact/Contact";
 const Hero = dynamic(() => {
   return import("../components/r3f/Scenes/Hero");
 });
@@ -37,7 +41,6 @@ const Home: NextPage = () => {
       className="bg-dark"
       onPointerMove={(e) => {
         mouseX.set(e.clientX / width);
-
         mouseY.set(e.clientY / height);
       }}
     >
@@ -117,7 +120,5 @@ const Home: NextPage = () => {
     </motion.div>
   );
 };
-
-useGLTF.preload("/assets/models/bust.gltf");
 
 export default Home;

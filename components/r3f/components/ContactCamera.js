@@ -1,7 +1,6 @@
 import useWindowSize from "@components/hooks/useWindowSize";
 import { useThree } from "@react-three/fiber";
-import { LayoutCamera } from "framer-motion-3d";
-import { useRef, useEffect } from "react";
+import { useEffect } from "react";
 
 const CustomLayoutCamera = ({ canvasWidth, canvasHeight }) => {
   const camera = useThree((state) => state.camera);
