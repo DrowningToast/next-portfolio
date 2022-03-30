@@ -12,7 +12,6 @@ import Head from "next/head";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import useWindowSize from "@components/hooks/useWindowSize";
-import { useGLTF } from "@react-three/drei";
 // import Skills from "@components/Skills/Skills";
 // import Projects from "@components/Projects/Projects";
 // import Contact from "@components/Contact/Contact";

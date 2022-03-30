@@ -37,7 +37,7 @@ const Intern = ({ selected }) => {
 
   const [, updateState] = useState();
   const forceUpdate = useCallback(() => {
-    if (!Canvas?.current) return;
+    if (!Canvas?.current?.style) return;
     Canvas.current.style.width = "100%";
     Canvas.current.style.height = "100%";
     setWidth(Canvas.current.scrollWidth);
