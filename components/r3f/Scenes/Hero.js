@@ -37,6 +37,7 @@ const Hero = ({
   }, [isContinued]);
 
   useEffect(() => {
+    if (!Canvas?.current?.style) return;
     Canvas.current.style.width = "100vw";
     Canvas.current.style.height = "100vh";
   }, [Canvas.current]);
@@ -61,6 +62,7 @@ const Hero = ({
             style={{ height: "100%", width: "100vw" }}
             ref={Canvas}
             resize={{ scroll: true }}
+            mode="concurrent"
           >
             {/* <Stats /> */}
             <ambientLight color="white" intensity={0.1} />
