@@ -41,7 +41,7 @@ const Title: FC<Props> = ({
         layout
         layoutId="title"
         onClick={async () => {
-          if ((!isTranslated || isContinued) && continueReady) return;
+          if (!isTranslated || isContinued || !continueReady) return;
           await handleContinue();
           setContinued(true);
         }}
