@@ -54,10 +54,10 @@ const Hero = ({
           <MotionCanvas
             gl={{
               toneMapping: ReinhardToneMapping,
-              toneMappingExposure: 1.2,
+              toneMappingExposure: 1.1,
               antialias: false,
             }}
-            dpr={[0.1, 1.5]}
+            dpr={[0.1, 2]}
             style={{ height: "100%", width: "100vw" }}
             ref={Canvas}
             resize={{ scroll: true }}
