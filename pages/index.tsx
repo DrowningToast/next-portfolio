@@ -13,6 +13,7 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import useWindowSize from "@components/hooks/useWindowSize";
 import { useGLTF } from "@react-three/drei";
+import Script from "next/script";
 // import Skills from "@components/Skills/Skills";
 // import Projects from "@components/Projects/Projects";
 // import Contact from "@components/Contact/Contact";
@@ -52,8 +53,23 @@ const Home: NextPage = () => {
         <meta name="keywords" content="Resume, Portfolio, Web Development" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
+        {/* <Script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXXX');`,
+          }}
+        ></Script> */}
       </Head>
       {/* Main Canvas */}
+      {/* <noscript
+        dangerouslySetInnerHTML={{
+          __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+        }}
+      ></noscript> */}
       {beginLoad3D && (
         <motion.div
           initial={{
