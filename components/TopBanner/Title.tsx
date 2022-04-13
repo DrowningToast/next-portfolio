@@ -137,11 +137,13 @@ const Title: FC<Props> = ({
             className="absolute inset-0 md:py-10 md:px-16 px-3 pt-16 pb-3 flex justify-between"
           >
             {/* Today Date */}
-            <h5 className=" text-white self-end">
+            <h5 className=" text-white self-end md:text-base text-xs">
               {new Date().toDateString()}
             </h5>
             {/* Personal Portfolio */}
-            <h5 className=" text-white self-start">Personal Portfolio</h5>
+            <h5 className=" text-white self-start md:inline hidden">
+              Personal Portfolio
+            </h5>
             {/* Continue Button */}
             <AnimatePresence exitBeforeEnter>
               {!isContinued && continueReady && (

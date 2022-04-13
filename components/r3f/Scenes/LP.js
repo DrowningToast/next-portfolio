@@ -1,20 +1,12 @@
-import { Environment, Loader, useDetectGPU } from "@react-three/drei";
+import { Environment, useDetectGPU } from "@react-three/drei";
 import { MotionCanvas } from "framer-motion-3d";
-import {
-  Suspense,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import Patient from "../models/Patient";
 import Camera from "../components/LPCamera";
 
 const LP = ({ selected }) => {
   const Canvas = useRef();
 
-  const [initialLoad, setLoaded] = useState(false);
   const [canvasWidth, setWidth] = useState(0);
   const [canvasHeight, setHeight] = useState(0);
 

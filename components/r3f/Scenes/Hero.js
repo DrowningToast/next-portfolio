@@ -1,13 +1,11 @@
-import { AdaptiveDpr, Loader, useGLTF, useTexture } from "@react-three/drei";
+import { AdaptiveDpr, Loader } from "@react-three/drei";
 import Light from "../components/Light";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { MotionCanvas } from "framer-motion-3d";
 import WaveBall from "../models/WaveBall";
-
 import Hand from "../models/Hand";
 import Bust from "../models/Bust";
 import Camera from "../components/MainCamera";
-import { ReinhardToneMapping } from "three";
 import { useTransform } from "framer-motion";
 import useWindowSize from "@components/hooks/useWindowSize";
 
@@ -53,11 +51,10 @@ const Hero = ({
         <Suspense fallback={null}>
           <MotionCanvas
             gl={{
-              toneMapping: ReinhardToneMapping,
               toneMappingExposure: 1.1,
               antialias: false,
             }}
-            dpr={[0.1, 2]}
+            dpr={[0.5, 2]}
             style={{ height: "100%", width: "100vw" }}
             ref={Canvas}
             resize={{ scroll: true }}
