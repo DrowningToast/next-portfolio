@@ -16,7 +16,6 @@ import Briefcase_2D from "../models/Briefcase_2D";
 import Controller_2D from "../models/Controller_2D";
 import Programming_2D from "../models/Programming_2D";
 import Slate_2D from "../models/Slate_2D";
-import { ReinhardToneMapping } from "three";
 
 function Plane(props) {
   usePlane(() => props);
@@ -63,7 +62,6 @@ const Intern = ({ selected }) => {
               height: "100%",
             }}
             gl={{
-              toneMapping: ReinhardToneMapping,
               toneMappingExposure: 1.2,
             }}
           >
