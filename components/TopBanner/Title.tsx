@@ -141,9 +141,9 @@ const Title: FC<Props> = ({
               {new Date().toDateString()}
             </h5>
             {/* Personal Portfolio */}
-            <h5 className=" text-white self-start md:inline hidden">
+            {/* <h5 className=" text-white self-start md:inline hidden">
               Personal Portfolio
-            </h5>
+            </h5> */}
             {/* Continue Button */}
             <AnimatePresence exitBeforeEnter>
               {!isContinued && continueReady && (
