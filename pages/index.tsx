@@ -12,6 +12,8 @@ import Head from "next/head";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import useWindowSize from "@components/hooks/useWindowSize";
+import { useGLTF } from "@react-three/drei";
+import Script from "next/script";
 // import Skills from "@components/Skills/Skills";
 // import Projects from "@components/Projects/Projects";
 // import Contact from "@components/Contact/Contact";
@@ -53,6 +55,12 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* Main Canvas */}
+      {/* <noscript
+        dangerouslySetInnerHTML={{
+          __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+        }}
+      ></noscript> */}
       {beginLoad3D && (
         <motion.div
           initial={{

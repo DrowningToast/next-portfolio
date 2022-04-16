@@ -9,7 +9,6 @@ import {
 } from "react";
 import useWindowSize from "@components/hooks/useWindowSize";
 import Television from "@components/r3f/models/Television_01_4k";
-import ContactCamera from "@components/r3f/components/ContactCamera";
 import {
   AdaptiveDpr,
   ContactShadows,
