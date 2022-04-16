@@ -1,13 +1,11 @@
-import { AdaptiveDpr, Loader, useGLTF, useTexture } from "@react-three/drei";
+import { AdaptiveDpr, Loader } from "@react-three/drei";
 import Light from "../components/Light";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { MotionCanvas } from "framer-motion-3d";
 import WaveBall from "../models/WaveBall";
-
 import Hand from "../models/Hand";
 import Bust from "../models/Bust";
 import Camera from "../components/MainCamera";
-import { ReinhardToneMapping } from "three";
 import { useTransform } from "framer-motion";
 import useWindowSize from "@components/hooks/useWindowSize";
 
@@ -54,11 +52,10 @@ const Hero = ({
         <Suspense fallback={null}>
           <MotionCanvas
             gl={{
-              toneMapping: ReinhardToneMapping,
-              toneMappingExposure: 1.2,
+              toneMappingExposure: 1.1,
               antialias: false,
             }}
-            dpr={[0.1, 1.5]}
+            dpr={[0.5, 2]}
             style={{ height: "100%", width: "100vw" }}
             ref={Canvas}
             resize={{ scroll: true }}
@@ -133,17 +130,17 @@ const Hero = ({
 
 export default Hero;
 
-useGLTF.preload("/assets/models/hand.glb");
-useGLTF.preload("/assets/models/Artist_2D.gltf");
-useGLTF.preload("/assets/models/Briefcase_2D.gltf");
-useGLTF.preload("/assets/models/bust.gltf");
-useGLTF.preload("/assets/models/Controller_2D.gltf");
-useGLTF.preload("/assets/models/patient.gltf");
-useGLTF.preload("/assets/models/Programming_2D.gltf");
-useGLTF.preload("/assets/models/Slate_2D.gltf");
-useGLTF.preload("/assets/models/Television_01_4k.gltf");
-useTexture.preload("/assets/textures/Water_002_COLOR.jpg");
-useTexture.preload("/assets/textures/Water_002_NORM.jpg");
-useTexture.preload("/assets/textures/Water_002_DISP.png");
-useTexture.preload("/assets/textures/Water_002_ROUGH.jpg");
-useTexture.preload("/assets/textures/Water_002_OCC.jpg");
+// useGLTF.preload("/assets/models/hand.glb");
+// useGLTF.preload("/assets/models/Artist_2D.gltf");
+// useGLTF.preload("/assets/models/Briefcase_2D.gltf");
+// useGLTF.preload("/assets/models/bust.gltf");
+// useGLTF.preload("/assets/models/Controller_2D.gltf");
+// useGLTF.preload("/assets/models/patient.gltf");
+// useGLTF.preload("/assets/models/Programming_2D.gltf");
+// useGLTF.preload("/assets/models/Slate_2D.gltf");
+// useGLTF.preload("/assets/models/Television_01_4k.gltf");
+// useTexture.preload("/assets/textures/Water_002_COLOR.jpg");
+// useTexture.preload("/assets/textures/Water_002_NORM.jpg");
+// useTexture.preload("/assets/textures/Water_002_DISP.png");
+// useTexture.preload("/assets/textures/Water_002_ROUGH.jpg");
+// useTexture.preload("/assets/textures/Water_002_OCC.jpg");
