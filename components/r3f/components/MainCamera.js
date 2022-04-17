@@ -1,4 +1,4 @@
-import { motion as motion3d } from "framer-motion-3d";
+import { motion as Motion3D } from "framer-motion-3d";
 import { useThree } from "@react-three/fiber";
 import { useEffect, useMemo, useRef } from "react";
 import useWindowSize from "../../hooks/useWindowSize";
@@ -45,7 +45,7 @@ const Camera = ({ control, mouseX, mouseY }) => {
   return (
     <>
       {!control && (
-        <motion3d.perspectiveCamera
+        <Motion3D.perspectiveCamera
           fov={width < 1024 ? 65 : 50}
           ref={cameraRef}
           position={!isMobile ? [posX, posY, 8] : [3, 0.45, 8]}
