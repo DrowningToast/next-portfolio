@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    reactMode: "concurrent",
+    reactRoot: "concurrent",
   },
 };
 

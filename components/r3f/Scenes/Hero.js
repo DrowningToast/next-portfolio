@@ -59,7 +59,6 @@ const Hero = ({
             style={{ height: "100%", width: "100vw" }}
             ref={Canvas}
             resize={{ scroll: true }}
-            mode="concurrent"
           >
             {/* <Stats /> */}
             <ambientLight color="white" intensity={0.1} />
