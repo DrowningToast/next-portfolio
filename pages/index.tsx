@@ -116,14 +116,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
           />
         )}
 
-        {/* {isContinued && (
+        {isContinued && (
           <div className={`${scrollReady ? "" : "opacity-0"}`}>
             <Education />
             <Skills />
             <Projects />
             <Contact />
           </div>
-        )} */}
+        )}
       </main>
     </motion.div>
   );
