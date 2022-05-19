@@ -51,13 +51,6 @@ const Camera = ({ control, mouseX, mouseY }) => {
           position={!isMobile ? [posX, posY, 8] : [3, 0.45, 8]}
         />
       )}
-      {/* {control && (
-        <OrbitControls
-          makeDefault
-          minPolarAngle={0}
-          maxPolarAngle={Math.PI / 1.75}
-        />
-      )} */}
     </>
   );
 };

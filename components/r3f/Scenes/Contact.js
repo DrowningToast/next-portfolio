@@ -8,16 +8,18 @@ import {
   useCallback,
 } from "react";
 import useWindowSize from "@components/hooks/useWindowSize";
-import Television from "@components/r3f/models/Television_01_4k";
+import Television from "@components/r3f/models/Tv";
 import {
   AdaptiveDpr,
   ContactShadows,
   Environment,
+  Float,
   Loader,
+  OrbitControls,
   PresentationControls,
   Sphere,
 } from "@react-three/drei";
-import CustomLayoutCamera from "@components/r3f/components/ContactCamera";
+import ContactCamera from "@components/r3f/components/ContactCamera";
 
 const ContactScene = ({ selected }) => {
   const Canvas = useRef();
@@ -69,20 +71,14 @@ const ContactScene = ({ selected }) => {
             <ambientLight color="white" intensity={0.3} />
 
             <Suspense fallback={null}>
-              <PresentationControls
-                config={{ mass: 2, tension: 900 }}
-                snap={{ mass: 4, tension: 1500 }}
-                rotation={[0, 0, 0]}
-                polar={[-Math.PI / 3, Math.PI / 3]}
-                azimuth={[-Math.PI / 1.4, Math.PI / 2]}
-                global
-              >
+              <Float speed={0.35} rotationIntensity={0.2} floatIntensity={0.7}>
                 <Television
                   scale={5}
-                  position={[0, -1, !isMobile ? 0 : 1.7]}
+                  position={[0, !isMobile ? -1 : -0.4, !isMobile ? 0 : 1.3]}
                   selected={selected}
+                  ratio={canvasWidth / canvasHeight}
                 />
-              </PresentationControls>
+              </Float>
             </Suspense>
             {!isMobile && (
               <ContactShadows
@@ -95,11 +91,13 @@ const ContactScene = ({ selected }) => {
                 far={2}
               />
             )}
-            <CustomLayoutCamera
+            <ContactCamera
               canvasWidth={canvasWidth}
               canvasHeight={canvasHeight}
+              isMobile={isMobile}
             />
             <AdaptiveDpr pixelated />
+            <Environment preset="city" />
           </MotionCanvas>
           <Loader
             dataInterpolation={(e) => {
