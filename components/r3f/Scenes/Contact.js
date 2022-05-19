@@ -41,6 +41,8 @@ const ContactScene = ({ selected }) => {
     return updateState(i++);
   }, []);
 
+  console.log(isMobile);
+
   useEffect(() => {
     window.addEventListener("resize", forceUpdate);
     window.addEventListener("orientationchange", forceUpdate);
@@ -71,7 +73,7 @@ const ContactScene = ({ selected }) => {
             <Suspense fallback={null}>
               <Television
                 scale={5}
-                position={[0, -1, !isMobile ? 0 : 1.7]}
+                position={[0, !isMobile ? -1 : -0.4, !isMobile ? 0 : 1.3]}
                 selected={selected}
               />
             </Suspense>
