@@ -8,7 +8,7 @@ import {
   useCallback,
 } from "react";
 import useWindowSize from "@components/hooks/useWindowSize";
-import Television from "@components/r3f/models/Television_01_4k";
+import Television from "@components/r3f/models/Tv";
 import {
   AdaptiveDpr,
   ContactShadows,
@@ -69,20 +69,11 @@ const ContactScene = ({ selected }) => {
             <ambientLight color="white" intensity={0.3} />
 
             <Suspense fallback={null}>
-              <PresentationControls
-                config={{ mass: 2, tension: 900 }}
-                snap={{ mass: 4, tension: 1500 }}
-                rotation={[0, 0, 0]}
-                polar={[-Math.PI / 3, Math.PI / 3]}
-                azimuth={[-Math.PI / 1.4, Math.PI / 2]}
-                global
-              >
-                <Television
-                  scale={5}
-                  position={[0, -1, !isMobile ? 0 : 1.7]}
-                  selected={selected}
-                />
-              </PresentationControls>
+              <Television
+                scale={5}
+                position={[0, -1, !isMobile ? 0 : 1.7]}
+                selected={selected}
+              />
             </Suspense>
             {!isMobile && (
               <ContactShadows
@@ -100,6 +91,7 @@ const ContactScene = ({ selected }) => {
               canvasHeight={canvasHeight}
             />
             <AdaptiveDpr pixelated />
+            <Environment preset="city" />
           </MotionCanvas>
           <Loader
             dataInterpolation={(e) => {
