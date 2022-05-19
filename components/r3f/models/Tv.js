@@ -104,9 +104,9 @@ export default function Tv({ ...props }) {
         </group>
         <Suspense fallback={null}>
           <Html
-            scale={0.09}
+            scale={0.085}
             rotation={[0, 0, 0]}
-            position={[-0.165, 0.26, 0.2]}
+            position={[-0.065, 0.26, 0.21]}
             transform
             occlude
             center
