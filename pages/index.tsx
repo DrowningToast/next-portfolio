@@ -11,6 +11,7 @@ import Head from "next/head";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import useWindowSize from "@components/hooks/useWindowSize";
+import { useGLTF, useTexture } from "@react-three/drei";
 const Hero = dynamic(() => {
   return import("../components/r3f/Scenes/Hero");
 });
@@ -115,3 +116,18 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+useGLTF.preload("/assets/models/hand.glb");
+useGLTF.preload("/assets/models/bust.gltf");
+useGLTF.preload("/assets/models/Controller_2D.gltf");
+useGLTF.preload("/assets/models/patient.gltf");
+useGLTF.preload("/assets/models/Programming_2D.gltf");
+useGLTF.preload("/assets/models/Slate_2D.gltf");
+useGLTF.preload("/assets/models/Artist_2D.gltf");
+useGLTF.preload("/assets/models/Briefcase_2D.gltf");
+useGLTF.preload("/assets/models/tv.gltf");
+useTexture.preload("/assets/textures/Water_002_COLOR.jpg");
+useTexture.preload("/assets/textures/Water_002_NORM.jpg");
+useTexture.preload("/assets/textures/Water_002_DISP.png");
+useTexture.preload("/assets/textures/Water_002_ROUGH.jpg");
+useTexture.preload("/assets/textures/Water_002_OCC.jpg");

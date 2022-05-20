@@ -42,7 +42,7 @@ const LP = ({ selected }) => {
               antialias: gpuTier.isMobile ?? false,
             }}
           >
-            {!gpuTier.isMobile && <Environment preset="night" />}
+            {!gpuTier.isMobile && <Environment preset="city" />}
             <ambientLight color="white" intensity={0.3} />
             <color attach="background" args={["#DCF9EF"]} />
             <Patient />

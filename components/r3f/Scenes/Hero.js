@@ -1,10 +1,4 @@
-import {
-  AdaptiveDpr,
-  Loader,
-  Preload,
-  useGLTF,
-  useTexture,
-} from "@react-three/drei";
+import { AdaptiveDpr, Loader, Preload } from "@react-three/drei";
 import Light from "../components/Light";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { MotionCanvas } from "framer-motion-3d";
@@ -67,7 +61,7 @@ const Hero = ({
           >
             {/* <Stats /> */}
             <ambientLight color="white" intensity={0.1} />
-            {/* <Environment preset="night" /> */}
+            {/* <Environment preset="city" /> */}
             <Camera mouseX={mouseX} mouseY={mouseY} />
             {/* Hand */}
             <Suspense fallback={null}>
@@ -134,18 +128,3 @@ const Hero = ({
 };
 
 export default Hero;
-
-useGLTF.preload("/assets/models/hand.glb");
-useGLTF.preload("/assets/models/Artist_2D.gltf");
-useGLTF.preload("/assets/models/Briefcase_2D.gltf");
-useGLTF.preload("/assets/models/bust.gltf");
-useGLTF.preload("/assets/models/Controller_2D.gltf");
-useGLTF.preload("/assets/models/patient.gltf");
-useGLTF.preload("/assets/models/Programming_2D.gltf");
-useGLTF.preload("/assets/models/Slate_2D.gltf");
-useGLTF.preload("/assets/models/tv.gltf");
-useTexture.preload("/assets/textures/Water_002_COLOR.jpg");
-useTexture.preload("/assets/textures/Water_002_NORM.jpg");
-useTexture.preload("/assets/textures/Water_002_DISP.png");
-useTexture.preload("/assets/textures/Water_002_ROUGH.jpg");
-useTexture.preload("/assets/textures/Water_002_OCC.jpg");
