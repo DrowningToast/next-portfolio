@@ -15,10 +15,7 @@ import {
   Environment,
   Float,
   Loader,
-  OrbitControls,
   Preload,
-  PresentationControls,
-  Sphere,
 } from "@react-three/drei";
 import ContactCamera from "@components/r3f/components/ContactCamera";
 

@@ -3,8 +3,7 @@ import React from "react";
 const handleGhost = (
   scrollYValue: number,
   inputRange: number[],
-  cb: React.Dispatch<React.SetStateAction<any>>,
-  currentState: boolean
+  cb: React.Dispatch<React.SetStateAction<any>>
 ) => {
   if (
     scrollYValue < inputRange[0] ||
