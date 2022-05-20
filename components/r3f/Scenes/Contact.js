@@ -60,11 +60,10 @@ const ContactScene = ({ selected }) => {
         <Suspense fallback={null}>
           <MotionCanvas
             ref={Canvas}
-            dpr={[0.7, 1.2]}
+            dpr={[0.1, 1.2]}
             style={{
               width: "100%",
               height: "100%",
-              touchAction: "none",
             }}
           >
             <Environment preset="night" />
@@ -77,6 +76,7 @@ const ContactScene = ({ selected }) => {
                   position={[0, !isMobile ? -1 : -0.4, !isMobile ? 0 : 1.3]}
                   selected={selected}
                   ratio={canvasWidth / canvasHeight}
+                  isMobile={isMobile}
                 />
               </Float>
             </Suspense>
