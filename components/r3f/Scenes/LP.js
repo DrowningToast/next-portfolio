@@ -1,4 +1,4 @@
-import { Environment, useDetectGPU } from "@react-three/drei";
+import { Environment, Preload, useDetectGPU } from "@react-three/drei";
 import { MotionCanvas } from "framer-motion-3d";
 import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import Patient from "../models/Patient";
@@ -53,6 +53,7 @@ const LP = ({ selected }) => {
               canvasWidth={canvasWidth}
               i={i}
             />
+            <Preload all />
           </MotionCanvas>
           {/* <Loader
             dataInterpolation={(e) => {
