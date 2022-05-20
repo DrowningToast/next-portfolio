@@ -134,7 +134,7 @@ const Title: FC<Props> = ({
                 duration: transitionDuration,
               },
             }}
-            className="absolute inset-0 md:py-10 md:px-16 px-3 pt-16 pb-3 flex justify-between"
+            className="absolute inset-0 md:py-10 md:px-16 sm:px-3 px-2 pt-16 pb-3 flex justify-between"
           >
             {/* Today Date */}
             <h5 className=" text-white self-end md:text-base text-xs">
@@ -179,7 +179,7 @@ const Title: FC<Props> = ({
               }}
               className={`absolute inset-0 flex flex-col ${
                 !isContinued
-                  ? "items-start lg:left-20 left-5 "
+                  ? "items-start lg:left-20 left-2"
                   : "lg:items-start items-center lg:h-full h-1/2"
               }  justify-center text-tertiary font-eb xl:left-20 lg:left-10 z-20 `}
             >

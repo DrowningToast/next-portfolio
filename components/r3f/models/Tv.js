@@ -43,7 +43,11 @@ export default function Tv({ ...props }) {
           geometry={nodes.Television_01.geometry}
           // material={materials.Television_01}
         >
-          <MeshWobbleMaterial color="#d4e5df" factor={0.01} speed={4.5} />
+          <MeshWobbleMaterial
+            color="#d4e5df"
+            factor={!props.isMobile ? 0.08 : 0}
+            speed={!props.isMobile ? 1.5 : 0}
+          />
         </mesh>
         <mesh geometry={nodes.Television_01001.geometry} />
         <mesh ref={screen} geometry={nodes.screen.geometry}>

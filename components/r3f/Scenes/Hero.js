@@ -1,4 +1,4 @@
-import { AdaptiveDpr, Loader } from "@react-three/drei";
+import { AdaptiveDpr, Loader, Preload } from "@react-three/drei";
 import Light from "../components/Light";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { MotionCanvas } from "framer-motion-3d";
@@ -54,7 +54,7 @@ const Hero = ({
               toneMappingExposure: 1.1,
               antialias: false,
             }}
-            dpr={[0.5, 2]}
+            dpr={[0.1, 2]}
             style={{ height: "100%", width: "100vw" }}
             ref={Canvas}
             resize={{ scroll: true }}
@@ -99,6 +99,7 @@ const Hero = ({
               <Light mouseX={mouseX} mouseY={mouseY} target={target} />
             )}
             <AdaptiveDpr pixelated />
+            <Preload all />
           </MotionCanvas>
           <Loader
             initialState={(state) => {
