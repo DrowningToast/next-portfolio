@@ -1,5 +1,6 @@
+import useWindowSize from "@components/hooks/useWindowSize";
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useMemo } from "react";
 
 const row1 = [
   {
@@ -75,23 +76,28 @@ const row4 = [
 ];
 
 const Skills: React.FC = () => {
+  const [width] = useWindowSize();
+  const isMobile = useMemo(() => {
+    return width < 1024;
+  }, [width]);
+
   return (
     <section className="h-screen w-full flex flex-col gap-y-16 justify-start items-center py-10 ">
       <h1 className="font-eb md:text-9xl text-5xl text-white font-bold z-20">
         I can
       </h1>
-      <div className="flex flex-col justify-center items-center gap-y-10 font-eb z-20 overflow-hidden max-w-full">
-        <div className="flex justify-start items-center gap-x-80 overflow-hidden max-w-full">
+      <div className="flex flex-col justify-center items-center lg:gap-y-10 gap-y-20 font-eb z-20 overflow-hidden max-w-full">
+        <div className="flex justify-start items-center lg:gap-x-80 gap-x-16 overflow-hidden max-w-full">
           <motion.div
             animate={{
               translateX: ["0%", "-100%"],
               transition: {
-                duration: 20,
+                duration: !isMobile ? 20 : 12,
                 repeat: Infinity,
                 ease: "linear",
               },
             }}
-            className="flex justify-start items-center gap-x-80 max-w-full"
+            className="flex justify-start items-center lg:gap-x-80 gap-x-16 max-w-full"
           >
             {row1.map((element, i) => {
               return (
@@ -123,17 +129,17 @@ const Skills: React.FC = () => {
             })}
           </motion.div>
         </div>
-        <div className="flex justify-start items-center gap-x-80 overflow-hidden max-w-full">
+        <div className="flex justify-start items-center lg:gap-x-80 gap-x-16 overflow-hidden max-w-full">
           <motion.div
             animate={{
               translateX: ["0%", "-100%"],
               transition: {
-                duration: 20,
+                duration: !isMobile ? 20 : 10,
                 repeat: Infinity,
                 ease: "linear",
               },
             }}
-            className="flex justify-start items-center gap-x-80 max-w-full"
+            className="flex justify-start items-center lg:gap-x-80 gap-x-16 max-w-full"
           >
             {row2.map((element, i) => {
               return (
@@ -165,7 +171,7 @@ const Skills: React.FC = () => {
             })}
           </motion.div>
         </div>
-        <div className="flex justify-start items-center gap-x-80 overflow-hidden max-w-full">
+        <div className="flex justify-start items-center lg:gap-x-80 gap-x-16 overflow-hidden max-w-full">
           <motion.div
             animate={{
               translateX: ["0%", "-100%"],
@@ -175,7 +181,7 @@ const Skills: React.FC = () => {
                 ease: "linear",
               },
             }}
-            className="flex justify-start items-center gap-x-80 max-w-full"
+            className="flex justify-start items-center lg:gap-x-80 gap-x-16 max-w-full"
           >
             {row3.map((element, i) => {
               return (
@@ -207,7 +213,7 @@ const Skills: React.FC = () => {
             })}
           </motion.div>
         </div>
-        <div className="flex justify-start items-center gap-x-80 overflow-hidden max-w-full">
+        <div className="flex justify-start items-center lg:gap-x-80 gap-x-16 overflow-hidden max-w-full">
           <motion.div
             animate={{
               translateX: ["0%", "-100%"],
@@ -217,7 +223,7 @@ const Skills: React.FC = () => {
                 ease: "linear",
               },
             }}
-            className="flex justify-start items-center gap-x-80 max-w-full"
+            className="flex justify-start items-center lg:gap-x-80 gap-x-16 max-w-full"
           >
             {row4.map((element, i) => {
               return (

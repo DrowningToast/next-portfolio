@@ -16,6 +16,7 @@ import {
   Float,
   Loader,
   OrbitControls,
+  Preload,
   PresentationControls,
   Sphere,
 } from "@react-three/drei";
@@ -98,6 +99,7 @@ const ContactScene = ({ selected }) => {
             />
             <AdaptiveDpr pixelated />
             <Environment preset="city" />
+            <Preload all />
           </MotionCanvas>
           <Loader
             dataInterpolation={(e) => {
