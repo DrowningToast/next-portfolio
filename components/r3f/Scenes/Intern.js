@@ -27,7 +27,7 @@ const Intern = ({ selected }) => {
 
   const [canvasWidth, setWidth] = useState(0);
   const [canvasHeight, setHeight] = useState(0);
-  const [width, ] = useWindowSize();
+  const [width] = useWindowSize();
 
   const isMobile = useMemo(() => {
     return width < 1024;
@@ -64,7 +64,7 @@ const Intern = ({ selected }) => {
               toneMappingExposure: 1.2,
             }}
           >
-            <Environment preset="warehouse" />
+            <Environment preset="city" />
             <ambientLight color="white" intensity={0.8} />
             <color attach="background" args={["white"]} />
             <Physics gravity={[0, 0, 0]} iterations={1} broadphase="SAP">

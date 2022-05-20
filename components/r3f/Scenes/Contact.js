@@ -26,7 +26,7 @@ const ContactScene = ({ selected }) => {
   const [canvasWidth, setWidth] = useState(0);
   const [canvasHeight, setHeight] = useState(0);
 
-  const [width, height] = useWindowSize();
+  const [width] = useWindowSize();
   const isMobile = useMemo(() => {
     return width < 1024;
   }, [width]);
@@ -64,7 +64,7 @@ const ContactScene = ({ selected }) => {
               height: "100%",
             }}
           >
-            <Environment preset="night" />
+            <Environment preset="city" />
             <ambientLight color="white" intensity={0.3} />
 
             <Suspense fallback={null}>
