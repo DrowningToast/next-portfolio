@@ -4,7 +4,6 @@ const Projects = dynamic(() => import("@components/Projects/Projects"));
 const Contact = dynamic(() => import("@components/Contact/Contact"));
 
 import Intro from "@components/TopBanner/Intro";
-// const Title = dynamic(() => import("@components/TopBanner/Title"));
 import Title from "@components/TopBanner/Title";
 import type { NextPage } from "next";
 import { motion, useMotionValue, useViewportScroll } from "framer-motion";
@@ -12,9 +11,6 @@ import Head from "next/head";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import useWindowSize from "@components/hooks/useWindowSize";
-// import Skills from "@components/Skills/Skills";
-// import Projects from "@components/Projects/Projects";
-// import Contact from "@components/Contact/Contact";
 const Hero = dynamic(() => {
   return import("../components/r3f/Scenes/Hero");
 });
@@ -52,13 +48,6 @@ const Home: NextPage = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* Main Canvas */}
-      {/* <noscript
-        dangerouslySetInnerHTML={{
-          __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXX"
-height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
-        }}
-      ></noscript> */}
       {beginLoad3D && (
         <motion.div
           initial={{
@@ -124,7 +113,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
     </motion.div>
   );
 };
-
-// useGLTF.preload("/assets/models/hand.glb");
 
 export default Home;

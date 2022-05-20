@@ -7,7 +7,7 @@ import {
   Suspense,
 } from "react";
 import { MotionCanvas } from "framer-motion-3d";
-import { Environment, Loader, Preload } from "@react-three/drei";
+import { Environment, Preload } from "@react-three/drei";
 import useWindowSize from "../../hooks/useWindowSize";
 import { Physics, usePlane } from "@react-three/cannon";
 import InternCamera from "../components/InternCamera";
@@ -25,10 +25,9 @@ function Plane(props) {
 const Intern = ({ selected }) => {
   const Canvas = useRef();
 
-  const [initialLoad, setLoaded] = useState(false);
   const [canvasWidth, setWidth] = useState(0);
   const [canvasHeight, setHeight] = useState(0);
-  const [width, height] = useWindowSize();
+  const [width, ] = useWindowSize();
 
   const isMobile = useMemo(() => {
     return width < 1024;

@@ -55,14 +55,6 @@ const LP = ({ selected }) => {
             />
             <Preload all />
           </MotionCanvas>
-          {/* <Loader
-            dataInterpolation={(e) => {
-              if (e >= 100 && !initialLoad) {
-                setLoaded(true);
-                forceUpdate();
-              }
-            }}
-          /> */}
         </Suspense>
       )}
     </>
