@@ -30,6 +30,6 @@
     "**/*.ts",
     "**/*.tsx",
     "components/r3f/Scenes/Hero.js"
-  ],
+, "components/r3f/Scenes/Contact.js"  ],
   "exclude": ["node_modules"]
 }
