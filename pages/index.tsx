@@ -104,7 +104,10 @@ const Home: NextPage = () => {
           />
         )}
 
-        <div className={`${scrollReady && isContinued ? "" : "opacity-0"}`}>
+        <div
+          id="main-content"
+          className={`${scrollReady && isContinued ? "" : "opacity-0"}`}
+        >
           <Education />
           <Skills />
           <Projects />
