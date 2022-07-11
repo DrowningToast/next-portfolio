@@ -41,27 +41,27 @@ export default function Model({ mouseX, mouseY, scrollY, inputRange }) {
 
   const { nodes, materials } = useGLTF("/assets/models/bust.gltf");
 
-  return (
-    <group ref={group} dispose={null}>
-      {active && (
-        <motion.mesh
-          rotation={[lookY, lookX, 0]}
-          scale={9}
-          geometry={nodes.marble_bust_01.geometry}
-          material={materials.marble_bust_01}
-          // position={[opacity, -1.8, 0]}
-          castShadow
-          receiveShadow
-          position={[3, -1.8, 0]}
-        >
-          <motion.meshStandardMaterial
-            transparent={true}
-            opacity={opacity}
-            coatness={0}
-            color={!isMobile ? "white" : "#90e1c8"}
-          />
-        </motion.mesh>
-      )}
-    </group>
-  );
+  // return (
+  //   <group ref={group} dispose={null}>
+  //     {active && (
+  //       <motion.mesh
+  //         rotation={[lookY, lookX, 0]}
+  //         scale={9}
+  //         geometry={nodes.marble_bust_01.geometry}
+  //         material={materials.marble_bust_01}
+  //         // position={[opacity, -1.8, 0]}
+  //         castShadow
+  //         receiveShadow
+  //         position={[3, -1.8, 0]}
+  //       >
+  //         <motion.meshStandardMaterial
+  //           transparent={true}
+  //           opacity={opacity}
+  //           coatness={0}
+  //           color={!isMobile ? "white" : "#90e1c8"}
+  //         />
+  //       </motion.mesh>
+  //     )}
+  //   </group>
+  // );
 }
