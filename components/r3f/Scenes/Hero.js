@@ -52,7 +52,7 @@ const Hero = ({
           <MotionCanvas
             gl={{
               toneMappingExposure: 1.1,
-              antialias: true,
+              antialias: false,
             }}
             dpr={[0.1, 2]}
             style={{ height: "100%", width: "100vw" }}
