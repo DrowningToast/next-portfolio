@@ -72,6 +72,7 @@ const Intern = ({ selected }) => {
               <Plane position={[0, 8, 0]} rotation={[Math.PI / 2, 0, 0]} />
               <Plane position={[0, 0, 0]} rotation={[0, 0, 0]} />
               <Plane position={[0, 0, 1.5]} rotation={[0, -Math.PI, 0]} />
+
               <Artist_2D
                 isMobile={isMobile}
                 scale={0.9}

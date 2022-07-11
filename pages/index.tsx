@@ -118,7 +118,7 @@ const Home: NextPage = () => {
 export default Home;
 
 useGLTF.preload("/assets/models/hand.glb");
-useGLTF.preload("/assets/models/bust.gltf");
+useGLTF.preload("/assets/models/bust_low.gltf");
 useGLTF.preload("/assets/models/Controller_2D.gltf");
 useGLTF.preload("/assets/models/patient.gltf");
 useGLTF.preload("/assets/models/Programming_2D.gltf");

@@ -22,7 +22,7 @@ export default React.forwardRef(
     const posX = useSpring(
       useTransform(
         scrollY,
-        [1.6, 1.8, 3.25, 3.75],
+        [1.35, 1.65, 3.25, 3.75],
         [3, !isMobile ? 0.9 : 4, !isMobile ? 0.9 : 4, 16]
       ),
       {
@@ -31,7 +31,7 @@ export default React.forwardRef(
       }
     );
     const posY = useSpring(
-      useTransform(scrollY, [1.6, 1.8, 3.25, 3.75], [-3.1, -4, -4, -3.1]),
+      useTransform(scrollY, [1.35, 1.65, 3.25, 3.75], [-3.1, -4, -4, -3.1]),
       {
         stiffness: 600,
         damping: 30,
@@ -40,7 +40,7 @@ export default React.forwardRef(
     const rotX = useSpring(
       useTransform(
         scrollY,
-        [1.6, 1.8, 3.25, 3.75],
+        [1.35, 1.65, 3.25, 3.75],
         [0, -3.14 / 4 + 0.7, -3.14 / 4 + 0.7, 0]
       ),
       {
@@ -51,7 +51,7 @@ export default React.forwardRef(
     const rotY = useSpring(
       useTransform(
         scrollY,
-        [1.6, 1.8, 3.25, 3.75],
+        [1.35, 1.65, 3.25, 3.75],
         [3.14, 3.14 * 1.5, 3.14 * 1.5, 3.14]
       ),
       {
