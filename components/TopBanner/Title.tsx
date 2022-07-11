@@ -6,6 +6,8 @@ import { useState } from "react";
 const ReactTypingEffect = dynamic(() => import("react-typing-effect"));
 // import ReactTypingEffect from "react-typing-effect";
 import dynamic from "next/dynamic";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useRouter } from "next/router";
 
 const transitionDelay = 0.65;
 const transitionDuration = 1;
@@ -26,6 +28,8 @@ const Title: FC<Props> = ({
 }) => {
   const [isTranslated, setTranslated] = useState<boolean>(false);
   const [isContinued, setContinued] = useState<boolean>(false);
+
+  const router = useRouter();
 
   useEffect(() => {
     setTimeout(() => {
@@ -250,6 +254,30 @@ const Title: FC<Props> = ({
             </motion.div>
           )}
         </motion.div>
+        {isContinued && (
+          <motion.div
+            onClick={() => {
+              router.push("/#main-content");
+            }}
+            initial={{
+              opacity: 0,
+            }}
+            animate={{
+              y: ["-15%", "25%"],
+              opacity: 1,
+              transition: {
+                yoyo: Infinity,
+                duration: 1.2,
+                ease: "easeIn",
+              },
+            }}
+            className="p-2 absolute top-3/4 left-1/4 -translate-x-1/2 border-2 border-white grid place-items-center rounded-full cursor-pointer z-50"
+          >
+            <motion.div className="w-8 h-8 text-white grid place-items-center">
+              <FontAwesomeIcon className="scale-150" icon={["fas", "mouse"]} />
+            </motion.div>
+          </motion.div>
+        )}
       </motion.section>
     </>
   );

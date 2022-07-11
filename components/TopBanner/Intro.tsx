@@ -63,10 +63,14 @@ const Intro: FC<Props> = ({ handleAnimationComplete }) => {
               }}
               layout
               layoutId="introductionTitle"
-              className="text-tertiary lg:text-8xl md:text-6xl text-4xl font-semibold"
+              className="inline-block text-tertiary lg:text-8xl md:text-6xl text-4xl font-semibold"
             >
               Hi, my name is{" "}
-              <motion.span layout layoutId="gus" className="text-primary">
+              <motion.span
+                layout
+                layoutId="gus"
+                className="text-primary inline-block "
+              >
                 Gus
               </motion.span>
             </motion.h1>
@@ -85,7 +89,7 @@ const Intro: FC<Props> = ({ handleAnimationComplete }) => {
               }}
               layout
               onAnimationComplete={handleAnimationComplete}
-              className="font-helvetica font-extralight text-tertiary md:text-2xl text-lg tracking-widest	"
+              className="inline-block font-helvetica font-extralight text-tertiary md:text-2xl text-lg tracking-widest	"
             >
               Full-stack Developer
             </motion.h4>
