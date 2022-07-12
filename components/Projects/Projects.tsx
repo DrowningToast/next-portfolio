@@ -1,5 +1,5 @@
 import { motion, MotionConfig } from "framer-motion";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Intern from "./Intern/Intern";
 import LittlePatient from "./LittlePatient/LittlePatient";
 
@@ -19,26 +19,30 @@ const Projects: React.FC = () => {
       >
         <a href="#projects" className="inline-block w-full h-full">
           {process.browser && (
-            <motion.div layout className="w-full h-full ">
-              <LittlePatient
-                setAnimating={setAnimating}
-                setSelected={setSelected}
-                selected={selected}
-                isAnimating={isAnimating}
-              />
-            </motion.div>
+            <Suspense fallback={null}>
+              <motion.div layout className="w-full h-full ">
+                <LittlePatient
+                  setAnimating={setAnimating}
+                  setSelected={setSelected}
+                  selected={selected}
+                  isAnimating={isAnimating}
+                />
+              </motion.div>
+            </Suspense>
           )}
         </a>
 
         <a href="#projects" className="inline-block w-full h-full">
           {process.browser && (
             <motion.div layout className="w-full h-full">
-              <Intern
-                setAnimating={setAnimating}
-                setSelected={setSelected}
-                selected={selected}
-                animating={isAnimating}
-              />
+              <Suspense fallback={null}>
+                <Intern
+                  setAnimating={setAnimating}
+                  setSelected={setSelected}
+                  selected={selected}
+                  animating={isAnimating}
+                />
+              </Suspense>
             </motion.div>
           )}
         </a>
