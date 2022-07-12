@@ -1,6 +1,6 @@
 import { AdaptiveDpr, Loader, Preload } from "@react-three/drei";
 import Light from "../components/Light";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { MotionCanvas } from "framer-motion-3d";
 import WaveBall from "../models/WaveBall";
 import Hand from "../models/Hand";
@@ -24,7 +24,7 @@ const Hero = ({
   const hand = useRef(null);
   const ball = useRef(null);
 
-  const [, height] = useWindowSize();
+  const [width, height] = useWindowSize();
   const [loadStep, setLoadStep] = useState(0);
 
   const totalPages = 4;
@@ -45,6 +45,10 @@ const Hero = ({
     [0, totalPages]
   );
 
+  const isMobile = useMemo(() => {
+    return width < 1024;
+  }, [width]);
+
   return (
     <>
       {process.browser && (
@@ -52,7 +56,7 @@ const Hero = ({
           <MotionCanvas
             gl={{
               toneMappingExposure: 1.1,
-              antialias: false,
+              antialias: !isMobile ?? false,
             }}
             dpr={[0.1, 2]}
             style={{ height: "100%", width: "100vw" }}
@@ -60,7 +64,7 @@ const Hero = ({
             resize={{ scroll: true }}
           >
             {/* <Stats /> */}
-            <ambientLight color="white" intensity={0.1} />
+            <ambientLight color="white" intensity={isMobile ? 0.35 : 0.1} />
             {/* <Environment preset="city" /> */}
             <Camera mouseX={mouseX} mouseY={mouseY} />
             {/* Hand */}
