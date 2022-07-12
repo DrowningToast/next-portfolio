@@ -39,7 +39,7 @@ export default function Model({ mouseX, mouseY, scrollY, inputRange }) {
     });
   }, []);
 
-  const { nodes, materials } = useGLTF("/assets/models/bust_low.gltf");
+  const { nodes, materials } = useGLTF("/assets/models/bust_very_low.gltf");
 
   return (
     <group ref={group} dispose={null}>

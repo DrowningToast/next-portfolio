@@ -269,12 +269,18 @@ const Title: FC<Props> = ({
                 yoyo: Infinity,
                 duration: 1.2,
                 ease: "easeIn",
+                delay: 3,
               },
             }}
-            className="p-2 absolute top-3/4 left-1/4 -translate-x-1/2 border-2 border-white grid place-items-center rounded-full cursor-pointer z-50"
+            className="absolute top-3/4 left-1/2 md:left-1/4 -translate-x-1/2"
           >
-            <motion.div className="w-8 h-8 text-white grid place-items-center">
-              <FontAwesomeIcon className="scale-150" icon={["fas", "mouse"]} />
+            <motion.div className="p-2 border-2 border-white grid place-items-center rounded-full cursor-pointer z-50 transform -translate-x-1/2">
+              <motion.div className="w-8 h-8 text-white grid place-items-center">
+                <FontAwesomeIcon
+                  className="scale-150"
+                  icon={["fas", "mouse"]}
+                />
+              </motion.div>
             </motion.div>
           </motion.div>
         )}
