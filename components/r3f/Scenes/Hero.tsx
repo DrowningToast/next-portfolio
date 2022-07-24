@@ -7,16 +7,36 @@ import {
   Stats,
 } from "@react-three/drei";
 import Light from "../components/Light";
-import { Suspense, useEffect, useRef, useState } from "react";
+import {
+  Dispatch,
+  ExoticComponent,
+  FC,
+  SetStateAction,
+  Suspense,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import WaveBall from "../models/WaveBall";
 import Hand from "../models/Hand";
 import Bust from "../models/Bust";
 import Camera from "../components/MainCamera";
-import { useTransform } from "framer-motion";
+import { MotionValue, useTransform } from "framer-motion";
 import useWindowSize from "@components/hooks/useWindowSize";
 import { Canvas } from "@react-three/fiber";
+import { Group, Mesh } from "three";
 
-const Hero = ({
+interface Props {
+  handleLoadComplete: () => void;
+  handleFullLoaded: Dispatch<SetStateAction<boolean>>;
+  isContinued: boolean;
+  finishedContinue: boolean;
+  mouseX: MotionValue<number>;
+  mouseY: MotionValue<number>;
+  scrollY: MotionValue<number>;
+}
+
+const Hero: FC<Props> = ({
   handleLoadComplete,
   handleFullLoaded,
   isContinued,
@@ -25,20 +45,13 @@ const Hero = ({
   mouseY,
   scrollY,
 }) => {
-  const [target, setTarget] = useState();
-
-  const CanvasRef = useRef(null);
-  const ball = useRef(null);
+  const CanvasRef = useRef<any>(null);
+  const ball = useRef<Mesh>(null);
 
   const [width, height] = useWindowSize();
   const [loadStep, setLoadStep] = useState(0);
 
   const totalPages = 4;
-
-  // When first click, change lighting target to the ball
-  useEffect(() => {
-    if (isContinued) setTarget(ball.current);
-  }, [isContinued]);
 
   useEffect(() => {
     if (!CanvasRef?.current?.style) return;
@@ -62,7 +75,7 @@ const Hero = ({
           }}
           dpr={[1, 2]}
           style={{ height: "100%", width: "100vw" }}
-          ref={Canvas}
+          ref={CanvasRef}
           resize={{ scroll: true }}
         >
           <Stats />
@@ -76,27 +89,27 @@ const Hero = ({
           {/* Blue Wave Ball */}
           {/* Page : 1 */}
           {/*  0 , 0.5 , 0.75 */}
-          {/* <Suspense fallback={null}>
-            <WaveBall
-              ref={ball}
-              isContinued={isContinued}
-              Ball={ball}
-              scrollYPage={scrollYPage}
-              inputRange={[0, 0.5, 0.65]}
-            />
-          </Suspense> */}
+          <WaveBall
+            ref={ball}
+            isContinued={isContinued}
+            Ball={ball}
+            scrollYPage={scrollYPage}
+            inputRange={[0, 0.5, 0.65]}
+          />
           {/* Marble Bust */}
           {/* Page : 2 */}
           {/* 0.75, 1, 1.5,  1.8 */}
-          {/* <Suspense fallback={null}>
+          <Suspense fallback={null}>
             <Bust
               mouseX={mouseX}
               mouseY={mouseY}
               scrollY={scrollYPage}
               inputRange={[0.65, 0.9, 1.4, 1.6]}
             />
-          </Suspense> */}
-          {target && <Light mouseX={mouseX} mouseY={mouseY} target={target} />}
+          </Suspense>
+
+          <Light mouseX={mouseX} mouseY={mouseY} />
+
           {/* <AdaptiveDpr pixelated /> */}
         </Canvas>
         <Loader
@@ -106,7 +119,7 @@ const Hero = ({
               return state;
             } else if (!state && loadStep === 0) {
               setLoadStep(1);
-              handleLoadComplete(state);
+              handleLoadComplete();
               return state;
             } else if (finishedContinue && !state && loadStep === 2) {
               setLoadStep(3);

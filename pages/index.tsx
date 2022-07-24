@@ -34,7 +34,7 @@ const Home: NextPage = () => {
   const mouseY = useMotionValue(0);
   const { scrollY } = useViewportScroll();
 
-  const handleLoadComplete = (e: Event) => {
+  const handleLoadComplete = () => {
     setLoadingStatus(true);
   };
 
@@ -110,20 +110,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
             }
             handleTransitionComplete={() => setBegin3D(true)}
             finishedContinue={() => {
-              console.log("Finished Continue");
               setFinishedContinue(true);
             }}
           />
         )}
 
-        {/* {isContinued && (
+        {isContinued && (
           <div className={`${scrollReady ? "" : "opacity-0"}`}>
             <Education />
-            <Skills />
+            {/* <Skills />
             <Projects />
-            <Contact />
+            <Contact /> */}
           </div>
-        )} */}
+        )}
       </main>
     </motion.div>
   );

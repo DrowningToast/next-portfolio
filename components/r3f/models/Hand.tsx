@@ -13,16 +13,11 @@ const transitionDuration = 2.75;
 
 interface Props {
   scrollY: MotionValue<number>;
-  handleAnimationComplete: () => null;
   isContinued: boolean;
 }
 
-const xAxis = new Vector3(1, 0, 0);
-
-const Hand: FC<Props> = ({ scrollY, isContinued, handleAnimationComplete }) => {
+const Hand: FC<Props> = ({ scrollY, isContinued }) => {
   const { nodes, materials }: GLTF = useGLTF("/assets/models/hand.glb");
-  const [transitionComplete, setTransitionComplete] = useState(false);
-  // const handRef = useRef<Mesh<BufferGeometry, Material | Material[]>>(null);
   const handRef = useRef<Group>(null);
   const _posX = useSpring(
     useTransform<number, number>(
@@ -95,7 +90,6 @@ const Hand: FC<Props> = ({ scrollY, isContinued, handleAnimationComplete }) => {
       _rotY.set(3.14);
       _rotZ.set(0);
     }
-    console.log(handRef.current?.position);
   }, [isContinued]);
 
   useFrame((state, delta, frame) => {
