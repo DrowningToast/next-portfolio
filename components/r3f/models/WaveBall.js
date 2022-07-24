@@ -1,7 +1,7 @@
 import { useDetectGPU, useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { MotionConfig, useTransform } from "framer-motion";
-import { motion } from "framer-motion-3d";
+// import { motion } from "framer-motion-3d";
 
 import React, { useEffect, useRef, useState } from "react";
 import handleGhost from "../utils/handleGhost";

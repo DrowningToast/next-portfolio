@@ -1,9 +1,9 @@
 import { motion, MotionConfig } from "framer-motion";
-import { useState } from "react";
+import { useState, FC } from "react";
 import Intern from "./Intern/Intern";
 import LittlePatient from "./LittlePatient/LittlePatient";
 
-const Projects: React.FC = () => {
+const Projects: FC = () => {
   const [isAnimating, setAnimating] = useState<"LP" | "Intern" | null>(null);
   const [selected, setSelected] = useState<"LP" | "Intern" | null>(null);
 

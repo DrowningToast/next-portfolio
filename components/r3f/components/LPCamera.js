@@ -1,6 +1,5 @@
 import useWindowSize from "@components/hooks/useWindowSize";
 import { useThree } from "@react-three/fiber";
-import { LayoutOrthographicCamera } from "framer-motion-3d";
 import { useEffect, useMemo, useRef } from "react";
 
 const Camera = ({ selected, canvasWidth, canvasHeight, i }) => {
@@ -25,7 +24,7 @@ const Camera = ({ selected, canvasWidth, canvasHeight, i }) => {
   }, [i]);
 
   return (
-    <LayoutOrthographicCamera
+    <layoutOrthographicCamera
       key={i}
       ref={camera}
       makeDefault

@@ -6,7 +6,6 @@ import {
   useCallback,
   Suspense,
 } from "react";
-import { MotionCanvas } from "framer-motion-3d";
 import { Environment, Loader } from "@react-three/drei";
 import useWindowSize from "../../hooks/useWindowSize";
 import { Physics, usePlane } from "@react-three/cannon";

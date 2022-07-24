@@ -1,6 +1,5 @@
 import { Sphere } from "@react-three/drei";
 import { useSpring, useTransform } from "framer-motion";
-import { motion } from "framer-motion-3d";
 
 const Light = ({ target, mouseX, mouseY }) => {
   const posX = useSpring(useTransform(mouseX, [0, 1], [-6, 6]), {
@@ -14,7 +13,7 @@ const Light = ({ target, mouseX, mouseY }) => {
 
   return (
     <>
-      <motion.spotLight
+      <spotLight
         intensity={0.5}
         target={target}
         position={[posX, posY, 6]}

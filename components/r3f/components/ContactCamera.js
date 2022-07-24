@@ -1,4 +1,3 @@
-import { motion as motion3d } from "framer-motion-3d";
 import useWindowSize from "@components/hooks/useWindowSize";
 import { useThree } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
@@ -36,7 +35,7 @@ const ContactCamera = ({ canvasWidth, canvasHeight, isMobile }) => {
   //   renderer.setSize(width, height);
   // }, [width, height]);
   return (
-    <motion3d.perspectiveCamera
+    <perspectiveCamera
       makeDefault
       fov={!isMobile ? 60 : 90}
       ref={cameraRef}

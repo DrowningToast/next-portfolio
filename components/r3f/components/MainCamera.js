@@ -1,11 +1,11 @@
-import { motion as Motion3D } from "framer-motion-3d";
 import { useThree } from "@react-three/fiber";
 import { useEffect, useMemo, useRef } from "react";
 import useWindowSize from "../../hooks/useWindowSize";
 
 import { useSpring, useTransform } from "framer-motion";
+import { PerspectiveCamera } from "@react-three/drei";
 
-const Camera = ({ control, mouseX, mouseY }) => {
+const Camera = ({ mouseX, mouseY }) => {
   // Check browser size
   const [width, height] = useWindowSize();
 
@@ -32,6 +32,7 @@ const Camera = ({ control, mouseX, mouseY }) => {
       cam.aspect = width / height;
       cam.updateProjectionMatrix();
     }
+    console.log(cam.position);
   }, [width, height]);
 
   useEffect(() => {
@@ -44,13 +45,13 @@ const Camera = ({ control, mouseX, mouseY }) => {
 
   return (
     <>
-      {!control && (
-        <Motion3D.perspectiveCamera
-          fov={width < 1024 ? 65 : 50}
-          ref={cameraRef}
-          position={!isMobile ? [posX, posY, 8] : [3, 0.45, 8]}
-        />
-      )}
+      <PerspectiveCamera
+        makeDefault
+        fov={width < 1024 ? 65 : 50}
+        ref={cameraRef}
+        // position={!isMobile ? [posX, posY, 8] : [3, 0.45, 8]}
+        position={[-0.2, -0.125, 8]}
+      />
     </>
   );
 };
