@@ -32,7 +32,6 @@ const Camera = ({ mouseX, mouseY }) => {
       cam.aspect = width / height;
       cam.updateProjectionMatrix();
     }
-    console.log(cam.position);
   }, [width, height]);
 
   useEffect(() => {
