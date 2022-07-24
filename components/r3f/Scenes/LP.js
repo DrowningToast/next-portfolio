@@ -1,5 +1,4 @@
 import { Environment, useDetectGPU } from "@react-three/drei";
-import { MotionCanvas } from "framer-motion-3d";
 import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import Patient from "../models/Patient";
 import Camera from "../components/LPCamera";
