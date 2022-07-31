@@ -118,9 +118,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
         {isContinued && (
           <div className={`${scrollReady ? "" : "opacity-0"}`}>
             <Education />
-            {/* <Skills />
+            <Skills />
             <Projects />
-            <Contact /> */}
+            {/* <Contact /> */}
           </div>
         )}
       </main>
