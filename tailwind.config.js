@@ -11,6 +11,7 @@ module.exports = {
         secondary: "#95B3EE",
         tertiary: "#DCF9EF",
         intern: "#7246D1",
+        alttertiary: "#DCF9EF",
       },
       fontSize: {
         xxxl3: "260px",

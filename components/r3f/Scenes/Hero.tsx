@@ -78,7 +78,6 @@ const Hero: FC<Props> = ({
           ref={CanvasRef}
           resize={{ scroll: true }}
         >
-          <Stats />
           <ambientLight color="white" intensity={0.1} />
           <Environment preset="night" />
           <Camera mouseX={mouseX} mouseY={mouseY} />
