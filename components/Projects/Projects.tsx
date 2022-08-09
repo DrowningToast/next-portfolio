@@ -69,9 +69,13 @@ const Projects: FC = () => {
         layout
         className="text-primary text-x; md:text-3xl font-semibold flex justify-start items-center gap-x-12 md:ml-8"
       >
-        {names.map((name) => {
+        {names.map((name, index) => {
           return (
-            <motion.div onClick={() => setSelected(name.name)} layout>
+            <motion.div
+              key={index}
+              onClick={() => setSelected(name.name)}
+              layout
+            >
               <motion.h5>{name.name}</motion.h5>
               {selected === name.name && (
                 <motion.div

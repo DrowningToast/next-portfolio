@@ -20,6 +20,7 @@ import {
   Sphere,
 } from "@react-three/drei";
 import ContactCamera from "@components/r3f/components/ContactCamera";
+import { MotionCanvas } from "framer-motion-3d";
 
 const ContactScene = ({ selected }) => {
   const Canvas = useRef();
