@@ -64,12 +64,7 @@ const LP: FC = () => {
           {/* <color attach="background" args={["#DCF9EF"]} /> */}
           <Patient />
           <spotLight position={[8, 4, 8]} />
-          <Camera
-            selected={"LP"}
-            canvasHeight={canvasHeight}
-            canvasWidth={canvasWidth}
-            i={i}
-          />
+          <Camera canvasHeight={canvasHeight} canvasWidth={canvasWidth} i={i} />
         </MotionCanvas>
         {/* <Loader
             dataInterpolation={(e) => {
