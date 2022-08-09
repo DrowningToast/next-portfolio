@@ -36,7 +36,7 @@ const Camera: FC<Props> = ({ canvasWidth, canvasHeight, i }) => {
     // X
     let xPos = zMobileOffset * Math.sin(deg2Rad(e.gamma!));
     // Y
-    let yPos = yMobileOffset * Math.sin(deg2Rad(e.beta!));
+    let yPos = yMobileOffset + yMobileOffset * Math.sin(deg2Rad(e.beta! - 90));
     console.log(`${xPos} ${yPos} ${zPos}`);
     camera.current!.position.set(xPos, yPos, zPos);
     camera.current!.lookAt(0, -14, 0);
