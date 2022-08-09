@@ -30,9 +30,11 @@ const Camera: FC<Props> = ({ canvasWidth, canvasHeight, i }) => {
   const trackTarget = (e: DeviceOrientationEvent) => {
     console.log(`${e.alpha} ${e.beta} ${e.gamma}`);
     // Z
-    let zPos = zMobileOffset * Math.sin(deg2Rad(e.gamma! + 90));
+    //
+    let zPos =
+      zMobileOffset * Math.sin(deg2Rad(Math.max(e.gamma! + 90, e.beta!)));
     // X
-    let xPos = 12 * Math.cos(deg2Rad(Math.max(e.gamma!, e.beta!) + 90));
+    let xPos = zMobileOffset * Math.sin(deg2Rad(e.gamma!));
     // Y
     let yPos = yMobileOffset * Math.sin(deg2Rad(e.beta!));
     console.log(`${xPos} ${yPos} ${zPos}`);
