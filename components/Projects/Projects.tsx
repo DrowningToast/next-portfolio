@@ -88,7 +88,6 @@ const Projects: FC = () => {
         <AnimatePresence exitBeforeEnter>
           {
             names.filter((project) => {
-              console.log(project.name === selected);
               return project.name === selected;
             })[0]?.component
           }
