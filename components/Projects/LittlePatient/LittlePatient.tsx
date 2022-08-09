@@ -30,30 +30,37 @@ const LittlePatient: React.FC<Props> = ({ selected }) => {
       `}
     >
       {/* Canvas */}
-      <motion.div layout className="absolute inset-0 z-40">
-        <Suspense fallback={null}>
-          <LP />
-        </Suspense>
-        <motion.div layout className="absolute inset-0">
+      <motion.div
+        layout
+        className="absolute inset-0 z-40 bg-[rgb(195,255,234)] md:block grid grid-rows-3"
+      >
+        <div className="relative md:absolute w-full h-full md:inset-0">
+          <div className="absolute top-0 left-0 right-0 -bottom-8">
+            <Suspense fallback={null}>
+              <LP />
+            </Suspense>
+          </div>
+        </div>
+        <motion.div layout className="md:absolute md:inset-0 row-span-2">
           <motion.div
             layout
-            className={`z-50 text-4xl text-primary flex flex-col md:pt-28 md:pb-14 justify-start items-center pt-14 pb-14 px-4`}
+            className={`z-40 text-4xl text-primary flex flex-col md:pt-16 md:pb-14 justify-start items-start md:px-8 px-4 md:gap-y-0 gap-y-4`}
           >
             <motion.div className="flex items-center md:gap-x-6 gap-x-4" layout>
               <motion.h1
                 layout
-                className={`font-eb lg:text-8xl md:text-6xl text-5xl md:text-start text-center font-bold`}
+                className={`font-eb lg:text-7xl md:text-4xl text-2xl md:text-start text-center font-bold`}
               >
                 Little-Patient
               </motion.h1>
             </motion.div>
             <motion.h2
               layout
-              className="font-helvetica lg:text-xl md:text-2xl text-xs text-center text-secondary md:w-auto md:inline w-full inline-block"
+              className="font-helvetica lg:text-xl md:text-2xl text-xs text-left text-secondary md:w-auto md:inline w-full inline-block"
             >
               Virtual patient simulation for medical students
             </motion.h2>
-            <AnimatePresence>
+            <div className="md:grid grid-cols-3">
               <motion.p
                 key="description"
                 layout
@@ -73,7 +80,7 @@ const LittlePatient: React.FC<Props> = ({ selected }) => {
                     duration: 0.1,
                   },
                 }}
-                className="md:text-lg text-sm mt-6 text-secondary font-helvetica"
+                className="lg:text-base md:text-sm text-xs md:mt-6 mt-2 text-secondary font-helvetica col-span-2"
               >
                 During the worst of the COVID-19 in Thailand. My team was
                 inspried to develop virtual patient simulator for medical
@@ -105,15 +112,15 @@ const LittlePatient: React.FC<Props> = ({ selected }) => {
                   },
                 }}
                 layout
-                className="md:mt-auto mt-6 md:flex-grow-0 flex-grow md:block flex flex-col md:w-auto w-full"
+                className="md:mt-auto mt-6 md:flex-grow-0 flex-grow md:block flex flex-col md:w-auto w-full col-start-1"
               >
                 <motion.span
                   layout
-                  className="md:text-lg text-xs text-secondary font-helvetica"
+                  className="md:text-base text-xs text-secondary font-helvetica"
                 >
                   Trust and Supported by
                 </motion.span>
-                <div className="flex flex-start items-center md:h-24 h-10 relative w-full gap-x-4 mt-4">
+                <div className="flex flex-start items-center md:h-20 h-10 relative w-full gap-x-4 mt-4">
                   <div className="md:w-max w-14">
                     <Image
                       src="/assets/png/MU_LP.png"
@@ -135,7 +142,7 @@ const LittlePatient: React.FC<Props> = ({ selected }) => {
                   </div>
                 </div>
               </motion.div>
-            </AnimatePresence>
+            </div>
           </motion.div>
         </motion.div>
       </motion.div>
