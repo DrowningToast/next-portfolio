@@ -24,6 +24,7 @@ const Camera: FC<Props> = ({ canvasWidth, canvasHeight, i }) => {
   const scroll = useScroll();
 
   const isMobile = useMemo(() => {
+    if (width === 0) return false;
     return width < 768;
   }, [width]);
 
@@ -32,21 +33,19 @@ const Camera: FC<Props> = ({ canvasWidth, canvasHeight, i }) => {
     // Z
     //
     let zPos =
-      zMobileOffset * Math.sin(deg2Rad(Math.max(e.gamma! + 90, e.beta!)));
+      zMobileOffset +
+      zMobileOffset * Math.sin(deg2Rad(Math.max(e.gamma!, e.beta! - 90)));
     // X
     let xPos = zMobileOffset * Math.sin(deg2Rad(e.gamma!));
     // Y
     let yPos = yMobileOffset + yMobileOffset * Math.sin(deg2Rad(e.beta! - 90));
-    console.log(`${xPos} ${yPos} ${zPos}`);
+    console.log(`${xPos.toFixed(2)} ${yPos.toFixed(2)} ${zPos.toFixed(2)}`);
     camera.current!.position.set(xPos, yPos, zPos);
     camera.current!.lookAt(0, -14, 0);
   };
 
   useEffect(() => {
     if (!camera.current || !renderer) return;
-
-    console.log(camera.current.position);
-
     camera.current.left = canvasWidth / -2;
     camera.current.right = canvasWidth / 2;
     camera.current.top = canvasHeight / 2;
@@ -57,12 +56,14 @@ const Camera: FC<Props> = ({ canvasWidth, canvasHeight, i }) => {
   }, [i]);
 
   useEffect(() => {
-    if (window.DeviceOrientationEvent && isMobile) {
+    if (window.DeviceOrientationEvent && isMobile && camera.current) {
       // window.removeEventListener("'deviceorientation", trackTarget);
+      console.log("Binding the callback to the event " + isMobile);
       window.ondeviceorientation = trackTarget;
+      camera.current.updateProjectionMatrix();
       // window.addEventListener("deviceorientation", trackTarget);
     }
-  }, []);
+  }, [camera.current]);
 
   return (
     <OrthographicCamera
