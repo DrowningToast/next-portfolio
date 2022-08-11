@@ -32,16 +32,17 @@ const LittlePatient: React.FC<Props> = ({ selected }) => {
       {/* Canvas */}
       <motion.div
         layout
-        className="absolute inset-0 z-40 bg-[rgb(195,255,234)] md:block grid grid-rows-3"
+        className="absolute inset-0 z-40 bg-[rgb(195,255,234)] md:block grid place-items-center"
       >
-        <div className="relative md:absolute w-full h-full md:inset-0">
-          <div className="absolute top-0 left-0 right-0 -bottom-8">
-            <Suspense fallback={null}>
-              <LP />
-            </Suspense>
-          </div>
+        <div className="absolute w-full h-full inset-0">
+          <Suspense fallback={null}>
+            <LP />
+          </Suspense>
         </div>
-        <motion.div layout className="md:absolute md:inset-0 row-span-2">
+        <motion.div
+          layout
+          className="md:absolute md:inset-0 w-full h-full grid place-items-center"
+        >
           <motion.div
             layout
             className={`z-40 text-4xl text-primary flex flex-col md:pt-16 md:pb-14 justify-start items-start md:px-8 px-4 md:gap-y-0 gap-y-4`}

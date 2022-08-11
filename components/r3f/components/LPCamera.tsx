@@ -1,10 +1,11 @@
 import useWindowSize from "@components/hooks/useWindowSize";
 import { deg2Rad } from "@components/utils/deg2Rad";
 import { OrthographicCamera } from "@react-three/drei";
-import { OrthographicCameraProps, useThree } from "@react-three/fiber";
+import { useThree } from "@react-three/fiber";
 import { useScroll } from "framer-motion";
 import { FC, useEffect, useMemo, useRef } from "react";
-import { OrthographicCamera as iOrthograhpicCamera, Vector3 } from "three";
+import { OrthographicCamera as iOrthograhpicCamera } from "three";
+import getBaseRotationMatrix from "../utils/getBaseRotationMatrix";
 
 interface Props {
   canvasWidth: number;
@@ -12,9 +13,19 @@ interface Props {
   i: number;
 }
 
+const basePosition = {
+  x: 0,
+  y: -14,
+  z: 16,
+};
+
 const xMobileOffset = 0;
 const yMobileOffset = -14;
 const zMobileOffset = 12;
+
+function listener(e: any) {
+  console.log(e);
+}
 
 const Camera: FC<Props> = ({ canvasWidth, canvasHeight, i }) => {
   const camera = useRef<iOrthograhpicCamera>(null);
@@ -29,18 +40,57 @@ const Camera: FC<Props> = ({ canvasWidth, canvasHeight, i }) => {
   }, [width]);
 
   const trackTarget = (e: DeviceOrientationEvent) => {
-    console.log(`${e.alpha} ${e.beta} ${e.gamma}`);
+    // console.log(e);
+    // const radius = 12;
+    // console.log(`${e.alpha} ${e.beta} ${e.gamma}`);
+    // const azimuth = deg2Rad(e.gamma!);
+    // const inclination = deg2Rad(e.beta!); //+90
+
+    // let z = radius * Math.cos(azimuth) * Math.sin(inclination);
+    // let x = radius * Math.sin(azimuth) * Math.sin(inclination);
+    // let y = radius * Math.cos(inclination);
+
+    // y += yMobileOffset;
+
+    console.log(getBaseRotationMatrix(e.alpha!, e.beta!, e.gamma!));
+    // Calculate the rotation matrix from the euler angles
+    let rotationMatrix = getBaseRotationMatrix(
+      e.alpha!,
+      e.beta! - 90,
+      e.gamma!
+    );
+    let TCameraPosition = [
+      rotationMatrix[0] * basePosition.x +
+        rotationMatrix[1] * basePosition.y +
+        rotationMatrix[2] * basePosition.z,
+      rotationMatrix[3] * basePosition.x +
+        rotationMatrix[4] * basePosition.y +
+        rotationMatrix[5] * basePosition.z,
+      rotationMatrix[6] * basePosition.x +
+        rotationMatrix[7] * basePosition.y +
+        rotationMatrix[8] * basePosition.z,
+    ];
+
+    let position = {
+      x: TCameraPosition[0],
+      y: TCameraPosition[1],
+      z: TCameraPosition[2],
+    };
+
     // Z
-    //
-    let zPos =
-      zMobileOffset +
-      zMobileOffset * Math.sin(deg2Rad(Math.max(e.gamma!, e.beta! - 90)));
-    // X
-    let xPos = zMobileOffset * Math.sin(deg2Rad(e.gamma!));
-    // Y
-    let yPos = yMobileOffset + yMobileOffset * Math.sin(deg2Rad(e.beta! - 90));
-    console.log(`${xPos.toFixed(2)} ${yPos.toFixed(2)} ${zPos.toFixed(2)}`);
-    camera.current!.position.set(xPos, yPos, zPos);
+    // let zPos =
+    //   zMobileOffset +
+    //   zMobileOffset * Math.sin(deg2Rad(Math.max(e.gamma!, e.beta! - 90)));
+    // // X
+    // let xPos = zMobileOffset * Math.sin(deg2Rad(e.gamma!));
+    // // Y
+    // let yPos = yMobileOffset + yMobileOffset * Math.sin(deg2Rad(e.beta! - 90));
+    console.log(
+      `${position.x.toFixed(2)} ${position.y.toFixed(2)} ${position.z.toFixed(
+        2
+      )}`
+    );
+    camera.current!.position.set(position.x, position.y, position.z);
     camera.current!.lookAt(0, -14, 0);
   };
 
@@ -57,10 +107,15 @@ const Camera: FC<Props> = ({ canvasWidth, canvasHeight, i }) => {
 
   useEffect(() => {
     if (window.DeviceOrientationEvent && isMobile && camera.current) {
-      // window.removeEventListener("'deviceorientation", trackTarget);
       console.log("Binding the callback to the event " + isMobile);
       window.ondeviceorientation = trackTarget;
       camera.current.updateProjectionMatrix();
+
+      // const gyroscope = new Gyroscope();
+
+      // gyroscope.addEventListener("reading", listener);
+      // gyroscope.start();
+
       // window.addEventListener("deviceorientation", trackTarget);
     }
   }, [camera.current]);
@@ -75,38 +130,6 @@ const Camera: FC<Props> = ({ canvasWidth, canvasHeight, i }) => {
       // position={[5, -5, !isMobile ? 20 : 9]}
       zoom={!isMobile ? 50 : 7.5}
       rotation={!isMobile ? [0, 0.6, 0] : [0, 0, 0]}
-      // initial={false}
-      // animate={selected === "LP" ? "selected" : "unselected"}
-      // variants={{
-      //   unselected: !isMobile
-      //     ? {
-      //         x: 0,
-      //         y: 0,
-      //         z: 20,
-      //         zoom: 40,
-      //       }
-      //     : {
-      //         x: 0,
-      //         y: -0.75,
-      //         z: 20,
-      //         zoom: 40,
-      //       },
-      //   selected: !isMobile
-      //     ? {
-      //         x: 5,
-      //         y: -5,
-      //         z: 20,
-      //         zoom: 50,
-      //         rotateY: 0.6,
-      //       }
-      //     : {
-      //         x: 5,
-      //         y: 0,
-      //         z: 9,
-      //         zoom: 40,
-      //         rotateY: 0.6,
-      //       },
-      // }}
     />
   );
 };

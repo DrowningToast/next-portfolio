@@ -8,7 +8,8 @@
       "@system/*": ["src/System/*"],
       "@redux/*": ["src/System/Redux/*"],
       "@fbase/*": ["src/System/Firebase/*"],
-      "@api/*": ["src/System/api/*"]
+      "@api/*": ["src/System/api/*"],
+      "@polyfills": ["components/polyfills/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
