@@ -108,6 +108,7 @@ const Intern = ({ selected }) => {
               canvasWidth={canvasWidth}
               canvasHeight={canvasHeight}
             />
+            <Preload all />
           </MotionCanvas>
         </Suspense>
       )}

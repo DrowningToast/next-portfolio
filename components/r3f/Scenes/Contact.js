@@ -1,4 +1,4 @@
-// import { MotionCanvas } from "framer-motion-3d";
+// // import { MotionCanvas } from "framer-motion-3d";
 import {
   useRef,
   useEffect,
