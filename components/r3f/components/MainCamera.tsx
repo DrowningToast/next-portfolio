@@ -36,7 +36,6 @@ const Camera: FC = () => {
         makeDefault
         fov={width < 1024 ? 65 : 50}
         ref={cameraRef}
-        // position={!isMobile ? [posX, posY, 8] : [3, 0.45, 8]}
         position={[-0.2, -0.125, 8]}
       />
     </>
