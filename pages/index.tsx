@@ -1,7 +1,11 @@
-const Education = dynamic(() => import("@components/Education/Education"));
-const Skills = dynamic(() => import("@components/Skills/Skills"));
-const Projects = dynamic(() => import("@components/Projects/Projects"));
-const Contact = dynamic(() => import("@components/Contact/Contact"));
+import Education from "@components/Education/Education";
+import Skills from "@components/Skills/Skills";
+import Projects from "@components/Projects/Projects";
+import Contact from "@components/Contact/Contact";
+// const Education = dynamic(() => import("@components/Education/Education"));
+// const Skills = dynamic(() => import("@components/Skills/Skills"));
+// const Projects = dynamic(() => import("@components/Projects/Projects"));
+// const Contact = dynamic(() => import("@components/Contact/Contact"));
 
 import Intro from "@components/TopBanner/Intro";
 import Title from "@components/TopBanner/Title";
@@ -11,9 +15,14 @@ import Head from "next/head";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import useWindowSize from "@components/hooks/useWindowSize";
-const Hero = dynamic(() => {
-  return import("../components/r3f/Scenes/Hero");
-});
+const Hero = dynamic(
+  () => {
+    return import("../components/r3f/Scenes/Hero");
+  },
+  {
+    ssr: false,
+  }
+);
 
 const Home: NextPage = () => {
   const [finishedLoading, setLoadingStatus] = useState<boolean>(false);
@@ -73,7 +82,7 @@ const Home: NextPage = () => {
           />
         </motion.div>
       )}
-      <main
+      <div
         className={`min-h-screen font-eb relative overflow-x-hidden ${
           scrollReady ? "" : "overflow-y-hidden max-h-screen"
         }`}
@@ -111,7 +120,7 @@ const Home: NextPage = () => {
           <Projects />
           <Contact />
         </div>
-      </main>
+      </div>
     </motion.div>
   );
 };

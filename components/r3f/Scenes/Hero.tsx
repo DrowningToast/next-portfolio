@@ -5,11 +5,12 @@ import {
   OrbitControls,
   Sphere,
   Stats,
+  useGLTF,
+  useTexture,
 } from "@react-three/drei";
 import Light from "../components/Light";
 import {
   Dispatch,
-  ExoticComponent,
   FC,
   SetStateAction,
   Suspense,
@@ -24,7 +25,14 @@ import Camera from "../components/MainCamera";
 import { MotionValue, useTransform } from "framer-motion";
 import useWindowSize from "@components/hooks/useWindowSize";
 import { Canvas } from "@react-three/fiber";
-import { Group, Mesh } from "three";
+import { GLTF as GLTFThree } from "three/examples/jsm/loaders/GLTFLoader";
+import { Mesh, Material } from "three";
+declare module "three-stdlib" {
+  export interface GLTF extends GLTFThree {
+    nodes: Record<string, Mesh>;
+    materials: Record<string, Material>;
+  }
+}
 
 interface Props {
   handleLoadComplete: () => void;
@@ -138,17 +146,17 @@ const Hero: FC<Props> = ({
 
 export default Hero;
 
-// useGLTF.preload("/assets/models/hand.glb");
-// useGLTF.preload("/assets/models/Artist_2D.gltf");
-// useGLTF.preload("/assets/models/Briefcase_2D.gltf");
-// useGLTF.preload("/assets/models/bust.gltf");
-// useGLTF.preload("/assets/models/Controller_2D.gltf");
-// useGLTF.preload("/assets/models/patient.gltf");
-// useGLTF.preload("/assets/models/Programming_2D.gltf");
-// useGLTF.preload("/assets/models/Slate_2D.gltf");
-// useGLTF.preload("/assets/models/Television_01_4k.gltf");
-// useTexture.preload("/assets/textures/Water_002_COLOR.jpg");
-// useTexture.preload("/assets/textures/Water_002_NORM.jpg");
-// useTexture.preload("/assets/textures/Water_002_DISP.png");
-// useTexture.preload("/assets/textures/Water_002_ROUGH.jpg");
-// useTexture.preload("/assets/textures/Water_002_OCC.jpg");
+useGLTF.preload("/assets/models/hand.glb");
+useGLTF.preload("/assets/models/bust_very_low.gltf");
+useGLTF.preload("/assets/models/Controller_2D.gltf");
+useGLTF.preload("/assets/models/patient.gltf");
+useGLTF.preload("/assets/models/Programming_2D.gltf");
+useGLTF.preload("/assets/models/Slate_2D.gltf");
+useGLTF.preload("/assets/models/Artist_2D.gltf");
+useGLTF.preload("/assets/models/Briefcase_2D.gltf");
+useGLTF.preload("/assets/models/tv.gltf");
+useTexture.preload("/assets/textures/Water_002_COLOR.jpg");
+useTexture.preload("/assets/textures/Water_002_NORM.jpg");
+useTexture.preload("/assets/textures/Water_002_DISP.png");
+useTexture.preload("/assets/textures/Water_002_ROUGH.jpg");
+useTexture.preload("/assets/textures/Water_002_OCC.jpg");

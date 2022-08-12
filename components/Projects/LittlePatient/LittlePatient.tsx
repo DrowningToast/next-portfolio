@@ -1,19 +1,12 @@
 import { motion, AnimatePresence } from "framer-motion";
-import React, {
-  Dispatch,
-  SetStateAction,
-  Suspense,
-  useEffect,
-  useRef,
-} from "react";
+import React, { Suspense, useEffect, useRef } from "react";
 import Image from "next/image";
-import LP from "../../r3f/Scenes/LP";
+import dynamic from "next/dynamic";
+const LP = dynamic(() => import("@components/r3f/Scenes/LP"), {
+  ssr: false,
+});
 
-interface Props {
-  selected: string | null | undefined;
-}
-
-const LittlePatient: React.FC<Props> = ({ selected }) => {
+const LittlePatient: React.FC = () => {
   const frame = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -139,6 +132,7 @@ const LittlePatient: React.FC<Props> = ({ selected }) => {
                       alt="siriraj logo"
                       width={80}
                       height={80}
+                      priority
                     />
                   </div>
 
@@ -149,6 +143,7 @@ const LittlePatient: React.FC<Props> = ({ selected }) => {
                       alt="shee logo"
                       width={160}
                       height={80}
+                      priority
                     />
                   </div>
                 </div>

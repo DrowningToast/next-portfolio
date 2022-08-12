@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Education = () => {
   return (
-    <section className="h-screen flex flex-col justify-around lg:items-start items-center lg:px-24 md:px-14 px-6 py-16 text-tertiary lg:w-max w-full">
+    <div className="h-screen flex flex-col justify-around lg:items-start items-center lg:px-24 md:px-14 px-6 py-16 text-tertiary lg:w-max w-full">
       <div className="flex flex-col justify-center items-start  z-20">
         <h3 className="font-eb lg:text-2xl text-xl">Graduated Highschool</h3>
         <h2 className="font-eb font-semibold lg:text-4xl md:text-3xl self-center">
@@ -40,7 +40,7 @@ const Education = () => {
           </a>
         </Link>
       </div>
-    </section>
+    </div>
   );
 };
 

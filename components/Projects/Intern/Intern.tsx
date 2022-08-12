@@ -1,8 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
-import InternScene from "@components/r3f/Scenes/Intern";
-import React, { Dispatch, SetStateAction, Suspense, useMemo } from "react";
+const InternScene = dynamic(() => import("@components/r3f/Scenes/Intern"), {
+  ssr: false,
+});
+import React, { Suspense } from "react";
 import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import dynamic from "next/dynamic";
 
 const Intern: React.FC = ({}) => {
   return (
@@ -28,7 +30,7 @@ const Intern: React.FC = ({}) => {
         className={`absolute inset-0 z-40 rounded-lg overflow-hidden lg:rounded-none md:overflow-auto`}
       >
         <Suspense fallback={null}>
-          <InternScene selected={true} />
+          {InternScene && <InternScene selected={true} />}
         </Suspense>
         <motion.div
           layout
@@ -117,6 +119,7 @@ const Intern: React.FC = ({}) => {
                     alt="SWU"
                     width={250}
                     height={80}
+                    priority
                   />
                 </div>
               </div>

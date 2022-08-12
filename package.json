@@ -5,18 +5,23 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "cross-env ANALYZE=true next build",
+    "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
+    "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "~1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.19",
+    "@next/bundle-analyzer": "^12.2.5",
     "@react-hook/resize-observer": "^1.2.5",
     "@react-three/cannon": "^6.3.0",
     "@react-three/drei": "^9.17.3",
     "@react-three/fiber": "^8.3.0",
     "autoprefixer": "^10.4.2",
     "babel-plugin-glsl": "^1.0.0",
+    "cross-env": "^7.0.3",
     "framer-motion": "^7.0.0",
     "framer-motion-3d": "^7.0.0",
     "glsl-noise": "0.0.0",
@@ -29,8 +34,8 @@
     "react-typing-effect": "^2.0.5",
     "sass": "^1.49.8",
     "tailwindcss": "^3.0.22",
-    "three": "^0.139.2",
-    "three-stdlib": "^2.12.1"
+    "three": "^0.143.0",
+    "three-stdlib": "^2.13.0"
   },
   "devDependencies": {
     "@types/node": "17.0.17",

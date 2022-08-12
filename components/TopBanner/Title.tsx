@@ -3,7 +3,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect } from "react";
 import { useState } from "react";
-const ReactTypingEffect = dynamic(() => import("react-typing-effect"));
+const ReactTypingEffect = dynamic(() => import("react-typing-effect"), {
+  ssr: false,
+});
 import dynamic from "next/dynamic";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
@@ -234,17 +236,19 @@ const Title: FC<Props> = ({
                         },
                       }}
                     >
-                      <ReactTypingEffect
-                        text={websites_list.map((website) => {
-                          return website.toUpperCase();
-                        })}
-                        className="font-eb"
-                        cursor=" "
-                        speed={400}
-                        eraseDelay={5000}
-                        eraseSpeed={275}
-                        typingDelay={1000}
-                      />
+                      {ReactTypingEffect && (
+                        <ReactTypingEffect
+                          text={websites_list.map((website) => {
+                            return website.toUpperCase();
+                          })}
+                          className="font-eb"
+                          cursor=" "
+                          speed={400}
+                          eraseDelay={5000}
+                          eraseSpeed={275}
+                          typingDelay={1000}
+                        />
+                      )}
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -257,14 +261,11 @@ const Title: FC<Props> = ({
             onClick={() => {
               router.push("/#main-content");
             }}
-            initial={{
-              opacity: 0,
-            }}
             animate={{
               y: ["-15%", "25%"],
-              opacity: 1,
               transition: {
                 repeat: Infinity,
+                repeatType: "loop",
                 duration: 1.2,
                 ease: "easeIn",
                 delay: 3,

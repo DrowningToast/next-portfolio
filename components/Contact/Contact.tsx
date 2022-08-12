@@ -1,8 +1,13 @@
-import ReactTypingEffect from "react-typing-effect";
-import ContactScene from "@components/r3f/Scenes/Contact";
+const ReactTypingEffect = dynamic(() => import("react-typing-effect"), {
+  ssr: false,
+});
+const ContactScene = dynamic(() => import("@components/r3f/Scenes/Contact"), {
+  ssr: false,
+});
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { useInView } from "framer-motion";
+import dynamic from "next/dynamic";
 
 const Contact = () => {
   const [selected, setSelected] = useState<null | string>(null);
@@ -49,24 +54,26 @@ const Contact = () => {
           I make
         </h2>
         <h1 className="uppercase font-bold xl:text-8xl md:text-6xl text-5xl text-primary self-center">
-          <ReactTypingEffect
-            text={words.map((word) => {
-              return word.toUpperCase();
-            })}
-            className="font-eb"
-            cursor=" "
-            speed={200}
-            eraseDelay={3000}
-            eraseSpeed={250}
-            typingDelay={50}
-          />
+          {ReactTypingEffect && (
+            <ReactTypingEffect
+              text={words.map((word) => {
+                return word.toUpperCase();
+              })}
+              className="font-eb"
+              cursor=" "
+              speed={200}
+              eraseDelay={3000}
+              eraseSpeed={250}
+              typingDelay={50}
+            />
+          )}
         </h1>
         <h2 className="text-4xl font-semibold text-white font-eb uppercase self-end">
           Websites
         </h2>
       </div>
       <div className="lg:w-1/2 w-full lg:h-full h-1/2 relative">
-        {inView && <ContactScene selected={selected} />}
+        {inView && ContactScene && <ContactScene selected={selected} />}
       </div>
     </section>
   );

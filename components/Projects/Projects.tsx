@@ -1,16 +1,5 @@
-import {
-  AnimatePresence,
-  motion,
-  MotionConfig,
-  useInView,
-} from "framer-motion";
-import {
-  useState,
-  FC,
-  JSXElementConstructor,
-  ReactElement,
-  useRef,
-} from "react";
+import { AnimatePresence, motion, useInView } from "framer-motion";
+import { useState, FC, ReactElement, useRef } from "react";
 import Intern from "./Intern/Intern";
 import LittlePatient from "./LittlePatient/LittlePatient";
 
@@ -31,7 +20,7 @@ const Projects: FC = () => {
   const names: Project[] = [
     {
       name: "Little-Patient",
-      component: <LittlePatient selected={selected} />,
+      component: <LittlePatient />,
     },
     { name: "Internship 2021", component: <Intern /> },
   ];
