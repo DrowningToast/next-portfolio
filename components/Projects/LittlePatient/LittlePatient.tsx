@@ -24,10 +24,21 @@ const LittlePatient: React.FC<Props> = ({ selected }) => {
 
   return (
     <motion.div
+      initial={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+        transition: {
+          delay: 0.2,
+        },
+      }}
+      exit={{
+        opacity: 0,
+      }}
+      key={"Little-Patient"}
       ref={frame}
-      className={`cursor-pointer lg:rounded-none rounded-xl overflow-hidden absolute md:inset-8 inset-2 
-     
-      `}
+      className={`cursor-pointer lg:rounded-none rounded-xl overflow-hidden absolute md:inset-8 inset-2`}
     >
       {/* Canvas */}
       <motion.div
@@ -41,6 +52,22 @@ const LittlePatient: React.FC<Props> = ({ selected }) => {
         </div>
         <motion.div
           layout
+          initial={{
+            opacity: 0,
+          }}
+          animate={{
+            opacity: 1,
+            transition: {
+              duration: 1,
+              delay: 0.25,
+            },
+          }}
+          exit={{
+            opacity: 0,
+            transition: {
+              duration: 0.1,
+            },
+          }}
           className="md:absolute md:inset-0 w-full h-full grid place-items-center"
         >
           <motion.div
@@ -65,22 +92,6 @@ const LittlePatient: React.FC<Props> = ({ selected }) => {
               <motion.p
                 key="description"
                 layout
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: 1,
-                  transition: {
-                    duration: 1,
-                    delay: 0.25,
-                  },
-                }}
-                exit={{
-                  opacity: 0,
-                  transition: {
-                    duration: 0.1,
-                  },
-                }}
                 className="lg:text-base md:text-sm text-xs md:mt-6 mt-2 text-secondary font-helvetica col-span-2"
               >
                 During the worst of the COVID-19 in Thailand. My team was

@@ -8,6 +8,19 @@ const Intern: React.FC = ({}) => {
   return (
     <motion.div
       layout
+      initial={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+        transition: {
+          delay: 0.2,
+        },
+      }}
+      exit={{
+        opacity: 0,
+      }}
+      key={"internship-report"}
       className={`bg-intern cursor-pointer lg:rounded-none rounded-xl overflow-hidden absolute md:inset-8 inset-2`}
     >
       <motion.div
@@ -19,6 +32,22 @@ const Intern: React.FC = ({}) => {
         </Suspense>
         <motion.div
           layout
+          initial={{
+            opacity: 0,
+          }}
+          animate={{
+            opacity: 1,
+            transition: {
+              duration: 1,
+              delay: 0.25,
+            },
+          }}
+          exit={{
+            opacity: 0,
+            transition: {
+              duration: 0.1,
+            },
+          }}
           className={`absolute flex flex-col items-start md:px-20 px-4 md:gap-y-6 gap-y-2 max-w-3xl min-h-full inset-0 md:py-16 py-8 justify-start `}
         >
           <motion.div
@@ -34,7 +63,7 @@ const Intern: React.FC = ({}) => {
           </motion.div>
           <motion.h2
             layout
-            className="font-helvetica lg:text-xl md:text-2xl text-sm text-center text-secondary md:w-auto md:inline w-full inline-block"
+            className="font-helvetica lg:text-xl md:text-2xl text-xs text-center text-secondary md:w-auto md:inline w-full inline-block"
           >
             Computer major internship website
           </motion.h2>
@@ -42,23 +71,7 @@ const Intern: React.FC = ({}) => {
             <motion.p
               key="description"
               layout
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-                transition: {
-                  duration: 1,
-                  delay: 0.25,
-                },
-              }}
-              exit={{
-                opacity: 0,
-                transition: {
-                  duration: 0.1,
-                },
-              }}
-              className="md:text-lg text-sm md:mt-6 text-secondary font-helvetica"
+              className="md:text-lg text-xs md:mt-6 mt-3 text-secondary font-helvetica"
             >
               During summer 2021, It’s required that for grade 11 students to
               take an internship for a specific amount of hours. The internship
@@ -69,7 +82,6 @@ const Intern: React.FC = ({}) => {
               <br />I worked with developer team and in was in charged in
               creative side and assisted on design and layout.
             </motion.p>
-
             <motion.div
               key="support"
               initial={{
@@ -97,7 +109,7 @@ const Intern: React.FC = ({}) => {
               >
                 Supported and deployed on
               </motion.span>
-              <div className="flex-start items-center md:h-24 h-10 relative w-full gap-x-4 md:mt-4 ">
+              <div className="flex-start items-center md:h-24 h-10 relative w-full gap-x-4 mt-4 ">
                 <div className="md:w-auto w-28">
                   <Image
                     src="/assets/png/swu.png"
