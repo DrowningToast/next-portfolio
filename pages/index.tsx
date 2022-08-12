@@ -120,7 +120,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
             <Education />
             <Skills />
             <Projects />
-            {/* <Contact /> */}
+            <Contact />
           </div>
         )}
       </main>
