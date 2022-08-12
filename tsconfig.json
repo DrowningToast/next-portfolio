@@ -8,7 +8,8 @@
       "@system/*": ["src/System/*"],
       "@redux/*": ["src/System/Redux/*"],
       "@fbase/*": ["src/System/Firebase/*"],
-      "@api/*": ["src/System/api/*"]
+      "@api/*": ["src/System/api/*"],
+      "@polyfills": ["components/polyfills/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -29,7 +30,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "components/r3f/Scenes/Hero.js"
-, "components/r3f/Scenes/Contact.js"  ],
+    "components/r3f/Scenes/Hero.tsx"
+  ],
   "exclude": ["node_modules"]
 }

@@ -4,10 +4,19 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import TagManager from "react-gtm-module";
+import { GLTF as GLTFThree } from "three/examples/jsm/loaders/GLTFLoader";
+import { Mesh, Material } from "three";
 import { useEffect } from "react";
 import { useGLTF, useTexture } from "@react-three/drei";
 
 library.add(fas);
+
+declare module "three-stdlib" {
+  export interface GLTF extends GLTFThree {
+    nodes: Record<string, Mesh>;
+    materials: Record<string, Material>;
+  }
+}
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {

@@ -6,7 +6,7 @@ const Contact = dynamic(() => import("@components/Contact/Contact"));
 import Intro from "@components/TopBanner/Intro";
 import Title from "@components/TopBanner/Title";
 import type { NextPage } from "next";
-import { motion, useMotionValue, useViewportScroll } from "framer-motion";
+import { motion, useMotionValue, useScroll } from "framer-motion";
 import Head from "next/head";
 import { useState } from "react";
 import dynamic from "next/dynamic";
@@ -26,9 +26,9 @@ const Home: NextPage = () => {
   const [width, height] = useWindowSize();
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const { scrollY } = useViewportScroll();
+  const { scrollY } = useScroll();
 
-  const handleLoadComplete = (e: Event) => {
+  const handleLoadComplete = () => {
     setLoadingStatus(true);
   };
 
@@ -97,7 +97,6 @@ const Home: NextPage = () => {
             }
             handleTransitionComplete={() => setBegin3D(true)}
             finishedContinue={() => {
-              console.log("Finished Continue");
               setFinishedContinue(true);
             }}
           />

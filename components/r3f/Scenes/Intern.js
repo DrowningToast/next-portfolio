@@ -6,8 +6,7 @@ import {
   useCallback,
   Suspense,
 } from "react";
-import { MotionCanvas } from "framer-motion-3d";
-import { Environment, Preload } from "@react-three/drei";
+import { Environment, Loader } from "@react-three/drei";
 import useWindowSize from "../../hooks/useWindowSize";
 import { Physics, usePlane } from "@react-three/cannon";
 import InternCamera from "../components/InternCamera";
@@ -16,6 +15,7 @@ import Briefcase_2D from "../models/Briefcase_2D";
 import Controller_2D from "../models/Controller_2D";
 import Programming_2D from "../models/Programming_2D";
 import Slate_2D from "../models/Slate_2D";
+import { MotionCanvas } from "framer-motion-3d";
 
 function Plane(props) {
   usePlane(() => props);
@@ -35,7 +35,7 @@ const Intern = ({ selected }) => {
 
   const [, updateState] = useState();
   const forceUpdate = useCallback(() => {
-    if (!Canvas?.current) return;
+    if (!Canvas?.current?.style) return;
     Canvas.current.style.width = "100%";
     Canvas.current.style.height = "100%";
     setWidth(Canvas.current.scrollWidth);

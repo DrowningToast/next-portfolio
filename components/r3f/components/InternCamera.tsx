@@ -1,10 +1,16 @@
 import useWindowSize from "@components/hooks/useWindowSize";
 import { useThree } from "@react-three/fiber";
+import { useRef, useEffect, FC } from "react";
 import { LayoutCamera } from "framer-motion-3d";
-import { useRef, useEffect } from "react";
+import { PerspectiveCamera } from "three";
 
-const InternCamera = ({ canvasWidth, canvasHeight }) => {
-  const camera = useRef();
+interface Props {
+  canvasWidth: number;
+  canvasHeight: number;
+}
+
+const InternCamera: FC<Props> = ({ canvasWidth, canvasHeight }) => {
+  const camera = useRef<PerspectiveCamera>();
   const [width] = useWindowSize();
   const renderer = useThree((state) => state.gl);
 
@@ -24,8 +30,8 @@ const InternCamera = ({ canvasWidth, canvasHeight }) => {
         x: 0,
         y: 0,
         z: 17,
-        fov: 50,
       }}
+      fov={50}
     />
   );
 };

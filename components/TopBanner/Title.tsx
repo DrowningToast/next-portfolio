@@ -4,14 +4,12 @@ import Image from "next/image";
 import { useEffect } from "react";
 import { useState } from "react";
 const ReactTypingEffect = dynamic(() => import("react-typing-effect"));
-// import ReactTypingEffect from "react-typing-effect";
 import dynamic from "next/dynamic";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 
 const transitionDelay = 0.65;
 const transitionDuration = 1;
-// const fadeInDuration = 0.75;
 
 interface Props {
   handleContinue: () => Promise<null>;

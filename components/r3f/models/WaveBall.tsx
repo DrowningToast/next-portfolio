@@ -1,12 +1,20 @@
 import { useDetectGPU, useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { MotionConfig, useTransform } from "framer-motion";
-import { motion } from "framer-motion-3d";
+import { MotionValue, useTransform } from "framer-motion";
+// import { motion } from "framer-motion-3d";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { RefObject, useEffect, useRef, useState } from "react";
+import { Mesh, MeshStandardMaterial } from "three";
 import handleGhost from "../utils/handleGhost";
 
-const WaveBall = React.forwardRef(
+interface Props {
+  isContinued: boolean;
+  Ball: RefObject<Mesh>;
+  scrollYPage: MotionValue<number>;
+  inputRange: [number, number, number];
+}
+
+const WaveBall = React.forwardRef<Mesh, Props>(
   ({ isContinued, Ball, scrollYPage, inputRange }, ref) => {
     const [
       waterBaseColor,
@@ -26,10 +34,10 @@ const WaveBall = React.forwardRef(
     const [position_clone, setPositionClone] = useState();
     const [normals_clone, setNormalsClone] = useState();
     const [active, setActive] = useState(true);
+    const ballMat = useRef<MeshStandardMaterial>(null);
     const gpuTier = useDetectGPU();
 
-    const [transitionAnimationComplete, seTransitionAnimation] =
-      useState(false);
+    useState(false);
     const scrollOpacity = useTransform(scrollYPage, inputRange, [1, 1, 0]);
 
     useEffect(() => {
@@ -56,7 +64,14 @@ const WaveBall = React.forwardRef(
     }, []);
 
     useFrame(() => {
-      if (!normals_clone || !Ball.current?.geometry || gpuTier.isMobile) return;
+      if (
+        !normals_clone ||
+        !Ball.current?.geometry ||
+        gpuTier.isMobile ||
+        !position_clone ||
+        !ballMat?.current
+      )
+        return;
       const now = Date.now() / 200;
       // Iterate through all vertices
       for (let i = 0; i < count; i++) {
@@ -91,12 +106,13 @@ const WaveBall = React.forwardRef(
       }
       Ball.current.geometry.computeVertexNormals();
       Ball.current.geometry.attributes.position.needsUpdate = true;
+      ballMat.current.opacity = scrollOpacity.get();
     });
 
     return (
-      <MotionConfig transition={{ duration: 0.5, delay: 0.35 }}>
-        {isContinued && active && (
-          <motion.mesh
+      <>
+        {active && (
+          <mesh
             rotation={[0, 0, -0.7]}
             position={[3, 0, 0]}
             ref={ref}
@@ -104,41 +120,20 @@ const WaveBall = React.forwardRef(
             receiveShadow
           >
             <sphereBufferGeometry args={[1.5, 128, 128]} />
-            {transitionAnimationComplete && (
-              <motion.meshStandardMaterial
-                opacity={!isContinued ? 1 : scrollOpacity}
-                map={waterBaseColor}
-                normalMap={waterNormalMap}
-                displacementMMap={gpuTier?.tier >= 3 ? waterHeightMap : null}
-                roughnessMap={gpuTier?.tier >= 3 ? waterRoughness : null}
-                aoMap={gpuTier?.tier >= 3 ? waterAmbientOcclusion : null}
-                displacementScale={0.4}
-                roughness={0}
-                transparent={true}
-              />
-            )}
-            {!transitionAnimationComplete && (
-              <motion.meshStandardMaterial
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: 1,
-                }}
-                onAnimationComplete={() => seTransitionAnimation(true)}
-                map={waterBaseColor}
-                normalMap={waterNormalMap}
-                displacementMMap={gpuTier?.tier >= 3 ? waterHeightMap : null}
-                roughnessMap={gpuTier?.tier >= 3 ? waterRoughness : null}
-                aoMap={gpuTier?.tier >= 3 ? waterAmbientOcclusion : null}
-                displacementScale={0.4}
-                roughness={0}
-                transparent={true}
-              />
-            )}
-          </motion.mesh>
+            <meshStandardMaterial
+              ref={ballMat}
+              map={waterBaseColor}
+              normalMap={waterNormalMap}
+              displacementMap={gpuTier?.tier >= 3 ? waterHeightMap : null}
+              roughnessMap={gpuTier?.tier >= 3 ? waterRoughness : null}
+              aoMap={gpuTier?.tier >= 3 ? waterAmbientOcclusion : null}
+              displacementScale={0.4}
+              roughness={0}
+              transparent={true}
+            />
+          </mesh>
         )}
-      </MotionConfig>
+      </>
     );
   }
 );
