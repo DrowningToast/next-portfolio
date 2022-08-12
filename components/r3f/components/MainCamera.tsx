@@ -1,30 +1,17 @@
 import { useThree } from "@react-three/fiber";
-import { useEffect, useMemo, useRef } from "react";
+import { FC, useEffect, useRef } from "react";
 import useWindowSize from "../../hooks/useWindowSize";
-
-import { useSpring, useTransform } from "framer-motion";
+import { PerspectiveCamera as ThreePerspectiveCamera } from "three";
 import { PerspectiveCamera } from "@react-three/drei";
 
-const Camera = ({ mouseX, mouseY }) => {
+const Camera: FC = () => {
   // Check browser size
   const [width, height] = useWindowSize();
-
-  const isMobile = useMemo(() => width < 1024, [width]);
 
   const set = useThree(({ set }) => set);
   const camera = useThree(({ camera }) => camera);
 
-  const cameraRef = useRef();
-
-  const posX = useSpring(useTransform(mouseX, [0, 1], [-0.2, 0.2]), {
-    stiffness: 600,
-    damping: 30,
-  });
-
-  const posY = useSpring(useTransform(mouseY, [0, 1], [-0.125, 0.125]), {
-    stiffness: 600,
-    damping: 30,
-  });
+  const cameraRef = useRef<ThreePerspectiveCamera>(null);
 
   useEffect(() => {
     const { current: cam } = cameraRef;
@@ -37,6 +24,7 @@ const Camera = ({ mouseX, mouseY }) => {
   useEffect(() => {
     if (cameraRef.current) {
       const oldCam = camera;
+      //@ts-ignore
       set(() => ({ camera: cameraRef.current }));
       return () => set(() => ({ camera: oldCam }));
     }

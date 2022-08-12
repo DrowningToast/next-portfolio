@@ -6,7 +6,6 @@ import React, {
   useEffect,
   useRef,
 } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import LP from "../../r3f/Scenes/LP";
 

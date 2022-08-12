@@ -11,8 +11,6 @@ import Head from "next/head";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import useWindowSize from "@components/hooks/useWindowSize";
-import { useGLTF } from "@react-three/drei";
-import Script from "next/script";
 const Hero = dynamic(() => {
   return import("../components/r3f/Scenes/Hero");
 });
