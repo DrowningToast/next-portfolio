@@ -15,7 +15,7 @@ const Contact = () => {
   const target = useRef<HTMLDivElement>(null);
   const inView = useInView(target, {
     once: true,
-    margin: "0px 360px",
+    margin: "360px 0px",
   });
 
   return (

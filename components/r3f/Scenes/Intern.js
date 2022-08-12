@@ -64,7 +64,6 @@ const Intern = ({ selected }) => {
               toneMappingExposure: 1.2,
             }}
           >
-            <Environment preset="city" />
             <ambientLight color="white" intensity={0.8} />
             <color attach="background" args={["white"]} />
             <Physics gravity={[0, 0, 0]} iterations={1} broadphase="SAP">

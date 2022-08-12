@@ -59,7 +59,7 @@ const Bust: FC<Props> = ({ mouseX, mouseY, scrollY, inputRange }) => {
     });
   }, []);
 
-  const { nodes, materials } = useGLTF("/assets/models/bust.gltf");
+  const { nodes, materials } = useGLTF("/assets/models/bust_very_low.gltf");
 
   useFrame(() => {
     if (!group.current || !bustRef.current || !bustMat.current) return;

@@ -27,5 +27,5 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.NEXT_PUBLIC_ANALYZE === "true",
 });
 
-// module.exports = nextConfig;
-module.exports = withBundleAnalyzer(nextConfig);
+module.exports = nextConfig;
+// module.exports = withBundleAnalyzer(nextConfig);
