@@ -59,7 +59,7 @@ const WaveBall = React.forwardRef<Mesh, Props>(
 
     useEffect(() => {
       scrollYPage.onChange(() => {
-        handleGhost(scrollYPage.get(), inputRange, setActive, active);
+        handleGhost(scrollYPage.get(), inputRange, setActive);
       });
     }, []);
 

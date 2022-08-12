@@ -56,7 +56,7 @@ const Bust: FC<Props> = ({ mouseX, mouseY, scrollY, inputRange }) => {
   );
   useEffect(() => {
     scrollY.onChange(() => {
-      handleGhost(scrollY.get(), inputRange, setActive, active);
+      handleGhost(scrollY.get(), inputRange, setActive);
     });
   }, []);
 
