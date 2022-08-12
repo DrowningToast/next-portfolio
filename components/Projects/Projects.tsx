@@ -25,6 +25,7 @@ const Projects: FC = () => {
   const target = useRef<HTMLDivElement>(null);
   const initializeCanvas = useInView(target, {
     margin: "0px 360px",
+    once: true,
   });
 
   const names: Project[] = [
