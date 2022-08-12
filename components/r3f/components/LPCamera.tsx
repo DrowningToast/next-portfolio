@@ -40,17 +40,7 @@ const Camera: FC<Props> = ({ canvasWidth, canvasHeight, i }) => {
   }, [width]);
 
   const trackTarget = (e: DeviceOrientationEvent) => {
-    // console.log(e);
-    // const radius = 12;
-    // console.log(`${e.alpha} ${e.beta} ${e.gamma}`);
-    // const azimuth = deg2Rad(e.gamma!);
-    // const inclination = deg2Rad(e.beta!); //+90
-
-    // let z = radius * Math.cos(azimuth) * Math.sin(inclination);
-    // let x = radius * Math.sin(azimuth) * Math.sin(inclination);
-    // let y = radius * Math.cos(inclination);
-
-    // y += yMobileOffset;
+    if (e.beta! > 86 && e.beta! < 94) return;
 
     console.log(getBaseRotationMatrix(e.alpha!, e.beta!, e.gamma!));
     // Calculate the rotation matrix from the euler angles
@@ -77,14 +67,6 @@ const Camera: FC<Props> = ({ canvasWidth, canvasHeight, i }) => {
       z: TCameraPosition[2],
     };
 
-    // Z
-    // let zPos =
-    //   zMobileOffset +
-    //   zMobileOffset * Math.sin(deg2Rad(Math.max(e.gamma!, e.beta! - 90)));
-    // // X
-    // let xPos = zMobileOffset * Math.sin(deg2Rad(e.gamma!));
-    // // Y
-    // let yPos = yMobileOffset + yMobileOffset * Math.sin(deg2Rad(e.beta! - 90));
     console.log(
       `${position.x.toFixed(2)} ${position.y.toFixed(2)} ${position.z.toFixed(
         2
