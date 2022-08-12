@@ -33,7 +33,6 @@ const Camera: FC<Props> = ({ canvasWidth, canvasHeight, i }) => {
   const trackTarget = (e: DeviceOrientationEvent) => {
     if (e.beta! > 86 && e.beta! < 94) return;
 
-    console.log(getBaseRotationMatrix(e.alpha!, e.beta!, e.gamma!));
     // Calculate the rotation matrix from the euler angles
     let rotationMatrix = getBaseRotationMatrix(
       e.alpha!,
@@ -58,11 +57,6 @@ const Camera: FC<Props> = ({ canvasWidth, canvasHeight, i }) => {
       z: TCameraPosition[2],
     };
 
-    console.log(
-      `${position.x.toFixed(2)} ${position.y.toFixed(2)} ${position.z.toFixed(
-        2
-      )}`
-    );
     camera.current!.position.set(position.x, position.y, position.z);
     camera.current!.lookAt(0, -14, 0);
   };
