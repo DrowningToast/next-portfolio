@@ -1,5 +1,4 @@
 import useWindowSize from "@components/hooks/useWindowSize";
-import { deg2Rad } from "@components/utils/deg2Rad";
 import { OrthographicCamera } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { useScroll } from "framer-motion";
@@ -18,14 +17,6 @@ const basePosition = {
   y: -14,
   z: 16,
 };
-
-const xMobileOffset = 0;
-const yMobileOffset = -14;
-const zMobileOffset = 12;
-
-function listener(e: any) {
-  console.log(e);
-}
 
 const Camera: FC<Props> = ({ canvasWidth, canvasHeight, i }) => {
   const camera = useRef<iOrthograhpicCamera>(null);
@@ -89,16 +80,8 @@ const Camera: FC<Props> = ({ canvasWidth, canvasHeight, i }) => {
 
   useEffect(() => {
     if (window.DeviceOrientationEvent && isMobile && camera.current) {
-      console.log("Binding the callback to the event " + isMobile);
       window.ondeviceorientation = trackTarget;
       camera.current.updateProjectionMatrix();
-
-      // const gyroscope = new Gyroscope();
-
-      // gyroscope.addEventListener("reading", listener);
-      // gyroscope.start();
-
-      // window.addEventListener("deviceorientation", trackTarget);
     }
   }, [camera.current]);
 
@@ -107,9 +90,7 @@ const Camera: FC<Props> = ({ canvasWidth, canvasHeight, i }) => {
       key={i}
       ref={camera}
       makeDefault
-      // position={[5, -5, 9]}
       position={!isMobile ? [5, -5, 20] : [0, -14, 12]}
-      // position={[5, -5, !isMobile ? 20 : 9]}
       zoom={!isMobile ? 50 : 7.5}
       rotation={!isMobile ? [0, 0.6, 0] : [0, 0, 0]}
     />

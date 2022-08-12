@@ -15,9 +15,6 @@ import {
   Environment,
   Float,
   Loader,
-  OrbitControls,
-  PresentationControls,
-  Sphere,
 } from "@react-three/drei";
 import ContactCamera from "@components/r3f/components/ContactCamera";
 import { MotionCanvas } from "framer-motion-3d";
@@ -29,7 +26,7 @@ const ContactScene = ({ selected }) => {
   const [canvasWidth, setWidth] = useState(0);
   const [canvasHeight, setHeight] = useState(0);
 
-  const [width, height] = useWindowSize();
+  const [width] = useWindowSize();
   const isMobile = useMemo(() => {
     return width < 1024;
   }, [width]);
@@ -49,9 +46,6 @@ const ContactScene = ({ selected }) => {
     window.addEventListener("orientationchange", forceUpdate);
     forceUpdate();
   }, []);
-
-  // Camera Management
-  // const camera = useCustomLayoutCamera({ canvasWidth, canvasHeight });
 
   // This thing isn't responsive to resize and orientationchange yet
 
