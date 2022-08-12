@@ -6,7 +6,7 @@ import {
   useCallback,
   Suspense,
 } from "react";
-import { Environment, Loader } from "@react-three/drei";
+import { Environment } from "@react-three/drei";
 import useWindowSize from "../../hooks/useWindowSize";
 import { Physics, usePlane } from "@react-three/cannon";
 import InternCamera from "../components/InternCamera";
@@ -108,7 +108,6 @@ const Intern = ({ selected }) => {
               canvasWidth={canvasWidth}
               canvasHeight={canvasHeight}
             />
-            <Preload all />
           </MotionCanvas>
         </Suspense>
       )}

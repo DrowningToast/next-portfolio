@@ -93,7 +93,6 @@ const ContactScene = ({ selected }) => {
             />
             <AdaptiveDpr pixelated />
             <Environment preset="city" />
-            <Preload all />
           </MotionCanvas>
           <Loader
             dataInterpolation={(e) => {

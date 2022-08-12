@@ -264,7 +264,7 @@ const Title: FC<Props> = ({
               y: ["-15%", "25%"],
               opacity: 1,
               transition: {
-                yoyo: Infinity,
+                repeat: Infinity,
                 duration: 1.2,
                 ease: "easeIn",
                 delay: 3,
