@@ -60,7 +60,7 @@ const Projects: FC = () => {
       name: "Little-Patient",
       component: <LittlePatient selected={selected} />,
     },
-    { name: "Internship 2021", component: null },
+    { name: "Internship 2021", component: <Intern /> },
   ];
 
   return (
@@ -69,24 +69,38 @@ const Projects: FC = () => {
         layout
         className="text-primary text-x; md:text-3xl font-semibold flex justify-start items-center gap-x-12 md:ml-8"
       >
-        {names.map((name, index) => {
-          return (
-            <motion.div
-              key={index}
-              onClick={() => setSelected(name.name)}
-              layout
-            >
-              <motion.h5>{name.name}</motion.h5>
-              {selected === name.name && (
-                <motion.div
-                  layout
-                  layoutId="underline"
-                  className="w-full h-0.5 rounded-full bg-primary mt-0.5"
-                ></motion.div>
-              )}
-            </motion.div>
-          );
-        })}
+        <AnimatePresence exitBeforeEnter>
+          {names.map((name, index) => {
+            return (
+              <motion.div
+                initial={{
+                  opacity: 0,
+                }}
+                animate={{
+                  opacity: 1,
+                  transition: {
+                    delay: 0.2,
+                  },
+                }}
+                exit={{
+                  opacity: 0,
+                }}
+                key={`project-${index}`}
+                onClick={() => setSelected(name.name)}
+                layout
+              >
+                <motion.h5>{name.name}</motion.h5>
+                {selected === name.name && (
+                  <motion.div
+                    layout
+                    layoutId="underline"
+                    className="w-full h-0.5 rounded-full bg-primary mt-0.5"
+                  ></motion.div>
+                )}
+              </motion.div>
+            );
+          })}
+        </AnimatePresence>
       </motion.nav>
       <div className="w-full h-screen relative">
         <AnimatePresence exitBeforeEnter>
