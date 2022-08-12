@@ -48,7 +48,7 @@ const Hero: FC<Props> = ({
   const CanvasRef = useRef<any>(null);
   const ball = useRef<Mesh>(null);
 
-  const [width, height] = useWindowSize();
+  const [_, height] = useWindowSize();
   const [loadStep, setLoadStep] = useState(0);
 
   const totalPages = 4;
@@ -80,7 +80,7 @@ const Hero: FC<Props> = ({
         >
           <ambientLight color="white" intensity={0.1} />
           <Environment preset="night" />
-          <Camera mouseX={mouseX} mouseY={mouseY} />
+          <Camera />
           {/* Hand */}
           <Suspense fallback={null}>
             <Hand isContinued={isContinued} scrollY={scrollYPage} />
