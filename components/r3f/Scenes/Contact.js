@@ -1,4 +1,4 @@
-import { MotionCanvas } from "framer-motion-3d";
+// import { MotionCanvas } from "framer-motion-3d";
 import {
   useRef,
   useEffect,
@@ -15,9 +15,9 @@ import {
   Environment,
   Float,
   Loader,
-  Preload,
 } from "@react-three/drei";
 import ContactCamera from "@components/r3f/components/ContactCamera";
+import { MotionCanvas } from "framer-motion-3d";
 
 const ContactScene = ({ selected }) => {
   const Canvas = useRef();
@@ -33,7 +33,7 @@ const ContactScene = ({ selected }) => {
 
   const [i, updateState] = useState(0);
   const forceUpdate = useCallback(() => {
-    if (!Canvas?.current) return;
+    if (!Canvas?.current?.style) return;
     Canvas.current.style.width = "100%";
     Canvas.current.style.height = "100%";
     setWidth(Canvas.current.parentNode.clientWidth);
@@ -46,9 +46,6 @@ const ContactScene = ({ selected }) => {
     window.addEventListener("orientationchange", forceUpdate);
     forceUpdate();
   }, []);
-
-  // Camera Management
-  // const camera = useCustomLayoutCamera({ canvasWidth, canvasHeight });
 
   // This thing isn't responsive to resize and orientationchange yet
 

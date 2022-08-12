@@ -1,53 +1,79 @@
-import { motion, MotionConfig } from "framer-motion";
-import { Suspense, useState } from "react";
+import {
+  AnimatePresence,
+  motion,
+  MotionConfig,
+  useInView,
+} from "framer-motion";
+import {
+  useState,
+  FC,
+  JSXElementConstructor,
+  ReactElement,
+  useRef,
+} from "react";
 import Intern from "./Intern/Intern";
 import LittlePatient from "./LittlePatient/LittlePatient";
 
-const Projects: React.FC = () => {
-  const [isAnimating, setAnimating] = useState<"LP" | "Intern" | null>(null);
-  const [selected, setSelected] = useState<"LP" | "Intern" | null>(null);
+interface Project {
+  name: string;
+  component: ReactElement | null;
+}
+
+const Projects: FC = () => {
+  const [selected, setSelected] = useState<string>("Little-Patient");
+
+  const target = useRef<HTMLDivElement>(null);
+  const initializeCanvas = useInView(target, {
+    margin: "0px 360px",
+    once: true,
+  });
+
+  const names: Project[] = [
+    {
+      name: "Little-Patient",
+      component: <LittlePatient selected={selected} />,
+    },
+    { name: "Internship 2021", component: <Intern /> },
+  ];
 
   return (
-    <section
-      id="projects"
-      className="h-screen w-full lg:px-28 md:px-16 px-6 lg:py-20 md:py-14 py-7 flex lg:flex-row flex-col lg:gap-y-0 md:gap-y-28 gap-y-16 justify-between items-center xl:gap-x-48 gap-x-24 z-20 relative"
+    <div
+      ref={target}
+      className="min-h-screen max-h-screen w-full flex flex-col px-8 py-8 flex-grow gap-y-4"
     >
-      <MotionConfig
-        transition={{
-          duration: 0.75,
-        }}
+      <motion.nav
+        layout
+        className="text-primary text-x; md:text-3xl font-semibold flex justify-start items-center gap-x-12 md:ml-8"
       >
-        <a href="#projects" className="inline-block w-full h-full">
-          {process.browser && (
-            <Suspense fallback={null}>
-              <motion.div layout className="w-full h-full ">
-                <LittlePatient
-                  setAnimating={setAnimating}
-                  setSelected={setSelected}
-                  selected={selected}
-                  isAnimating={isAnimating}
-                />
-              </motion.div>
-            </Suspense>
-          )}
-        </a>
-
-        <a href="#projects" className="inline-block w-full h-full">
-          {process.browser && (
-            <motion.div layout className="w-full h-full">
-              <Suspense fallback={null}>
-                <Intern
-                  setAnimating={setAnimating}
-                  setSelected={setSelected}
-                  selected={selected}
-                  animating={isAnimating}
-                />
-              </Suspense>
+        {names.map((name, index) => {
+          return (
+            <motion.div
+              key={`project-${index}`}
+              onClick={() => setSelected(name.name)}
+              layout
+              className="cursor-pointer"
+            >
+              <motion.h5 layout>{name.name}</motion.h5>
+              {selected === name.name && (
+                <motion.div
+                  layout
+                  layoutId="underline"
+                  className="w-full h-0.5 rounded-full bg-primary mt-0.5"
+                ></motion.div>
+              )}
             </motion.div>
-          )}
-        </a>
-      </MotionConfig>
-    </section>
+          );
+        })}
+      </motion.nav>
+      <div className="w-full h-screen relative">
+        <AnimatePresence exitBeforeEnter>
+          {initializeCanvas &&
+            names.filter((project) => {
+              return project.name === selected;
+            })[0]?.component}
+        </AnimatePresence>
+      </div>
+    </div>
   );
 };
 
