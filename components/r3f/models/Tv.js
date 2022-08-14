@@ -12,6 +12,7 @@ import {
 } from "@react-three/drei";
 import Image from "next/image";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
+import { MeshStandardMaterial } from "three";
 
 export default function Tv({ ...props }) {
   const group = useRef();
@@ -43,7 +44,7 @@ export default function Tv({ ...props }) {
           geometry={nodes.Television_01.geometry}
           // material={materials.Television_01}
         >
-          <MeshWobbleMaterial
+          <meshStandardMaterial
             color="#d4e5df"
             factor={!props.isMobile ? 0.08 : 0}
             speed={!props.isMobile ? 1.5 : 0}

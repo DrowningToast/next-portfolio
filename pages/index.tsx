@@ -15,6 +15,7 @@ import Head from "next/head";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import useWindowSize from "@components/hooks/useWindowSize";
+import LandingBlog from "@components/Blog/Landing";
 const Hero = dynamic(
   () => {
     return import("../components/r3f/Scenes/Hero");
@@ -114,6 +115,7 @@ const Home: NextPage = () => {
           <Education />
           <Skills />
           <Projects />
+          {true && <LandingBlog />}
           <Contact />
         </div>
       </div>
