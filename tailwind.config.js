@@ -34,6 +34,10 @@ module.exports = {
         xxl2: "140px",
         xxl: "110px",
       },
+      backgroundImage: {
+        "custom-radical-gradient":
+          "radial-gradient(145.88% 145.88% at 50% -14.69%, #00D4FF 0%, #3B82F6 29.63%, #000000 100%);",
+      },
       screens: {
         por: {
           raw: "(orientation: portrait)",
