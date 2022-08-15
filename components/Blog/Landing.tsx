@@ -18,7 +18,7 @@ const LandingBlog: FC = () => {
               <div className="relative rounded-full backdrop-blur-lg px-8 py-4 cursor-pointer">
                 <a
                   target="_blank"
-                  className="md:text-2xl text-lg text-black font-bold inline-block rounded-full z-10"
+                  className="text-2xl text-black font-bold inline-block rounded-full z-10"
                 >
                   Check them out
                 </a>
