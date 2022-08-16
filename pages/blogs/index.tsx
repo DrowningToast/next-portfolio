@@ -4,7 +4,7 @@ import useCMSpath from "@components/utils/useCMSpath";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NextPage } from "next";
 import qs from "qs";
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import { Blogs } from "types/blog";
 import axios from "axios";
 
@@ -14,21 +14,78 @@ const initialBlogQuery = qs.stringify({
   populate: ["cover", "category"],
   pagination: {
     page: 1,
-    pageSize: 5,
+    pageSize: 1,
   },
 });
 
+interface queryStringGetterParam {
+  page: number;
+  pageSize?: number;
+}
+
+const getQueryString = (params: queryStringGetterParam): string => {
+  return qs.stringify({
+    sort: ["createdAt"],
+    fields: ["title", "description", "slug"],
+    populate: ["cover", "category"],
+    pagination: {
+      page: params.page,
+      pageSize: params.pageSize ?? 1,
+    },
+  });
+};
+
 interface Props {
-  initialBlogs: Blogs;
+  initialBlogs: Blogs | null;
 }
 
 const Blogs: NextPage<Props> = ({ initialBlogs }) => {
+  let [page, setPage] = useState<number>(1);
+  const [pageCount, _pageCount] = useState<number>(0);
   const cmsPath = useCMSpath();
-  const [blogs, setBlogs] = useState<Blogs | null>(initialBlogs);
+  // const [blogs, setBlogs] = useState<Blogs | null>(initialBlogs);
+  const [blogs, setBlogs] = useReducer(
+    (state: Blogs | null, action: Blogs): Blogs | null => {
+      if (!state) {
+        return {
+          data: [...action.data],
+          meta: {
+            ...action.meta,
+          },
+        };
+      } else {
+        return {
+          data: [...state?.data, ...action.data],
+          meta: {
+            ...action.meta,
+          },
+        };
+      }
+    },
+    initialBlogs
+  );
+  const [isFetching, setIsFetching] = useState<boolean>(false);
+  const initialRender = useRef(true);
+
+  async function fetchNextPage() {
+    try {
+      setIsFetching(true);
+      const { data: newBlogs } = await axios.get<Blogs>(
+        `${cmsPath}/api/articles?${getQueryString({ page: page + 1 })}`
+      );
+      if (!newBlogs) throw "Pagination fetching error";
+      setPage(++page);
+      _pageCount(newBlogs.meta.pagination.pageCount);
+      setBlogs(newBlogs);
+      setIsFetching(false);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   // Client-side fetching
   useEffect(() => {
-    if (blogs) return;
+    if (blogs || !initialRender.current) return;
     if (!cmsPath) throw "Missing CMS path";
     async function fetchBlogs() {
       console.log(`${cmsPath}articles?${initialBlogQuery}`);
@@ -37,8 +94,12 @@ const Blogs: NextPage<Props> = ({ initialBlogs }) => {
       );
       if (!data) throw "Failed fetching blogs data on client-side part";
       setBlogs(data);
+      _pageCount(data.meta.pagination.pageCount);
     }
     fetchBlogs();
+    return () => {
+      initialRender.current = false;
+    };
   }, []);
 
   return (
@@ -53,7 +114,10 @@ const Blogs: NextPage<Props> = ({ initialBlogs }) => {
       <header className="w-full max-w-screen overflow-x-hidden py-2 flex justify-center items-center gap-x-4">
         {Array.from(Array(7).keys()).map((i) => {
           return (
-            <h1 className="opacity-30 text-white w-max whitespace-nowrap text-2xl font-semibold">
+            <h1
+              key={`left-fancy-blog-header-${i}`}
+              className="opacity-30 text-white w-max whitespace-nowrap text-2xl font-semibold"
+            >
               My latest blog
             </h1>
           );
@@ -63,7 +127,10 @@ const Blogs: NextPage<Props> = ({ initialBlogs }) => {
         </h1>
         {Array.from(Array(7).keys()).map((i) => {
           return (
-            <h1 className="opacity-30 text-white w-max whitespace-nowrap text-2xl font-semibold">
+            <h1
+              key={`left-fancy-blog-header-${i}`}
+              className="opacity-30 text-white w-max whitespace-nowrap text-2xl font-semibold"
+            >
               My latest blog
             </h1>
           );
@@ -79,7 +146,7 @@ const Blogs: NextPage<Props> = ({ initialBlogs }) => {
           <FontAwesomeIcon icon={["fas", "search"]} />
         </button>
       </form>
-      <section className="w-full grid grid-cols-1 place-items-center my-6 gap-y-10">
+      <section className="w-full grid grid-cols-1 place-items-center my-10 gap-y-10">
         {blogs &&
           blogs.data.map(({ attributes, id }) => {
             return (
@@ -88,33 +155,43 @@ const Blogs: NextPage<Props> = ({ initialBlogs }) => {
                 title={attributes.title}
                 description={attributes.description}
                 backgroundURL={
-                  attributes.cover.data.attributes.formats.thumbnail.url
+                  attributes.cover.data?.attributes.formats.thumbnail.url
                 }
                 slug={attributes.slug}
               />
             );
           })}
       </section>
+      {page < pageCount && (
+        <div className="w-full grid place-items-center mt-24 mb-6">
+          <button
+            onClick={fetchNextPage}
+            className="text-lg px-20 py-0.5 rounded-full border-2 border-alttertiary text-center mx-auto text-white"
+          >
+            {!isFetching ? "Load more" : "Loading"}
+          </button>
+        </div>
+      )}
     </main>
   );
 };
 
 export default Blogs;
 
-// export async function getStaticProps() {
-//   const cmsPath = useCMSpath();
+export async function getStaticProps() {
+  const cmsPath = useCMSpath();
 
-//   if (!cmsPath) {
-//     throw "Missing CMS path on static site generation part";
-//   }
-//   const { data } = await axios.get<Blogs>(
-//     `${cmsPath}/api/articles?${initialBlogQuery}`
-//   );
-//   if (!data) throw "Failed fetching blogs data on rendering side";
+  if (!cmsPath) {
+    throw "Missing CMS path on static site generation part";
+  }
+  const { data } = await axios.get<Blogs>(
+    `${cmsPath}/api/articles?${initialBlogQuery}`
+  );
+  if (!data) throw "Failed fetching blogs data on rendering side";
 
-//   return {
-//     props: {
-//       blogs: data,
-//     },
-//   };
-// }
+  return {
+    props: {
+      blogs: data,
+    },
+  };
+}
