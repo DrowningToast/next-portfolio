@@ -1,11 +1,48 @@
 import Card from "@components/Blog/components/Card";
 import ReturnNavbar from "@components/Blog/components/ReturnNavbar";
+import useCMSpath from "@components/utils/useCMSpath";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NextPage } from "next";
+import qs from "qs";
+import { useEffect, useState } from "react";
+import { Blogs } from "types/blog";
+import axios from "axios";
 
-const Blogs: NextPage = () => {
+const initialBlogQuery = qs.stringify({
+  sort: ["createdAt"],
+  fields: ["title", "description", "slug"],
+  populate: ["cover", "category"],
+  pagination: {
+    page: 1,
+    pageSize: 5,
+  },
+});
+
+interface Props {
+  initialBlogs: Blogs;
+}
+
+const Blogs: NextPage<Props> = ({ initialBlogs }) => {
+  const cmsPath = useCMSpath();
+  const [blogs, setBlogs] = useState<Blogs | null>(initialBlogs);
+
+  // Client-side fetching
+  useEffect(() => {
+    if (blogs) return;
+    if (!cmsPath) throw "Missing CMS path";
+    async function fetchBlogs() {
+      console.log(`${cmsPath}articles?${initialBlogQuery}`);
+      const { data } = await axios.get<Blogs>(
+        `${cmsPath}/api/articles?${initialBlogQuery}`
+      );
+      if (!data) throw "Failed fetching blogs data on client-side part";
+      setBlogs(data);
+    }
+    fetchBlogs();
+  }, []);
+
   return (
-    <main className="w-full min-h-screen bg-dark relative pt-10">
+    <main className="w-full min-h-screen bg-dark relative pt-10 pb-8">
       <ReturnNavbar />
       <section className="text-tertiary text-lg h-[30vh] flex flex-col justify-center items-between px-8 gap-y-4">
         <h2 className="text-left">
@@ -43,11 +80,41 @@ const Blogs: NextPage = () => {
         </button>
       </form>
       <section className="w-full grid grid-cols-1 place-items-center my-6 gap-y-10">
-        <Card />
-        <Card />
+        {blogs &&
+          blogs.data.map(({ attributes, id }) => {
+            return (
+              <Card
+                key={`blog-card-preview-${id}`}
+                title={attributes.title}
+                description={attributes.description}
+                backgroundURL={
+                  attributes.cover.data.attributes.formats.thumbnail.url
+                }
+                slug={attributes.slug}
+              />
+            );
+          })}
       </section>
     </main>
   );
 };
 
 export default Blogs;
+
+// export async function getStaticProps() {
+//   const cmsPath = useCMSpath();
+
+//   if (!cmsPath) {
+//     throw "Missing CMS path on static site generation part";
+//   }
+//   const { data } = await axios.get<Blogs>(
+//     `${cmsPath}/api/articles?${initialBlogQuery}`
+//   );
+//   if (!data) throw "Failed fetching blogs data on rendering side";
+
+//   return {
+//     props: {
+//       blogs: data,
+//     },
+//   };
+// }
