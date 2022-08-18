@@ -54,12 +54,12 @@ const Blog: NextPage<Props> = ({ Blogs }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <ReturnNavbar back={true} />
-      <article className="md:pt-12 mt-8 px-8 md:px-80 flex flex-col md:gap-y-16 gap-y-12">
-        <div className="flex flex-col gap-y-4 md:gap-y-12">
-          <h1 className="md:text-5xl text-xl md:leading-tight text-white font-semibold font-kanit">
+      <article className="2xl:pt-12 mt-8 px-8 lg:px-40 2xl:px-80 flex flex-col lg:gap-y-12 2xl:gap-y-16 gap-y-12">
+        <div className="flex flex-col gap-y-4 md:gap-y-8 2xl:gap-y-12">
+          <h1 className="2xl:text-5xl lg:text-4xl md:text-3xl text-2xl  2xl:leading-tight text-white font-semibold font-kanit">
             {blog!.title}
           </h1>
-          <div className="md:px-48">
+          <div className="lg:px-12 2xl:px-48">
             <Image
               src={`${cmsPath}${blog!.cover.data.attributes.url}`}
               width={blog!.cover.data.attributes.width}
@@ -69,12 +69,12 @@ const Blog: NextPage<Props> = ({ Blogs }) => {
             />
           </div>
         </div>
-        <div className="md:px-56">
+        <div className="xl:max-w-screen-lg lg:max-w-screen-md mx-auto">
           <BlogContentParser content={content} />
         </div>
       </article>
       <footer className="py-12 px-2 flex flex-col gap-y-4">
-        <small className="text-sm text-center text-white">
+        <small className="text-lg text-center text-white">
           An article written by Gus
         </small>
         <div className="flex justify-center items-center gap-x-6">

@@ -10,9 +10,9 @@ interface Props {
 const BlogContentParser: FC<Props> = ({ content }) => {
   return (
     <>
-      <div className="container flex flex-col gap-y-6">
-        {content.blocks.map((block) => {
-          return <Parser block={block} />;
+      <div className="container mx-auto flex flex-col gap-y-6">
+        {content.blocks.map((block, index) => {
+          return <Parser key={`blog-parser-${index}`} block={block} />;
         })}
       </div>
     </>
@@ -36,7 +36,7 @@ const Parser: FC<_parserProp> = ({ block }) => {
       return (
         <p
           key={`blogcontent-${block.id}`}
-          className="text-white font-kanit font-medium md:text-lg text-base"
+          className="text-white font-kanit md:text-lg text-base"
           dangerouslySetInnerHTML={createMarkup(block.data.text!)}
         ></p>
       );
