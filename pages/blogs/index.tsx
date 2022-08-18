@@ -7,16 +7,8 @@ import qs from "qs";
 import { useEffect, useReducer, useRef, useState } from "react";
 import { Blogs } from "types/blog";
 import axios from "axios";
-
-const initialBlogQuery = qs.stringify({
-  sort: ["createdAt"],
-  fields: ["title", "description", "slug"],
-  populate: ["cover", "category"],
-  pagination: {
-    page: 1,
-    pageSize: 1,
-  },
-});
+import { initialBlogQuery } from "@components/utils/BlogQuery";
+import Head from "next/head";
 
 interface queryStringGetterParam {
   page: number;
@@ -104,6 +96,14 @@ const Blogs: NextPage<Props> = ({ initialBlogs }) => {
 
   return (
     <main className="w-full min-h-screen bg-dark relative pt-10 pb-8">
+      <Head>
+        <title>Gus' Blogs</title>
+        <meta name="description" content="Gus' Blogs" />
+        <meta charSet="UTF-8" />
+        <meta name="author" content="Supratouch Suwatno" />
+        <meta name="keywords" content="Technology, Blogs, Coding, Developer" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
       <ReturnNavbar />
       <section className="text-tertiary text-lg h-[30vh] flex flex-col justify-center items-between px-8 gap-y-4">
         <h2 className="text-left">

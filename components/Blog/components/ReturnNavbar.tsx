@@ -1,11 +1,25 @@
 import Link from "next/link";
 import { FC } from "react";
 
-const ReturnNavbar: FC = () => {
+interface Props {
+  back?: boolean;
+}
+
+const ReturnNavbar: FC<Props> = ({ back }) => {
   return (
-    <nav className="w-full md:h-12 h-10 text-white py-2 px-6 border-b-2 border-tertiary fixed top-0 text-sm md:text-lg flex justify-between">
-      <h1>{"<- Back to the landing page"}</h1>
-      <Link href="https://medium.com/@drowningtoast">
+    <nav className="w-full md:h-12 h-10 bg-dark z-50 text-white py-2 px-6 border-b-2 border-tertiary fixed top-0 text-sm md:text-lg flex justify-between">
+      {!back ? (
+        <Link href="https://supratouch.dev">
+          <a>
+            <h1 className="cursor-pointer">{"<- Back to the landing page"}</h1>
+          </a>
+        </Link>
+      ) : (
+        <Link href={"/blogs"}>
+          <h1 className="cursor-pointer">{"<- back"}</h1>
+        </Link>
+      )}
+      {/* <Link href="https://medium.com/@drowningtoast">
         <a
           href="https://medium.com/@drowningtoast"
           target="_blank"
@@ -14,7 +28,7 @@ const ReturnNavbar: FC = () => {
         >
           Medium
         </a>
-      </Link>
+      </Link> */}
     </nav>
   );
 };

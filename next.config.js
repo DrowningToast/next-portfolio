@@ -6,6 +6,10 @@ const nextConfig = {
   env: {
     ROOT: __dirname,
   },
+  images: {
+    domains: ["localhost"],
+  },
+
   async headers() {
     return [
       {

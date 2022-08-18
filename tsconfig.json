@@ -30,7 +30,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "components/r3f/Scenes/Hero.tsx"
+    "components/r3f/Scenes/Hero.tsx",
+    "components/utils/EditorJSPluginExports.js"
   ],
   "exclude": ["node_modules"]
 }
