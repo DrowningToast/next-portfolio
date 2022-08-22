@@ -1,7 +1,7 @@
 import useNodeEnv from "./useNodeEnv";
 
 const getCMSpath = () => {
-  const env = useNodeEnv();
+  const env = process.env.NODE_ENV;
 
   if (env === "development") {
     if (!process.env.NEXT_PUBLIC_DEV_CMS_PATH) {

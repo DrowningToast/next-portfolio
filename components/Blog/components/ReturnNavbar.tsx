@@ -15,7 +15,7 @@ const ReturnNavbar: FC<Props> = ({ back }) => {
           </a>
         </Link>
       ) : (
-        <Link href={"/blogs"}>
+        <Link href={"/blogs"} passHref>
           <h1 className="cursor-pointer">{"<- back"}</h1>
         </Link>
       )}

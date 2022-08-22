@@ -10,13 +10,18 @@ interface Props {
   slug: string;
 }
 
-const Card: FC<Props> = ({ title, description, backgroundURL, slug }) => {
-  const [showDescription, setDescription] = useState(false);
+const Card: FC<Props> = ({ title, backgroundURL, slug }) => {
+  // const [showDescription, setDescription] = useState(false);
   const cmsPath = useCMSpath();
 
   return (
     <Link href={`/blogs/${slug}`} prefetch>
-      <a hrefLang="th" target={"_blank"} href={`/blogs/${slug}`}>
+      <a
+        hrefLang="th"
+        target={"_blank"}
+        rel="noreferrer"
+        href={`/blogs/${slug}`}
+      >
         <div className="xl:w-[560px] lg:w-[460px] md:w-96 w-80 md:aspect-video min-h-[190px] relative cursor-pointer">
           <motion.div
             animate={{
