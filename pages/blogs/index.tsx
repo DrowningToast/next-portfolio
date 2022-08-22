@@ -109,7 +109,7 @@ const Blogs: NextPage<Props> = ({ initialBlogs }) => {
         <h2 className="text-left">
           Life is like a RPG adventure, the map just keep expanding with time.
         </h2>
-        <h2 className="text-right">Here are my logss</h2>
+        <h2 className="text-right">Here are my logs</h2>
       </section>
       <header className="text-2xl md:text-5xl w-full max-w-screen overflow-x-hidden py-2 flex justify-center items-center gap-x-4">
         {Array.from(Array(7).keys()).map((i) => {
