@@ -12,6 +12,12 @@ import BlogContentParser from "@components/Blog/components/Parser";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import {
+  faGithub,
+  faLinkedin,
+  faMedium,
+} from "@fortawesome/free-brands-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const Blog: NextPage<Props> = ({ Blogs }) => {
   const initialFetch = useRef(true);
@@ -83,7 +89,7 @@ const Blog: NextPage<Props> = ({ Blogs }) => {
               <FontAwesomeIcon
                 className="text-white"
                 size={"2x"}
-                icon={["fab", "github"]}
+                icon={faGithub as IconProp}
               />
             </a>
           </Link>
@@ -95,7 +101,7 @@ const Blog: NextPage<Props> = ({ Blogs }) => {
               <FontAwesomeIcon
                 className="text-white"
                 size={"2x"}
-                icon={["fab", "linkedin"]}
+                icon={faLinkedin as IconProp}
               />
             </a>
           </Link>
@@ -104,7 +110,7 @@ const Blog: NextPage<Props> = ({ Blogs }) => {
               <FontAwesomeIcon
                 className="text-white"
                 size={"2x"}
-                icon={["fab", "medium"]}
+                icon={faMedium as IconProp}
               />
             </a>
           </Link>

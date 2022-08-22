@@ -9,6 +9,8 @@ const ReactTypingEffect = dynamic(() => import("react-typing-effect"), {
 import dynamic from "next/dynamic";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
+import { faMouse } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const transitionDelay = 0.65;
 const transitionDuration = 1;
@@ -277,7 +279,7 @@ const Title: FC<Props> = ({
               <motion.div className="w-8 h-8 text-white grid place-items-center">
                 <FontAwesomeIcon
                   className="scale-150"
-                  icon={["fas", "mouse"]}
+                  icon={faMouse as IconProp}
                 />
               </motion.div>
             </motion.div>

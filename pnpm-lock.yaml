@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@fortawesome/fontawesome-common-types': ^6.1.2
   '@fortawesome/fontawesome-svg-core': ^1.2.12
   '@fortawesome/free-brands-svg-icons': ^6.1.2
   '@fortawesome/free-solid-svg-icons': ^6.1.2
@@ -42,6 +43,7 @@ specifiers:
   webpack-glsl-loader: ^1.0.1
 
 dependencies:
+  '@fortawesome/fontawesome-common-types': 6.1.2
   '@fortawesome/fontawesome-svg-core': 1.2.36
   '@fortawesome/free-brands-svg-icons': 6.1.2
   '@fortawesome/free-solid-svg-icons': 6.1.2
