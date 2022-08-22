@@ -68,6 +68,7 @@ const Blog: NextPage<Props> = ({ Blogs }) => {
           </h1>
           <div className="lg:px-12 2xl:px-48">
             <Image
+              unoptimized
               src={`${cmsPath}${blog!.cover.data.attributes.url}`}
               width={blog!.cover.data.attributes.width}
               height={blog!.cover.data.attributes.height}
