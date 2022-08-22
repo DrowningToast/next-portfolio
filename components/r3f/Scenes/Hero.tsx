@@ -149,6 +149,12 @@ export default Hero;
 
 useGLTF.preload("/assets/models/hand.glb");
 useGLTF.preload("/assets/models/bust_very_low.gltf");
+useGLTF.preload("/assets/models/Artist_2D.gltf");
+useGLTF.preload("/assets/models/Briefcase_2D.gltf");
+useGLTF.preload("/assets/models/Controller_2D.gltf");
+useGLTF.preload("/assets/models/patient.gltf");
+useGLTF.preload("/assets/models/Programming_2D.gltf");
+useGLTF.preload("/assets/models/tv.gltf");
 useTexture.preload("/assets/textures/Water_002_COLOR.jpg");
 useTexture.preload("/assets/textures/Water_002_NORM.jpg");
 useTexture.preload("/assets/textures/Water_002_DISP.png");
