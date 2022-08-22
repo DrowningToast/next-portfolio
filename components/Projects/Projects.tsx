@@ -13,7 +13,7 @@ const Projects: FC = () => {
 
   const target = useRef<HTMLDivElement>(null);
   const initializeCanvas = useInView(target, {
-    margin: "360px 0px",
+    margin: "640px 0px",
     once: true,
   });
 

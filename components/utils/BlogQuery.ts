@@ -6,7 +6,7 @@ const initialBlogQuery = qs.stringify({
   populate: ["cover", "category"],
   pagination: {
     page: 1,
-    pageSize: 1,
+    pageSize: 5,
   },
 });
 
