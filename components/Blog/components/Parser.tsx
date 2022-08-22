@@ -117,6 +117,7 @@ const Parser: FC<_parserProp> = ({ block }) => {
           className="flex flex-col items-center justify-start w-full gap-y-2"
         >
           <Image
+            unoptimized
             src={`${cmsPath}${block.data.file!.url}`}
             width={block.data.file!.width}
             height={block.data.file!.height}
