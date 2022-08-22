@@ -7,7 +7,7 @@ const nextConfig = {
     ROOT: __dirname,
   },
   images: {
-    domains: ["localhost"],
+    domains: ["localhost", "https://gus-api-blog-cms.herokuapp.com"],
   },
 
   async headers() {
