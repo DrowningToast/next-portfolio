@@ -12,9 +12,9 @@ const LandingBlog: FC = () => {
             <Marquee />
             <Marquee />
           </div>
-          <div className="h-full w-full flex flex-col justify-evenly items-center">
+          <div className="h-full w-full flex flex-col justify-center gap-y-2 items-center">
             <h1 className="text-white md:text-2xl text-lg">I write blogs</h1>
-            <Link href="/#" target="_blank">
+            <Link href="/blogs" target="_blank">
               <div className="relative rounded-full backdrop-blur-lg px-8 py-4 cursor-pointer">
                 <a
                   target="_blank"
