@@ -34,6 +34,7 @@ const Education = () => {
         <Link href="https://satitcom.spsm.ac.th/internship/2021/supratouch-suwatno">
           <a
             target="_blank"
+            rel="noreferrer"
             className="text-secondary underline text-sm self-end"
           >
             View more

@@ -18,6 +18,7 @@ import {
   faMedium,
 } from "@fortawesome/free-brands-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import getCMSpath from "@components/utils/getCMSpath";
 
 const Blog: NextPage<Props> = ({ Blogs }) => {
   const initialFetch = useRef(true);
@@ -106,7 +107,7 @@ const Blog: NextPage<Props> = ({ Blogs }) => {
             </a>
           </Link>
           <Link target={"_blank"} href="https://medium.com/@drowningtoast">
-            <a target="_blank">
+            <a target="_blank" rel="noreferrer">
               <FontAwesomeIcon
                 className="text-white"
                 size={"2x"}
@@ -123,7 +124,7 @@ const Blog: NextPage<Props> = ({ Blogs }) => {
 export default Blog;
 
 export async function getStaticPaths() {
-  const cmsPath = useCMSpath();
+  const cmsPath = getCMSpath();
 
   const { data: Blogs } = await axios.get<Blogs>(
     `${cmsPath}/api/articles?${initialBlogQuery}`
@@ -143,7 +144,7 @@ interface Props {
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const cmsPath = useCMSpath();
+  const cmsPath = getCMSpath();
 
   const { data: Blogs } = await axios.get<Blogs>(
     `${cmsPath}/api/articles?filters[slug]=${context.params!

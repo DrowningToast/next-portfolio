@@ -14,10 +14,11 @@ const LandingBlog: FC = () => {
           </div>
           <div className="h-full w-full flex flex-col justify-center gap-y-2 items-center">
             <h1 className="text-white md:text-2xl text-lg">I write blogs</h1>
-            <Link href="/blogs" target="_blank">
+            <Link href="/blogs" target="_blank" rel="noreferrer" passHref>
               <div className="relative rounded-full backdrop-blur-lg px-8 py-4 cursor-pointer">
                 <a
                   target="_blank"
+                  rel="noreferrer"
                   className="text-2xl text-black font-bold inline-block rounded-full z-10"
                 >
                   Check them out

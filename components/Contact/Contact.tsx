@@ -32,6 +32,7 @@ const Contact = () => {
                 onMouseLeave={() => setSelected(null)}
                 className="z-30"
                 target="_blank"
+                rel="noreferrer"
               >
                 Github
               </a>
@@ -42,6 +43,7 @@ const Contact = () => {
                 onMouseLeave={() => setSelected(null)}
                 className="z-30"
                 target="_blank"
+                rel="noreferrer"
               >
                 LinkedIn
               </a>

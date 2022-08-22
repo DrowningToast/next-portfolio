@@ -128,6 +128,7 @@ const Intern: React.FC = ({}) => {
                 href="https://internship-five.vercel.app/"
                 target="_blank"
                 rel="noreferrer"
+                rel="noreferrer"
               >
                 <div className="bg-primary rounded-full font-eb md:text-4xl text-lg font-semibold text-tertiary text-center lg:px-2 lg:py-2 px-14 py-2 md:mt-6 mt-4">
                   Visit the site

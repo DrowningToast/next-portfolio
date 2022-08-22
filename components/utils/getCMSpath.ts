@@ -1,6 +1,6 @@
 import useNodeEnv from "./useNodeEnv";
 
-const useCMSpath = () => {
+const getCMSpath = () => {
   const env = useNodeEnv();
 
   if (env === "development") {
@@ -20,4 +20,4 @@ const useCMSpath = () => {
   }
 };
 
-export default useCMSpath;
+export default getCMSpath;

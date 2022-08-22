@@ -10,6 +10,7 @@ import axios from "axios";
 import { initialBlogQuery } from "@components/utils/BlogQuery";
 import Head from "next/head";
 import { motion } from "framer-motion";
+import getCMSpath from "@components/utils/getCMSpath";
 
 interface queryStringGetterParam {
   page: number;
@@ -186,7 +187,7 @@ const Blogs: NextPage<Props> = ({ initialBlogs }) => {
 export default Blogs;
 
 export async function getStaticProps() {
-  const cmsPath = useCMSpath();
+  const cmsPath = getCMSpath();
 
   if (!cmsPath) {
     throw "Missing CMS path on static site generation part";
