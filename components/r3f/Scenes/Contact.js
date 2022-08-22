@@ -55,7 +55,7 @@ const ContactScene = ({ selected }) => {
         <Suspense fallback={null}>
           <MotionCanvas
             ref={Canvas}
-            dpr={[0.1, 1.2]}
+            dpr={[0.1, 1]}
             style={{
               width: "100%",
               height: "100%",

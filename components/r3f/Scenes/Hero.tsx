@@ -82,7 +82,7 @@ const Hero: FC<Props> = ({
             toneMappingExposure: 1.1,
             antialias: false,
           }}
-          dpr={[1, 2]}
+          dpr={[0.5, 1]}
           style={{ height: "100%", width: "100vw" }}
           ref={CanvasRef}
           resize={{ scroll: true }}

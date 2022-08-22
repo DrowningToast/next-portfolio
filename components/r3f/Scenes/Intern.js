@@ -55,7 +55,7 @@ const Intern = ({ selected }) => {
         <Suspense fallback={null}>
           <MotionCanvas
             ref={Canvas}
-            dpr={[0.1, 1.5]}
+            dpr={[0.1, 1]}
             style={{
               width: "100%",
               height: "100%",
