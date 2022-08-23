@@ -11,6 +11,8 @@ import { initialBlogQuery } from "@components/utils/BlogQuery";
 import Head from "next/head";
 import { motion } from "framer-motion";
 import getCMSpath from "@components/utils/getCMSpath";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 interface queryStringGetterParam {
   page: number;
@@ -86,7 +88,7 @@ const Blogs: NextPage<Props> = ({ initialBlogs }) => {
         `${cmsPath}/api/articles?${initialBlogQuery}`
       );
       if (!data) throw "Failed fetching blogs data on client-side part";
-      setBlogs(data);
+      // setBlogs(data);
       _pageCount(data.meta.pagination.pageCount);
     }
     fetchBlogs();
@@ -148,7 +150,7 @@ const Blogs: NextPage<Props> = ({ initialBlogs }) => {
         </button>
       </form> */}
       <section className="w-full max-w-full grid grid-cols-1 place-items-center my-10 gap-y-10">
-        {blogs &&
+        {blogs ? (
           blogs.data.map(({ attributes, id }) => {
             return (
               <Card
@@ -156,12 +158,29 @@ const Blogs: NextPage<Props> = ({ initialBlogs }) => {
                 title={attributes.title}
                 description={attributes.description}
                 backgroundURL={
-                  attributes.cover.data?.attributes.formats.thumbnail.url
+                  attributes.cover.data?.attributes.formats.medium.url
                 }
                 slug={attributes.slug}
               />
             );
-          })}
+          })
+        ) : (
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
+              transition: {
+                repeat: Infinity,
+                repeatType: "reverse",
+              },
+            }}
+            className="text-lg text-white flex flex-col items-center gap-y-2 my-6"
+          >
+            <FontAwesomeIcon
+              icon={faMagnifyingGlass as IconProp}
+            ></FontAwesomeIcon>
+            <span>Loading</span>
+          </motion.div>
+        )}
       </section>
       {page < pageCount && (
         <div className="w-full max-w-full grid place-items-center mt-20 mb-6">
