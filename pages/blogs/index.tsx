@@ -88,7 +88,7 @@ const Blogs: NextPage<Props> = ({ initialBlogs }) => {
         `${cmsPath}/api/articles?${initialBlogQuery}`
       );
       if (!data) throw "Failed fetching blogs data on client-side part";
-      // setBlogs(data);
+      setBlogs(data);
       _pageCount(data.meta.pagination.pageCount);
     }
     fetchBlogs();
