@@ -2,11 +2,7 @@ import Education from "@components/Education/Education";
 import Skills from "@components/Skills/Skills";
 import Projects from "@components/Projects/Projects";
 import Contact from "@components/Contact/Contact";
-// const Education = dynamic(() => import("@components/Education/Education"));
-// const Skills = dynamic(() => import("@components/Skills/Skills"));
-// const Projects = dynamic(() => import("@components/Projects/Projects"));
-// const Contact = dynamic(() => import("@components/Contact/Contact"));
-
+import { NextSeo } from "next-seo";
 import Intro from "@components/TopBanner/Intro";
 import Title from "@components/TopBanner/Title";
 import type { NextPage } from "next";
@@ -50,14 +46,31 @@ const Home: NextPage = () => {
         mouseY.set(e.clientY / height);
       }}
     >
-      <Head>
+      <NextSeo
+        title="Gus' Portfolio"
+        canonical="https://supratouch.dev"
+        description="3D personal portfolio website"
+        openGraph={{
+          url: "https://supratouch.dev",
+          images: [
+            {
+              url: "https://supratouch.dev/assets/png/waving-hand.png",
+              width: 160,
+              height: 160,
+              alt: "Waving hand alt",
+              type: "image/png",
+            },
+          ],
+        }}
+      />
+      {/* <Head>
         <title>Gus' Portfolio</title>
         <meta name="description" content="Gus' Portfolio" />
         <meta name="author" content="Supratouch Suwatno" />
         <meta name="keywords" content="Resume, Portfolio, Web Development" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
-      </Head>
+      </Head> */}
       {beginLoad3D && (
         <motion.div
           initial={{
