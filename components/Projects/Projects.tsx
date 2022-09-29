@@ -28,7 +28,7 @@ const Projects: FC = () => {
   return (
     <div
       ref={target}
-      className="min-h-screen max-h-screen w-full flex flex-col px-8 py-8 flex-grow gap-y-4"
+      className="min-h-screen w-full flex flex-col px-8 py-8 flex-grow gap-y-4"
     >
       <motion.nav
         layout

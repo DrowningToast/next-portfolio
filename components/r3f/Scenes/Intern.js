@@ -60,11 +60,8 @@ const Intern = ({ selected }) => {
               width: "100%",
               height: "100%",
             }}
-            gl={{
-              toneMappingExposure: 1.2,
-            }}
           >
-            <ambientLight color="white" intensity={0.8} />
+            <ambientLight color="white" intensity={0.4} />
             <color attach="background" args={["white"]} />
             <Physics gravity={[0, 0, 0]} iterations={1} broadphase="SAP">
               <Plane position={[0, -8, 0]} rotation={[-Math.PI / 2, 0, 0]} />

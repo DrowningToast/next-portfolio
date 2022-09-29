@@ -102,6 +102,7 @@ const Title: FC<Props> = ({
                 src="/assets/png/waving-hand.png"
                 layout="fill"
                 alt="Waving Emoji"
+                priority
               />
             </motion.div>
             <motion.h1

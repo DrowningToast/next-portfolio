@@ -55,7 +55,7 @@ const ContactScene = ({ selected }) => {
         <Suspense fallback={null}>
           <MotionCanvas
             ref={Canvas}
-            dpr={[0.1, 1]}
+            dpr={[0.1, 0.5]}
             style={{
               width: "100%",
               height: "100%",
@@ -94,14 +94,6 @@ const ContactScene = ({ selected }) => {
             <AdaptiveDpr pixelated />
             <Environment preset="city" />
           </MotionCanvas>
-          <Loader
-            dataInterpolation={(e) => {
-              if (e >= 100 && !initialLoad) {
-                setLoaded(true);
-                forceUpdate();
-              }
-            }}
-          />
         </Suspense>
       )}
     </>

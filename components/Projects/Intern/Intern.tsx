@@ -73,7 +73,7 @@ const Intern: React.FC = ({}) => {
             <motion.p
               key="description"
               layout
-              className="md:text-lg text-xs md:mt-6 mt-3 text-secondary font-helvetica"
+              className="md:text-base text-xs text-secondary font-helvetica"
             >
               During summer 2021, It’s required that for grade 11 students to
               take an internship for a specific amount of hours. The internship
@@ -117,8 +117,8 @@ const Intern: React.FC = ({}) => {
                     src="/assets/png/swu.png"
                     layout="intrinsic"
                     alt="SWU"
-                    width={250}
-                    height={80}
+                    width={218.75}
+                    height={70}
                     priority
                   />
                 </div>
@@ -129,7 +129,7 @@ const Intern: React.FC = ({}) => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <div className="bg-primary rounded-full font-eb md:text-4xl text-lg font-semibold text-tertiary text-center lg:px-2 lg:py-2 px-14 py-2 md:mt-6 mt-4">
+                <div className="bg-primary rounded-full font-eb md:text-lg text-base font-semibold text-tertiary text-center lg:px-2 lg:py-2 px-14 py-2">
                   Visit the site
                 </div>
               </a>
