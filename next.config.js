@@ -9,7 +9,7 @@ const nextConfig = {
   images: {
     domains: ["localhost", "https://gus-api-blog-cms.herokuapp.com"],
   },
-
+  output: "standalone",
   async headers() {
     return [
       {
@@ -24,6 +24,13 @@ const nextConfig = {
         ],
       },
     ];
+  },
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
   },
 };
 
