@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import { faMouse } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import Link from "next/link";
 
 const transitionDelay = 0.65;
 const transitionDuration = 1;
@@ -87,7 +88,7 @@ const Title: FC<Props> = ({
             }}
             layout
             layoutId="frame"
-            className={`md:gap-x-6 gap-x-2 gap-y-8 relative z-20 flex flex-row justify-start items-center`}
+            className={`md:gap-x-6 gap-x-2 gap-y-8 relative z-50 flex flex-row justify-start items-center`}
           >
             {/* Emoji */}
             <motion.div
@@ -129,6 +130,32 @@ const Title: FC<Props> = ({
                 Gus
               </motion.span>
             </motion.h1>
+            <Link
+              href="https://webring.wonderful.software#supratouch.dev"
+              passHref
+            >
+              <motion.a
+                initial={{
+                  opacity: 0,
+                }}
+                animate={{
+                  opacity: 1,
+                  transition: {
+                    delay: 2,
+                    duration: 1,
+                  },
+                }}
+                title="วงแหวนเว็บ"
+                className="z-30 flex flex-col justify-center mr-4"
+              >
+                <Image
+                  alt="วงแหวนเว็บ"
+                  width="28"
+                  height="28"
+                  src="https://webring.wonderful.software/webring.white.svg"
+                />
+              </motion.a>
+            </Link>
           </motion.div>
           <motion.div
             initial={{

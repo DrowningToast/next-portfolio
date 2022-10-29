@@ -7,7 +7,11 @@ const nextConfig = {
     ROOT: __dirname,
   },
   images: {
-    domains: ["localhost", "https://gus-api-blog-cms.herokuapp.com"],
+    domains: [
+      "localhost",
+      "https://gus-api-blog-cms.herokuapp.com",
+      "webring.wonderful.software",
+    ],
   },
   output: "standalone",
   async headers() {
