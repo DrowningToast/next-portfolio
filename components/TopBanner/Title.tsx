@@ -55,11 +55,9 @@ const Title: FC<Props> = ({
         transition={{
           duration: transitionDuration,
         }}
-        className={`w-full h-screen grid place-items-center relative ${
-          !isContinued ? "md:px-9 md:py-8 px-5 py-4" : "px-0 py-0"
-        } ${
-          continueReady && !isContinued ? "cursor-pointer" : "cursor-default"
-        }`}
+        className={`w-full h-screen grid place-items-center relative ${!isContinued ? "md:px-9 md:py-8 px-5 py-4" : "px-0 py-0"
+          } ${continueReady && !isContinued ? "cursor-pointer" : "cursor-default"
+          }`}
       >
         <motion.div
           transition={{
@@ -77,9 +75,8 @@ const Title: FC<Props> = ({
             },
           }}
           onLayoutAnimationComplete={handleTransitionComplete}
-          className={` ${
-            !isContinued ? "border-2" : "border-0"
-          } lg:px-10 md:px-6 px-4 lg:py-8 md:py-6 py-4 border-tertiary w-full h-full relative flex items-start`}
+          className={` ${!isContinued ? "border-2" : "border-0"
+            } lg:px-10 md:px-6 px-4 lg:py-8 md:py-6 py-4 border-tertiary w-full h-full relative flex items-start`}
         >
           {/* Frame */}
           <motion.div
@@ -130,7 +127,7 @@ const Title: FC<Props> = ({
                 Gus
               </motion.span>
             </motion.h1>
-            <Link
+            {/* <Link
               href="https://webring.wonderful.software#supratouch.dev"
               passHref
             >
@@ -155,7 +152,7 @@ const Title: FC<Props> = ({
                   src="https://webring.wonderful.software/webring.white.svg"
                 />
               </motion.a>
-            </Link>
+            </Link> */}
           </motion.div>
           <motion.div
             initial={{
@@ -211,11 +208,10 @@ const Title: FC<Props> = ({
               transition={{
                 duration: transitionDuration,
               }}
-              className={`absolute inset-0 flex flex-col ${
-                !isContinued
+              className={`absolute inset-0 flex flex-col ${!isContinued
                   ? "items-start lg:left-20 left-2"
                   : "lg:items-start items-center lg:h-full h-1/2"
-              }  justify-center text-tertiary font-eb xl:left-20 lg:left-10 z-20 `}
+                }  justify-center text-tertiary font-eb xl:left-20 lg:left-10 z-20 `}
             >
               <motion.h3
                 layout
@@ -231,11 +227,10 @@ const Title: FC<Props> = ({
                 transition={{
                   duration: transitionDuration,
                 }}
-                className={`font-bold text-primary  ${
-                  !isContinued
+                className={`font-bold text-primary  ${!isContinued
                     ? "xl:text-xxxl2 md:text-xxl text-6xl text-start"
                     : "xl:text-xxl2 lg:text-xxl md:text-xxl text-5xl md:text-start text-center"
-                }`}
+                  }`}
               >
                 <AnimatePresence exitBeforeEnter>
                   {!isContinued && (
