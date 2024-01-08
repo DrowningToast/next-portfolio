@@ -117,7 +117,7 @@ const Home: NextPage = () => {
           <Education />
           <Skills />
           {/* <Projects /> */}
-          {true && <LandingBlog />}
+          {/* {true && <LandingBlog />} */}
           <Contact />
         </div>
       </div>
