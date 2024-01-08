@@ -7,7 +7,6 @@ import Intro from "@components/TopBanner/Intro";
 import Title from "@components/TopBanner/Title";
 import type { NextPage } from "next";
 import { motion, useMotionValue, useScroll } from "framer-motion";
-import Head from "next/head";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import useWindowSize from "@components/hooks/useWindowSize";
@@ -63,14 +62,6 @@ const Home: NextPage = () => {
           ],
         }}
       />
-      {/* <Head>
-        <title>Gus' Portfolio</title>
-        <meta name="description" content="Gus' Portfolio" />
-        <meta name="author" content="Supratouch Suwatno" />
-        <meta name="keywords" content="Resume, Portfolio, Web Development" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head> */}
       {beginLoad3D && (
         <motion.div
           initial={{
@@ -93,9 +84,7 @@ const Home: NextPage = () => {
         </motion.div>
       )}
       <div
-        className={`min-h-screen font-eb relative overflow-x-hidden ${
-          scrollReady ? "" : "overflow-y-hidden max-h-screen"
-        }`}
+        className={`min-h-screen font-eb relative overflow-x-hidden ${scrollReady ? "" : "overflow-y-hidden max-h-screen"}`}
       >
         {!introComplete ? (
           <>

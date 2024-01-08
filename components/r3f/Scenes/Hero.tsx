@@ -1,10 +1,6 @@
 import {
-  AdaptiveDpr,
   Environment,
   Loader,
-  OrbitControls,
-  Sphere,
-  Stats,
   useGLTF,
   useTexture,
 } from "@react-three/drei";
@@ -27,7 +23,6 @@ import useWindowSize from "@components/hooks/useWindowSize";
 import { Canvas } from "@react-three/fiber";
 import { GLTF as GLTFThree } from "three/examples/jsm/loaders/GLTFLoader";
 import { Mesh, Material } from "three";
-import { MotionCanvas } from "framer-motion-3d";
 declare module "three-stdlib" {
   export interface GLTF extends GLTFThree {
     nodes: Record<string, Mesh>;
