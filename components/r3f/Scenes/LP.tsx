@@ -1,4 +1,4 @@
-import { Environment, useDetectGPU } from "@react-three/drei";
+import { Environment, } from "@react-three/drei";
 import { FC, Suspense, useCallback, useEffect, useRef, useState } from "react";
 import Patient from "../models/Patient";
 import Camera from "../components/LPCamera";

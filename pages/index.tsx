@@ -1,6 +1,6 @@
 import Education from "@components/Education/Education";
 import Skills from "@components/Skills/Skills";
-import Projects from "@components/Projects/Projects";
+// import Projects from "@components/Projects/Projects";
 import Contact from "@components/Contact/Contact";
 import { NextSeo } from "next-seo";
 import Intro from "@components/TopBanner/Intro";
@@ -10,7 +10,7 @@ import { motion, useMotionValue, useScroll } from "framer-motion";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import useWindowSize from "@components/hooks/useWindowSize";
-import LandingBlog from "@components/Blog/Landing";
+// import LandingBlog from "@components/Blog/Landing";
 const Hero = dynamic(
   () => {
     return import("../components/r3f/Scenes/Hero");
