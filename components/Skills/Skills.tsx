@@ -19,6 +19,13 @@ const row1 = [
   {
     value: "Java",
   },
+  {
+    value: "GraphQL"
+  },
+  {
+    value: "SvelteKit",
+    highlighted: true
+  }
 ];
 const row2 = [
   {
@@ -37,6 +44,9 @@ const row2 = [
   {
     value: "Tailwind",
   },
+  {
+    value: "PostgreSQL"
+  }
 ];
 const row3 = [
   {
@@ -55,6 +65,9 @@ const row3 = [
   {
     value: "C#",
   },
+  {
+    value: "Docker"
+  }
 ];
 const row4 = [
   {
@@ -73,6 +86,9 @@ const row4 = [
     value: "Express",
     highlighted: true,
   },
+  {
+    value: "tRPC"
+  }
 ];
 
 const Skills: React.FC = () => {
@@ -103,11 +119,10 @@ const Skills: React.FC = () => {
               return (
                 <span
                   key={i}
-                  className={`${
-                    !element.highlighted
-                      ? "text-tertiary md:text-4xl text-2xl"
-                      : "text-primary md:text-6xl text-4xl"
-                  } font-semibold text-4xl w-max whitespace-nowrap`}
+                  className={`${!element.highlighted
+                    ? "text-tertiary md:text-4xl text-2xl"
+                    : "text-primary md:text-6xl text-4xl"
+                    } font-semibold text-4xl w-max whitespace-nowrap`}
                 >
                   {element.value}
                 </span>
@@ -117,11 +132,10 @@ const Skills: React.FC = () => {
               return (
                 <span
                   key={i * -1}
-                  className={`${
-                    !element.highlighted
-                      ? "text-tertiary md:text-4xl text-2xl"
-                      : "text-primary md:text-6xl text-4xl"
-                  } font-semibold text-4xl w-max whitespace-nowrap`}
+                  className={`${!element.highlighted
+                    ? "text-tertiary md:text-4xl text-2xl"
+                    : "text-primary md:text-6xl text-4xl"
+                    } font-semibold text-4xl w-max whitespace-nowrap`}
                 >
                   {element.value}
                 </span>
@@ -145,11 +159,10 @@ const Skills: React.FC = () => {
               return (
                 <span
                   key={i}
-                  className={`${
-                    !element.highlighted
-                      ? "text-tertiary md:text-4xl text-2xl"
-                      : "text-primary md:text-6xl text-4xl"
-                  } font-semibold text-4xl w-max whitespace-nowrap`}
+                  className={`${!element.highlighted
+                    ? "text-tertiary md:text-4xl text-2xl"
+                    : "text-primary md:text-6xl text-4xl"
+                    } font-semibold text-4xl w-max whitespace-nowrap`}
                 >
                   {element.value}
                 </span>
@@ -159,11 +172,10 @@ const Skills: React.FC = () => {
               return (
                 <span
                   key={i * -1}
-                  className={`${
-                    !element.highlighted
-                      ? "text-tertiary md:text-4xl text-2xl"
-                      : "text-primary md:text-6xl text-4xl"
-                  } font-semibold text-4xl w-max whitespace-nowrap`}
+                  className={`${!element.highlighted
+                    ? "text-tertiary md:text-4xl text-2xl"
+                    : "text-primary md:text-6xl text-4xl"
+                    } font-semibold text-4xl w-max whitespace-nowrap`}
                 >
                   {element.value}
                 </span>
@@ -187,11 +199,10 @@ const Skills: React.FC = () => {
               return (
                 <span
                   key={i}
-                  className={`${
-                    !element.highlighted
-                      ? "text-tertiary md:text-4xl text-2xl"
-                      : "text-primary md:text-6xl text-4xl"
-                  } font-semibold text-4xl w-max whitespace-nowrap`}
+                  className={`${!element.highlighted
+                    ? "text-tertiary md:text-4xl text-2xl"
+                    : "text-primary md:text-6xl text-4xl"
+                    } font-semibold text-4xl w-max whitespace-nowrap`}
                 >
                   {element.value}
                 </span>
@@ -201,11 +212,10 @@ const Skills: React.FC = () => {
               return (
                 <span
                   key={i * -1}
-                  className={`${
-                    !element.highlighted
-                      ? "text-tertiary md:text-4xl text-2xl"
-                      : "text-primary md:text-6xl text-4xl"
-                  } font-semibold text-4xl w-max whitespace-nowrap`}
+                  className={`${!element.highlighted
+                    ? "text-tertiary md:text-4xl text-2xl"
+                    : "text-primary md:text-6xl text-4xl"
+                    } font-semibold text-4xl w-max whitespace-nowrap`}
                 >
                   {element.value}
                 </span>
@@ -229,11 +239,10 @@ const Skills: React.FC = () => {
               return (
                 <span
                   key={i}
-                  className={`${
-                    !element.highlighted
-                      ? "text-tertiary md:text-4xl text-2xl"
-                      : "text-primary md:text-6xl text-4xl"
-                  } font-semibold text-4xl w-max whitespace-nowrap`}
+                  className={`${!element.highlighted
+                    ? "text-tertiary md:text-4xl text-2xl"
+                    : "text-primary md:text-6xl text-4xl"
+                    } font-semibold text-4xl w-max whitespace-nowrap`}
                 >
                   {element.value}
                 </span>
@@ -243,11 +252,10 @@ const Skills: React.FC = () => {
               return (
                 <span
                   key={i * -1}
-                  className={`${
-                    !element.highlighted
-                      ? "text-tertiary md:text-4xl text-2xl"
-                      : "text-primary md:text-6xl text-4xl"
-                  } font-semibold text-4xl w-max whitespace-nowrap`}
+                  className={`${!element.highlighted
+                    ? "text-tertiary md:text-4xl text-2xl"
+                    : "text-primary md:text-6xl text-4xl"
+                    } font-semibold text-4xl w-max whitespace-nowrap`}
                 >
                   {element.value}
                 </span>
