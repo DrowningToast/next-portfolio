@@ -20,8 +20,9 @@
     "@next/bundle-analyzer": "^12.3.4",
     "@react-hook/resize-observer": "^1.2.6",
     "@react-three/cannon": "^6.6.0",
-    "@react-three/drei": "^9.93.0",
-    "@react-three/fiber": "^8.15.13",
+    "@react-three/drei": "^9.99.0",
+    "@react-three/fiber": "^8.15.16",
+    "@react-three/offscreen": "^0.0.8",
     "autoprefixer": "^10.4.16",
     "axios": "^0.27.2",
     "babel-plugin-glsl": "^1.0.0",
@@ -41,7 +42,7 @@
     "sass": "^1.69.7",
     "tailwindcss": "^3.4.1",
     "three": "^0.143.0",
-    "three-stdlib": "^2.28.12"
+    "three-stdlib": "^2.29.4"
   },
   "devDependencies": {
     "@types/editorjs__header": "^2.6.3",
