@@ -46,7 +46,7 @@ export default function Television({ ...props }) {
               }}
             >
               <motion.div className=" w-34 h-28 flex justify-center items-center flex-col relative">
-                <AnimatePresence exitBeforeEnter>
+                <AnimatePresence mode="wait">
                   {props.selected === null && (
                     <>
                       <motion.h2

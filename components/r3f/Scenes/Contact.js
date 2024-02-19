@@ -22,7 +22,6 @@ import { MotionCanvas } from "framer-motion-3d";
 const ContactScene = ({ selected }) => {
   const Canvas = useRef();
 
-  const [initialLoad, setLoaded] = useState(false);
   const [canvasWidth, setWidth] = useState(0);
   const [canvasHeight, setHeight] = useState(0);
 
@@ -38,7 +37,7 @@ const ContactScene = ({ selected }) => {
     Canvas.current.style.height = "100%";
     setWidth(Canvas.current.parentNode.clientWidth);
     setHeight(Canvas.current.parentNode.clientHeight);
-    return updateState(i++);
+    return updateState((i) => i + 1);
   }, []);
 
   useEffect(() => {

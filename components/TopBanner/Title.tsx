@@ -54,7 +54,7 @@ const Title: FC<Props> = ({
         transition={{
           duration: transitionDuration,
         }}
-        className={`w-full h-screen grid place-items-center relative ${!isContinued ? "md:px-9 md:py-8 px-5 py-4" : "px-0 py-0"
+        className={`w-full h-svh grid place-items-center relative ${!isContinued ? "md:px-9 md:py-8 px-5 py-4" : "px-0 py-0"
           } ${continueReady && !isContinued ? "cursor-pointer" : "cursor-default"
           }`}
       >
@@ -175,7 +175,7 @@ const Title: FC<Props> = ({
               Personal Portfolio
             </h5> */}
             {/* Continue Button */}
-            <AnimatePresence exitBeforeEnter>
+            <AnimatePresence mode="wait">
               {!isContinued && continueReady && (
                 <motion.h5
                   initial={{ opacity: 0 }}
@@ -231,7 +231,7 @@ const Title: FC<Props> = ({
                   : "xl:text-xxl2 lg:text-xxl md:text-xxl text-5xl md:text-start text-center"
                   }`}
               >
-                <AnimatePresence exitBeforeEnter>
+                <AnimatePresence mode="wait">
                   {!isContinued && (
                     <motion.h1
                       key="first"

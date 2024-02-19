@@ -1,4 +1,5 @@
 import {
+  AdaptiveDpr,
   Environment,
   Loader,
   useGLTF,
@@ -59,8 +60,8 @@ const Hero: FC<Props> = ({
 
   useEffect(() => {
     if (!CanvasRef?.current?.style) return;
-    CanvasRef.current.style.width = "100vw";
-    CanvasRef.current.style.height = "100vh";
+    CanvasRef.current.style.width = "100svw";
+    CanvasRef.current.style.height = "100svh";
   }, [CanvasRef.current]);
 
   const scrollYPage = useTransform(
@@ -75,7 +76,7 @@ const Hero: FC<Props> = ({
         <Canvas
           gl={{
             toneMappingExposure: 1.1,
-            antialias: false,
+            antialias: true,
           }}
           dpr={[0.5, 1]}
           style={{ height: "100%", width: "100vw" }}
@@ -83,7 +84,7 @@ const Hero: FC<Props> = ({
           resize={{ scroll: true }}
         >
           <ambientLight color="white" intensity={0.1} />
-          <Environment preset="night" />
+          <Environment preset="city" />
           <Camera />
           {/* Hand */}
           <Suspense fallback={null}>
@@ -110,10 +111,8 @@ const Hero: FC<Props> = ({
               inputRange={[0.65, 0.9, 1.4, 1.6]}
             />
           </Suspense>
-
           <Light mouseX={mouseX} mouseY={mouseY} />
-
-          {/* <AdaptiveDpr pixelated /> */}
+          <AdaptiveDpr pixelated />
         </Canvas>
         <Loader
           initialState={(state) => {

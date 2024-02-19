@@ -5,8 +5,9 @@ const InternScene = dynamic(() => import("@components/r3f/Scenes/Intern"), {
 import React, { Suspense } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
-const Intern: React.FC = ({}) => {
+const Intern: React.FC = ({ }) => {
   return (
     <motion.div
       layout
@@ -123,7 +124,7 @@ const Intern: React.FC = ({}) => {
                   />
                 </div>
               </div>
-              <a
+              <Link
                 className="mt-auto mx-auto self-center md:mt-0 md:mx-0 mb-8 md:mb-0"
                 href="https://internship-five.vercel.app/"
                 target="_blank"
@@ -132,7 +133,7 @@ const Intern: React.FC = ({}) => {
                 <div className="bg-primary rounded-full font-eb md:text-lg text-base font-semibold text-tertiary text-center lg:px-2 lg:py-2 px-14 py-2">
                   Visit the site
                 </div>
-              </a>
+              </Link>
             </motion.div>
           </AnimatePresence>
         </motion.div>

@@ -98,7 +98,7 @@ const Skills: React.FC = () => {
   }, [width]);
 
   return (
-    <section className="h-screen w-full flex flex-col gap-y-16 justify-start items-center py-10 ">
+    <section className="h-svh w-full flex flex-col gap-y-16 justify-start items-center py-10 ">
       <h1 className="font-eb md:text-9xl text-5xl text-white font-bold z-20">
         I can
       </h1>

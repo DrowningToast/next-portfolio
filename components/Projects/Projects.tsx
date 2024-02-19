@@ -28,7 +28,7 @@ const Projects: FC = () => {
   return (
     <div
       ref={target}
-      className="min-h-screen w-full flex flex-col px-8 py-8 flex-grow gap-y-4"
+      className="min-h-svh w-full flex flex-col px-8 py-8 flex-grow gap-y-4"
     >
       <motion.nav
         layout
@@ -54,8 +54,8 @@ const Projects: FC = () => {
           );
         })}
       </motion.nav>
-      <div className="w-full h-screen relative">
-        <AnimatePresence exitBeforeEnter>
+      <div className="w-full h-svh relative">
+        <AnimatePresence mode="wait">
           {initializeCanvas &&
             names.filter((project) => {
               return project.name === selected;

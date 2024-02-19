@@ -18,7 +18,7 @@ const Intro: FC<Props> = ({ handleAnimationComplete }) => {
         layoutId="title"
         key="intro"
         layout
-        className="w-full h-screen  grid place-items-center"
+        className="w-full h-svh  grid place-items-center"
       >
         <motion.div
           layout

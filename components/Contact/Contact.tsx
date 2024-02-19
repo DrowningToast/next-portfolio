@@ -21,32 +21,28 @@ const Contact = () => {
   return (
     <section
       ref={target}
-      className="h-screen text-white w-full lg:px-12 px-4 lg:py-20 pt-10 pb-0 flex justify-start lg:flex-row flex-col items-center z-20 relative"
+      className="h-svh text-white w-full lg:px-12 px-4 lg:py-20 pt-10 pb-0 flex justify-start lg:flex-row flex-col items-center z-20 relative"
     >
       <div className="absolute inset-0 flex flex-row-reverse">
         <div className="lg:w-1/2 w-full h-full relative flex flex-col-reverse">
           <div className="w-full lg:h-1/2 h-1/6 flex justify-center gap-x-24 items-center text-xl underline underline-offset-2">
-            <Link href="https://github.com/DrowningToast">
-              <a
-                onMouseEnter={() => setSelected("github")}
-                onMouseLeave={() => setSelected(null)}
-                className="z-30"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Github
-              </a>
+            <Link
+              onMouseEnter={() => setSelected("github")}
+              onMouseLeave={() => setSelected(null)}
+              className="z-30"
+              target="_blank"
+              rel="noreferrer"
+              href="https://github.com/DrowningToast">
+              Github
             </Link>
-            <Link href="https://www.linkedin.com/in/supratouch-suwatno-7a8608232/">
-              <a
-                onMouseEnter={() => setSelected("linkedin")}
-                onMouseLeave={() => setSelected(null)}
-                className="z-30"
-                target="_blank"
-                rel="noreferrer"
-              >
-                LinkedIn
-              </a>
+            <Link
+              onMouseEnter={() => setSelected("linkedin")}
+              onMouseLeave={() => setSelected(null)}
+              className="z-30"
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.linkedin.com/in/supratouch-suwatno-7a8608232/">
+              LinkedIn
             </Link>
           </div>
         </div>

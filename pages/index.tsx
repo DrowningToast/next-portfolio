@@ -1,4 +1,4 @@
-import Education from "@components/Education/Education";
+import Resume from "@components/Resume/Resume";
 import Skills from "@components/Skills/Skills";
 // import Projects from "@components/Projects/Projects";
 import Contact from "@components/Contact/Contact";
@@ -70,7 +70,7 @@ const Home: NextPage = () => {
           animate={{
             opacity: 1,
           }}
-          className="top-0 fixed min-h-screen w-screen grid place-items-center"
+          className="top-0 fixed min-h-svh w-screen grid place-items-center"
         >
           <Hero
             mouseX={mouseX}
@@ -84,7 +84,7 @@ const Home: NextPage = () => {
         </motion.div>
       )}
       <div
-        className={`min-h-screen font-eb relative overflow-x-hidden ${scrollReady ? "" : "overflow-y-hidden max-h-screen"}`}
+        className={`min-h-svh font-eb relative overflow-x-hidden ${scrollReady ? "" : "overflow-y-hidden max-h-svh"}`}
       >
         {!introComplete ? (
           <>
@@ -114,7 +114,7 @@ const Home: NextPage = () => {
           id="main-content"
           className={`${scrollReady && isContinued ? "" : "opacity-0"}`}
         >
-          <Education />
+          <Resume />
           <Skills />
           {/* <Projects /> */}
           {/* {true && <LandingBlog />} */}

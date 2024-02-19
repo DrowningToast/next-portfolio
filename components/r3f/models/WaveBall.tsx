@@ -1,10 +1,10 @@
 import { useDetectGPU, useTexture } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { extend, useFrame } from "@react-three/fiber";
 import { MotionValue, useTransform } from "framer-motion";
 // import { motion } from "framer-motion-3d";
 
 import React, { RefObject, useEffect, useRef, useState } from "react";
-import { Mesh, MeshStandardMaterial } from "three";
+import { Mesh, MeshStandardMaterial, SphereBufferGeometry } from "three";
 import handleGhost from "../utils/handleGhost";
 
 interface Props {
@@ -119,7 +119,7 @@ const WaveBall = React.forwardRef<Mesh, Props>(
             castShadow
             receiveShadow
           >
-            <sphereBufferGeometry args={[1.5, 128, 128]} />
+            <sphereGeometry args={[1.5, 128, 128]} />
             <meshStandardMaterial
               ref={ballMat}
               map={waterBaseColor}
@@ -137,5 +137,6 @@ const WaveBall = React.forwardRef<Mesh, Props>(
     );
   }
 );
+
 
 export default WaveBall;
