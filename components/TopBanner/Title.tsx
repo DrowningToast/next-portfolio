@@ -11,7 +11,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import { faMouse } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import Link from "next/link";
 
 const transitionDelay = 0.65;
 const transitionDuration = 1;
@@ -209,8 +208,8 @@ const Title: FC<Props> = ({
                 duration: transitionDuration,
               }}
               className={`absolute inset-0 flex flex-col ${!isContinued
-                  ? "items-start lg:left-20 left-2"
-                  : "lg:items-start items-center lg:h-full h-1/2"
+                ? "items-start lg:left-20 left-2"
+                : "lg:items-start items-center lg:h-full h-1/2"
                 }  justify-center text-tertiary font-eb xl:left-20 lg:left-10 z-20 `}
             >
               <motion.h3
@@ -228,8 +227,8 @@ const Title: FC<Props> = ({
                   duration: transitionDuration,
                 }}
                 className={`font-bold text-primary  ${!isContinued
-                    ? "xl:text-xxxl2 md:text-xxl text-6xl text-start"
-                    : "xl:text-xxl2 lg:text-xxl md:text-xxl text-5xl md:text-start text-center"
+                  ? "xl:text-xxxl2 md:text-xxl text-6xl text-start"
+                  : "xl:text-xxl2 lg:text-xxl md:text-xxl text-5xl md:text-start text-center"
                   }`}
               >
                 <AnimatePresence exitBeforeEnter>
