@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { type FC } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect } from "react";
@@ -10,7 +10,7 @@ import dynamic from "next/dynamic";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import { faMouse } from "@fortawesome/free-solid-svg-icons";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { type IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const transitionDelay = 0.65;
 const transitionDuration = 1;
@@ -54,7 +54,7 @@ const Title: FC<Props> = ({
         transition={{
           duration: transitionDuration,
         }}
-        className={`w-full h-svh grid place-items-center relative ${!isContinued ? "md:px-9 md:py-8 px-5 py-4" : "px-0 py-0"
+        className={`relative grid h-svh w-full place-items-center ${!isContinued ? "px-5 py-4 md:px-9 md:py-8" : "p-0"
           } ${continueReady && !isContinued ? "cursor-pointer" : "cursor-default"
           }`}
       >
@@ -75,7 +75,7 @@ const Title: FC<Props> = ({
           }}
           onLayoutAnimationComplete={handleTransitionComplete}
           className={` ${!isContinued ? "border-2" : "border-0"
-            } lg:px-10 md:px-6 px-4 lg:py-8 md:py-6 py-4 border-tertiary w-full h-full relative flex items-start`}
+            } relative flex size-full items-start border-tertiary p-4 md:p-6 lg:px-10 lg:py-8`}
         >
           {/* Frame */}
           <motion.div
@@ -84,7 +84,7 @@ const Title: FC<Props> = ({
             }}
             layout
             layoutId="frame"
-            className={`md:gap-x-6 gap-x-2 gap-y-8 relative z-50 flex flex-row justify-start items-center`}
+            className={`relative z-50 flex flex-row items-center justify-start gap-x-2 gap-y-8 md:gap-x-6`}
           >
             {/* Emoji */}
             <motion.div
@@ -93,7 +93,7 @@ const Title: FC<Props> = ({
               transition={{
                 duration: transitionDuration / 2,
               }}
-              className="relative md:w-12 md:h-12 w-6 h-6"
+              className="relative size-6 md:size-12"
             >
               <Image
                 src="/assets/png/waving-hand.png"
@@ -108,7 +108,7 @@ const Title: FC<Props> = ({
               }}
               layout
               layoutId="introductionTitle"
-              className="text-tertiary lg:text-4xl md:text-3xl text-2xl font-semibold gap-x-4"
+              className="gap-x-4 text-2xl font-semibold text-tertiary md:text-3xl lg:text-4xl"
             >
               Hi, my name is{" "}
               <motion.span
@@ -164,10 +164,10 @@ const Title: FC<Props> = ({
                 duration: transitionDuration,
               },
             }}
-            className="absolute inset-0 md:py-10 md:px-16 sm:px-3 px-2 pt-16 pb-3 flex justify-between"
+            className="absolute inset-0 flex justify-between px-2 pb-3 pt-16 sm:px-3 md:px-16 md:py-10"
           >
             {/* Today Date */}
-            <h5 className=" text-white self-end md:text-base text-xs">
+            <h5 className=" self-end text-xs text-white md:text-base">
               {new Date().toDateString()}
             </h5>
             {/* Personal Portfolio */}
@@ -184,7 +184,7 @@ const Title: FC<Props> = ({
                     transition: { delay: transitionDuration },
                   }}
                   exit={{ opacity: 0 }}
-                  className="absolute top-3/4 left-1/2 transform -translate-x-1/2 font-eb text-xl text-center self-center py-2 border-t-2 border-b-2 border-tertiary px-4 text-white z-50"
+                  className="font-eb absolute left-1/2 top-3/4 z-50 -translate-x-1/2 self-center border-y-2 border-tertiary px-4 py-2 text-center text-xl text-white"
                 >
                   Click any where to continue
                 </motion.h5>
@@ -208,16 +208,16 @@ const Title: FC<Props> = ({
                 duration: transitionDuration,
               }}
               className={`absolute inset-0 flex flex-col ${!isContinued
-                ? "items-start lg:left-20 left-2"
-                : "lg:items-start items-center lg:h-full h-1/2"
-                }  justify-center text-tertiary font-eb xl:left-20 lg:left-10 z-20 `}
+                ? "left-2 items-start lg:left-20"
+                : "h-1/2 items-center lg:h-full lg:items-start"
+                }  font-eb z-20 justify-center text-tertiary lg:left-10 xl:left-20 `}
             >
               <motion.h3
                 layout
                 onLayoutAnimationComplete={() => {
                   if (isContinued) finishedContinue();
                 }}
-                className="font-semibold lg:text-4xl md:text-3xl text-2xl uppercase"
+                className="text-2xl font-semibold uppercase md:text-3xl lg:text-4xl"
               >
                 And I make
               </motion.h3>
@@ -227,8 +227,8 @@ const Title: FC<Props> = ({
                   duration: transitionDuration,
                 }}
                 className={`font-bold text-primary  ${!isContinued
-                  ? "xl:text-xxxl2 md:text-xxl text-6xl text-start"
-                  : "xl:text-xxl2 lg:text-xxl md:text-xxl text-5xl md:text-start text-center"
+                  ? "text-start text-6xl md:text-xxl xl:text-xxxl2"
+                  : "text-center text-5xl md:text-start md:text-xxl lg:text-xxl xl:text-xxl2"
                   }`}
               >
                 <AnimatePresence mode="wait">
@@ -295,10 +295,10 @@ const Title: FC<Props> = ({
                 delay: 3,
               },
             }}
-            className="absolute top-3/4 left-1/2 md:left-1/4 -translate-x-1/2"
+            className="absolute left-1/2 top-3/4 -translate-x-1/2 md:left-1/4"
           >
-            <motion.div className="p-2 border-2 border-white grid place-items-center rounded-full cursor-pointer z-50 transform -translate-x-1/2">
-              <motion.div className="w-8 h-8 text-white grid place-items-center">
+            <motion.div className="z-50 grid -translate-x-1/2 cursor-pointer place-items-center rounded-full border-2 border-white p-2">
+              <motion.div className="grid size-8 place-items-center text-white">
                 <FontAwesomeIcon
                   className="scale-150"
                   icon={faMouse as IconProp}

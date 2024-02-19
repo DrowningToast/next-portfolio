@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, useInView } from "framer-motion";
-import { useState, FC, ReactElement, useRef } from "react";
+import { useState, type FC, type ReactElement, useRef } from "react";
 import Intern from "./Intern/Intern";
 import LittlePatient from "./LittlePatient/LittlePatient";
 
@@ -28,11 +28,11 @@ const Projects: FC = () => {
   return (
     <div
       ref={target}
-      className="min-h-svh w-full flex flex-col px-8 py-8 flex-grow gap-y-4"
+      className="flex min-h-svh w-full grow flex-col gap-y-4 p-8"
     >
       <motion.nav
         layout
-        className="text-primary text-x; md:text-3xl font-semibold flex justify-start items-center gap-x-12 md:ml-8"
+        className="text-x; flex items-center justify-start gap-x-12 font-semibold text-primary md:ml-8 md:text-3xl"
       >
         {names.map((name, index) => {
           return (
@@ -47,14 +47,14 @@ const Projects: FC = () => {
                 <motion.div
                   layout
                   layoutId="underline"
-                  className="w-full h-0.5 rounded-full bg-primary mt-0.5"
+                  className="mt-0.5 h-0.5 w-full rounded-full bg-primary"
                 ></motion.div>
               )}
             </motion.div>
           );
         })}
       </motion.nav>
-      <div className="w-full h-svh relative">
+      <div className="relative h-svh w-full">
         <AnimatePresence mode="wait">
           {initializeCanvas &&
             names.filter((project) => {

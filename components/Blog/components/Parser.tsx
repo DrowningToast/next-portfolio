@@ -1,7 +1,7 @@
 import useCMSpath from "@components/utils/useCMSpath";
 import Image from "next/image";
-import { FC } from "react";
-import { Block, BlogContent } from "types/blogContent";
+import { type FC } from "react";
+import { type Block, type BlogContent } from "types/blogContent";
 
 interface Props {
   content: BlogContent;
@@ -36,8 +36,8 @@ const Parser: FC<_parserProp> = ({ block }) => {
       return (
         <p
           key={`blogcontent-${block.id}`}
-          className="text-white font-kanit md:text-lg text-base"
-          dangerouslySetInnerHTML={createMarkup(block.data.text!)}
+          className="font-kanit text-base text-white md:text-lg"
+          dangerouslySetInnerHTML={createMarkup(block.data.text)}
         ></p>
       );
     case "header":
@@ -45,9 +45,9 @@ const Parser: FC<_parserProp> = ({ block }) => {
         <h2
           key={`blogcontent-${block.id}`}
           className={`md:text-${
-            6 - block.data.level!
-          }xl text-3xl text-secondary font-medium`}
-          dangerouslySetInnerHTML={createMarkup(block.data.text!)}
+            6 - block.data.level
+          }xl text-3xl font-medium text-secondary`}
+          dangerouslySetInnerHTML={createMarkup(block.data.text)}
         ></h2>
       );
     case "list":
@@ -56,9 +56,9 @@ const Parser: FC<_parserProp> = ({ block }) => {
           <>
             <ul
               key={`blogcontent-${block.id}`}
-              className="flex-col flex gap-y-2 list-disc px-2 text-white md:text-lg text-sm font-kanit"
+              className="font-kanit flex list-disc flex-col gap-y-2 px-2 text-sm text-white md:text-lg"
             >
-              {block.data.items!.map((item, index) => {
+              {block.data.items.map((item, index) => {
                 return (
                   <li
                     key={`blogcontent-${block.id}-${index}`}
@@ -73,9 +73,9 @@ const Parser: FC<_parserProp> = ({ block }) => {
         return (
           <ol
             key={block.id}
-            className="flex-col flex gap-y-2 px-2 list-decimal text-white md:text-lg text-sm font-kanit"
+            className="font-kanit flex list-decimal flex-col gap-y-2 px-2 text-sm text-white md:text-lg"
           >
-            {block.data.items!.map((item, index) => {
+            {block.data.items.map((item, index) => {
               return (
                 <li
                   className="before:content[- ]"
@@ -90,8 +90,8 @@ const Parser: FC<_parserProp> = ({ block }) => {
     case "code":
       return (
         <code
-          dangerouslySetInnerHTML={createMarkup(block.data.code!)}
-          className="text-white bg-slate-800 text-xs px-3 py-6 whitespace-pre-wrap"
+          dangerouslySetInnerHTML={createMarkup(block.data.code)}
+          className="whitespace-pre-wrap bg-slate-800 px-3 py-6 text-xs text-white"
         ></code>
       );
     case "quote":
@@ -100,13 +100,13 @@ const Parser: FC<_parserProp> = ({ block }) => {
           className={`text-${block.data.alignment} flex flex-col gap-y-4 md:my-10`}
         >
           <q
-            className="text-white font-semibold italic md:text-3xl text-lg font-kanit whitespace-pre-wrap"
-            dangerouslySetInnerHTML={createMarkup(block.data.text!)}
+            className="font-kanit whitespace-pre-wrap text-lg font-semibold italic text-white md:text-3xl"
+            dangerouslySetInnerHTML={createMarkup(block.data.text)}
           ></q>
 
           <span
-            className="text-gray-200 font-medium text-sm text-right"
-            dangerouslySetInnerHTML={createMarkup(block.data.caption!)}
+            className="text-right text-sm font-medium text-gray-200"
+            dangerouslySetInnerHTML={createMarkup(block.data.caption)}
           ></span>
         </section>
       );
@@ -114,19 +114,19 @@ const Parser: FC<_parserProp> = ({ block }) => {
       return (
         <figure
           key={block.id}
-          className="flex flex-col items-center justify-start w-full gap-y-2"
+          className="flex w-full flex-col items-center justify-start gap-y-2"
         >
           <Image
             unoptimized
-            src={`${cmsPath}${block.data.file!.url}`}
-            width={block.data.file!.width}
-            height={block.data.file!.height}
-            alt={`${block.data.file!.alt} related image`}
+            src={`${cmsPath}${block.data.file.url}`}
+            width={block.data.file.width}
+            height={block.data.file.height}
+            alt={`${block.data.file.alt} related image`}
           />
           {block.data.caption && (
             <figcaption
-              dangerouslySetInnerHTML={createMarkup(block.data.caption!)}
-              className="text-gray-400 text-sm md:text-base text-center"
+              dangerouslySetInnerHTML={createMarkup(block.data.caption)}
+              className="text-center text-sm text-gray-400 md:text-base"
             ></figcaption>
           )}
         </figure>

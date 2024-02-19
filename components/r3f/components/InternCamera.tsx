@@ -1,8 +1,8 @@
 import useWindowSize from "@components/hooks/useWindowSize";
 import { useThree } from "@react-three/fiber";
-import { useRef, useEffect, FC } from "react";
+import { useRef, useEffect, type FC } from "react";
 import { LayoutCamera } from "framer-motion-3d";
-import { PerspectiveCamera } from "three";
+import { type PerspectiveCamera } from "three";
 
 interface Props {
   canvasWidth: number;

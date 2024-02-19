@@ -7,9 +7,9 @@ import {
 } from "@react-three/drei";
 import Light from "../components/Light";
 import {
-  Dispatch,
-  FC,
-  SetStateAction,
+  type Dispatch,
+  type FC,
+  type SetStateAction,
   Suspense,
   useEffect,
   useRef,
@@ -19,11 +19,11 @@ import WaveBall from "../models/WaveBall";
 import Hand from "../models/Hand";
 import Bust from "../models/Bust";
 import Camera from "../components/MainCamera";
-import { MotionValue, useTransform } from "framer-motion";
+import { type MotionValue, useTransform } from "framer-motion";
 import useWindowSize from "@components/hooks/useWindowSize";
 import { Canvas } from "@react-three/fiber";
-import { GLTF as GLTFThree } from "three/examples/jsm/loaders/GLTFLoader";
-import { Mesh, Material } from "three";
+import { type GLTF as GLTFThree } from "three/examples/jsm/loaders/GLTFLoader";
+import { type Mesh, type Material } from "three";
 declare module "three-stdlib" {
   export interface GLTF extends GLTFThree {
     nodes: Record<string, Mesh>;

@@ -2,8 +2,8 @@ import useWindowSize from "@components/hooks/useWindowSize";
 import { OrthographicCamera } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { useScroll } from "framer-motion";
-import { FC, useEffect, useMemo, useRef } from "react";
-import { OrthographicCamera as iOrthograhpicCamera } from "three";
+import { type FC, useEffect, useMemo, useRef } from "react";
+import { type OrthographicCamera as iOrthograhpicCamera } from "three";
 import getBaseRotationMatrix from "../utils/getBaseRotationMatrix";
 
 interface Props {
@@ -31,15 +31,15 @@ const Camera: FC<Props> = ({ canvasWidth, canvasHeight, i }) => {
   }, [width]);
 
   const trackTarget = (e: DeviceOrientationEvent) => {
-    if (e.beta! > 86 && e.beta! < 94) return;
+    if (e.beta > 86 && e.beta < 94) return;
 
     // Calculate the rotation matrix from the euler angles
-    let rotationMatrix = getBaseRotationMatrix(
-      e.alpha!,
-      e.beta! - 90,
-      e.gamma!
+    const rotationMatrix = getBaseRotationMatrix(
+      e.alpha,
+      e.beta - 90,
+      e.gamma
     );
-    let TCameraPosition = [
+    const TCameraPosition = [
       rotationMatrix[0] * basePosition.x +
         rotationMatrix[1] * basePosition.y +
         rotationMatrix[2] * basePosition.z,
@@ -51,14 +51,14 @@ const Camera: FC<Props> = ({ canvasWidth, canvasHeight, i }) => {
         rotationMatrix[8] * basePosition.z,
     ];
 
-    let position = {
+    const position = {
       x: TCameraPosition[0],
       y: TCameraPosition[1],
       z: TCameraPosition[2],
     };
 
-    camera.current!.position.set(position.x, position.y, position.z);
-    camera.current!.lookAt(0, -14, 0);
+    camera.current.position.set(position.x, position.y, position.z);
+    camera.current.lookAt(0, -14, 0);
   };
 
   useEffect(() => {
@@ -68,7 +68,7 @@ const Camera: FC<Props> = ({ canvasWidth, canvasHeight, i }) => {
     camera.current.top = canvasHeight / 2;
     camera.current.bottom = canvasHeight / -2;
 
-    camera.current!.updateProjectionMatrix!();
+    camera.current.updateProjectionMatrix();
     renderer.setSize(canvasWidth, canvasHeight);
   }, [i]);
 

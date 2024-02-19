@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { type FC } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -18,18 +18,18 @@ const Intro: FC<Props> = ({ handleAnimationComplete }) => {
         layoutId="title"
         key="intro"
         layout
-        className="w-full h-svh  grid place-items-center"
+        className="grid h-svh  w-full place-items-center"
       >
         <motion.div
           layout
           layoutId="border"
-          className={`border-tertiary border-0 w-full h-full relative flex items-center justify-center`}
+          className={`relative flex size-full items-center justify-center border-0 border-tertiary`}
         >
           {/* Frame */}
           <motion.div
             layout
             layoutId="frame"
-            className="flex flex-col gap-y-6 items-center justify-center"
+            className="flex flex-col items-center justify-center gap-y-6"
           >
             {/* Emoji Client Only */}
             <motion.div
@@ -38,7 +38,7 @@ const Intro: FC<Props> = ({ handleAnimationComplete }) => {
               }}
               layout
               layoutId="wave"
-              className="relative md:w-xxxl2 md:h-xxxl2 w-xxxl h-xxxl"
+              className="relative h-xxxl w-xxxl md:h-xxxl2 md:w-xxxl2"
             >
               <Image
                 src="/assets/png/waving-hand.png"
@@ -63,13 +63,13 @@ const Intro: FC<Props> = ({ handleAnimationComplete }) => {
               }}
               layout
               layoutId="introductionTitle"
-              className="inline-block text-tertiary lg:text-8xl md:text-6xl text-4xl font-semibold"
+              className="inline-block text-4xl font-semibold text-tertiary md:text-6xl lg:text-8xl"
             >
               Hi, my name is{" "}
               <motion.span
                 layout
                 layoutId="gus"
-                className="text-primary inline-block "
+                className="inline-block text-primary "
               >
                 Gus
               </motion.span>
@@ -89,7 +89,7 @@ const Intro: FC<Props> = ({ handleAnimationComplete }) => {
               }}
               layout
               onAnimationComplete={handleAnimationComplete}
-              className="inline-block font-helvetica font-extralight text-tertiary md:text-2xl text-lg tracking-widest	"
+              className="font-helvetica inline-block text-lg font-extralight tracking-widest text-tertiary md:text-2xl	"
             >
               Full-stack Developer
             </motion.h4>

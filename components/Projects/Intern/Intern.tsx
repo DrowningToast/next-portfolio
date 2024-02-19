@@ -24,11 +24,11 @@ const Intern: React.FC = ({ }) => {
         opacity: 0,
       }}
       key={"internship-report"}
-      className={`bg-intern cursor-pointer lg:rounded-none rounded-xl overflow-hidden absolute md:inset-8 inset-2`}
+      className={`absolute inset-2 cursor-pointer overflow-hidden rounded-xl bg-intern md:inset-8 lg:rounded-none`}
     >
       <motion.div
         layout
-        className={`absolute inset-0 z-40 rounded-lg overflow-hidden lg:rounded-none md:overflow-auto`}
+        className={`absolute inset-0 z-40 overflow-hidden rounded-lg md:overflow-auto lg:rounded-none`}
       >
         <Suspense fallback={null}>
           {InternScene && <InternScene selected={true} />}
@@ -51,22 +51,22 @@ const Intern: React.FC = ({ }) => {
               duration: 0.1,
             },
           }}
-          className={`absolute flex flex-col items-start md:px-20 px-4 md:gap-y-6 gap-y-2 max-w-3xl min-h-full inset-0 md:py-16 py-8 justify-start `}
+          className={`absolute inset-0 flex min-h-full max-w-3xl flex-col items-start justify-start gap-y-2 px-4 py-8 md:gap-y-6 md:px-20 md:py-16 `}
         >
           <motion.div
-            className="flex items-center md:gap-x-6 gap-x-4 text-4xl justify-center md:justify-start w-full"
+            className="flex w-full items-center justify-center gap-x-4 text-4xl md:justify-start md:gap-x-6"
             layout
           >
             <motion.h1
               layout
-              className={`font-eb font-bold lg:text-8xl md:text-6xl text-4xl md:text-start text-center text-primary`}
+              className={`font-eb text-center text-4xl font-bold text-primary md:text-start md:text-6xl lg:text-8xl`}
             >
               INTERNSHIP
             </motion.h1>
           </motion.div>
           <motion.h2
             layout
-            className="font-helvetica lg:text-xl md:text-2xl text-xs text-center text-secondary md:w-auto md:inline w-full inline-block"
+            className="font-helvetica inline-block w-full text-center text-xs text-secondary md:inline md:w-auto md:text-2xl lg:text-xl"
           >
             Computer major internship website
           </motion.h2>
@@ -74,7 +74,7 @@ const Intern: React.FC = ({ }) => {
             <motion.p
               key="description"
               layout
-              className="md:text-base text-xs text-secondary font-helvetica"
+              className="font-helvetica text-xs text-secondary md:text-base"
             >
               During summer 2021, It’s required that for grade 11 students to
               take an internship for a specific amount of hours. The internship
@@ -104,16 +104,16 @@ const Intern: React.FC = ({ }) => {
                 },
               }}
               layout
-              className="md:mt-auto md:flex-grow-0 flex-grow md:block flex flex-col md:w-auto w-full"
+              className="flex w-full grow flex-col md:mt-auto md:block md:w-auto md:grow-0"
             >
               <motion.span
                 layout
-                className="md:text-lg text-sm text-secondary font-helvetica"
+                className="font-helvetica text-sm text-secondary md:text-lg"
               >
                 Supported and deployed on
               </motion.span>
-              <div className="flex-start items-center md:h-24 h-10 relative w-full gap-x-4 mt-4 ">
-                <div className="md:w-auto w-28">
+              <div className="flex-start relative mt-4 h-10 w-full items-center gap-x-4 md:h-24 ">
+                <div className="w-28 md:w-auto">
                   <Image
                     src="/assets/png/swu.png"
                     layout="intrinsic"
@@ -125,12 +125,12 @@ const Intern: React.FC = ({ }) => {
                 </div>
               </div>
               <Link
-                className="mt-auto mx-auto self-center md:mt-0 md:mx-0 mb-8 md:mb-0"
+                className="mx-auto mb-8 mt-auto self-center md:m-0"
                 href="https://internship-five.vercel.app/"
                 target="_blank"
                 rel="noreferrer"
               >
-                <div className="bg-primary rounded-full font-eb md:text-lg text-base font-semibold text-tertiary text-center lg:px-2 lg:py-2 px-14 py-2">
+                <div className="font-eb rounded-full bg-primary px-14 py-2 text-center text-base font-semibold text-tertiary md:text-lg lg:p-2">
                   Visit the site
                 </div>
               </Link>

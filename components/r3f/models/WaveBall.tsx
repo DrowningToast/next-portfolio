@@ -1,10 +1,10 @@
 import { useDetectGPU, useTexture } from "@react-three/drei";
 import { extend, useFrame } from "@react-three/fiber";
-import { MotionValue, useTransform } from "framer-motion";
+import { type MotionValue, useTransform } from "framer-motion";
 // import { motion } from "framer-motion-3d";
 
-import React, { RefObject, useEffect, useRef, useState } from "react";
-import { Mesh, MeshStandardMaterial, SphereBufferGeometry } from "three";
+import React, { type RefObject, useEffect, useRef, useState } from "react";
+import { type Mesh, type MeshStandardMaterial, SphereBufferGeometry } from "three";
 import handleGhost from "../utils/handleGhost";
 
 interface Props {

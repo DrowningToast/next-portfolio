@@ -1,8 +1,8 @@
 import { Sphere } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { MotionValue, useSpring, useTransform } from "framer-motion";
-import { FC, useRef } from "react";
-import { Group, Mesh, Object3D, SpotLight } from "three";
+import { type MotionValue, useSpring, useTransform } from "framer-motion";
+import { type FC, useRef } from "react";
+import { Group, Mesh, Object3D, type SpotLight } from "three";
 
 interface Props {
   mouseX: MotionValue<number>;

@@ -1,4 +1,4 @@
-import { motion, Transition } from "framer-motion";
+import { motion, type Transition } from "framer-motion";
 import React from "react";
 
 interface Props {
@@ -31,7 +31,7 @@ const AnimatedLetters: React.FC<Props> = ({ title, disabled, windUp }) => {
 
   return (
     <motion.span
-      className="relative inline-block nowrap"
+      className="nowrap relative inline-block"
       variants={container}
       initial="hidden"
       animate="visible"
@@ -39,7 +39,7 @@ const AnimatedLetters: React.FC<Props> = ({ title, disabled, windUp }) => {
       {[...title].map((letter, index) => (
         <motion.span
           key={index}
-          className="relative inline-block nowrap"
+          className="nowrap relative inline-block"
           variants={letterAni}
         >
           {letter}

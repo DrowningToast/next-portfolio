@@ -21,11 +21,11 @@ const Contact = () => {
   return (
     <section
       ref={target}
-      className="h-svh text-white w-full lg:px-12 px-4 lg:py-20 pt-10 pb-0 flex justify-start lg:flex-row flex-col items-center z-20 relative"
+      className="relative z-20 flex h-svh w-full flex-col items-center justify-start px-4 pb-0 pt-10 text-white lg:flex-row lg:px-12 lg:py-20"
     >
       <div className="absolute inset-0 flex flex-row-reverse">
-        <div className="lg:w-1/2 w-full h-full relative flex flex-col-reverse">
-          <div className="w-full lg:h-1/2 h-1/6 flex justify-center gap-x-24 items-center text-xl underline underline-offset-2">
+        <div className="relative flex size-full flex-col-reverse lg:w-1/2">
+          <div className="flex h-1/6 w-full items-center justify-center gap-x-24 text-xl underline underline-offset-2 lg:h-1/2">
             <Link
               onMouseEnter={() => setSelected("github")}
               onMouseLeave={() => setSelected(null)}
@@ -47,11 +47,11 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <div className="lg:w-1/2 w-full lg:h-full h-1/2 flex flex-col justify-center items-start gap-y-2 lg:pr-12 lg:pl-0 px-16">
-        <h2 className="text-4xl font-semibold text-white font-eb uppercase">
+      <div className="flex h-1/2 w-full flex-col items-start justify-center gap-y-2 px-16 lg:h-full lg:w-1/2 lg:pl-0 lg:pr-12">
+        <h2 className="font-eb text-4xl font-semibold uppercase text-white">
           I make
         </h2>
-        <h1 className="uppercase font-bold xl:text-8xl md:text-6xl text-5xl text-primary self-center">
+        <h1 className="self-center text-5xl font-bold uppercase text-primary md:text-6xl xl:text-8xl">
           {ReactTypingEffect && (
             <ReactTypingEffect
               text={words.map((word) => {
@@ -66,11 +66,11 @@ const Contact = () => {
             />
           )}
         </h1>
-        <h2 className="text-4xl font-semibold text-white font-eb uppercase self-end">
+        <h2 className="font-eb self-end text-4xl font-semibold uppercase text-white">
           Websites
         </h2>
       </div>
-      <div className="lg:w-1/2 w-full lg:h-full h-1/2 relative">
+      <div className="relative h-1/2 w-full lg:h-full lg:w-1/2">
         {inView && ContactScene && <ContactScene selected={selected} />}
       </div>
     </section>

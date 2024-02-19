@@ -70,7 +70,7 @@ const Home: NextPage = () => {
           animate={{
             opacity: 1,
           }}
-          className="top-0 fixed min-h-svh w-screen grid place-items-center"
+          className="fixed top-0 grid min-h-svh w-screen place-items-center"
         >
           <Hero
             mouseX={mouseX}
@@ -84,7 +84,7 @@ const Home: NextPage = () => {
         </motion.div>
       )}
       <div
-        className={`min-h-svh font-eb relative overflow-x-hidden ${scrollReady ? "" : "overflow-y-hidden max-h-svh"}`}
+        className={`font-eb relative min-h-svh overflow-x-hidden ${scrollReady ? "" : "max-h-svh overflow-y-hidden"}`}
       >
         {!introComplete ? (
           <>

@@ -1,9 +1,9 @@
-import { FC } from "react";
+import { type FC } from "react";
 import { motion } from "framer-motion";
 
 const Marquee: FC = () => {
   return (
-    <div className="flex justify-start items-center lg:gap-x-12 gap-x-6 w-max">
+    <div className="flex w-max items-center justify-start gap-x-6 lg:gap-x-12">
       {Array.from(Array(15).keys()).map((i) => {
         return (
           <motion.span
@@ -19,7 +19,7 @@ const Marquee: FC = () => {
               },
             }}
             key={i}
-            className="inline-block my-4 text-tertiary text-opacity-50 shadow-lg text-lg md:text-2xl w-max whitespace-nowrap"
+            className="my-4 inline-block w-max whitespace-nowrap text-lg text-tertiary text-opacity-50 shadow-lg md:text-2xl"
           >
             My latest blog
           </motion.span>

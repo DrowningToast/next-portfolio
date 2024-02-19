@@ -1,32 +1,32 @@
-var degtorad = Math.PI / 180; // Degree-to-Radian conversion
+const degtorad = Math.PI / 180; // Degree-to-Radian conversion
 
 function getRotationMatrix(alpha: number, beta: number, gamma: number) {
-  var _x = beta ? beta * degtorad : 0; // beta value
-  var _y = gamma ? gamma * degtorad : 0; // gamma value
-  var _z = alpha ? alpha * degtorad : 0; // alpha value
+  const _x = beta ? beta * degtorad : 0; // beta value
+  const _y = gamma ? gamma * degtorad : 0; // gamma value
+  const _z = alpha ? alpha * degtorad : 0; // alpha value
 
-  var cX = Math.cos(_x);
-  var cY = Math.cos(_y);
-  var cZ = Math.cos(_z);
-  var sX = Math.sin(_x);
-  var sY = Math.sin(_y);
-  var sZ = Math.sin(_z);
+  const cX = Math.cos(_x);
+  const cY = Math.cos(_y);
+  const cZ = Math.cos(_z);
+  const sX = Math.sin(_x);
+  const sY = Math.sin(_y);
+  const sZ = Math.sin(_z);
 
   //
   // ZXY rotation matrix construction.
   //
 
-  var m11 = cZ * cY - sZ * sX * sY;
-  var m12 = -cX * sZ;
-  var m13 = cY * sZ * sX + cZ * sY;
+  const m11 = cZ * cY - sZ * sX * sY;
+  const m12 = -cX * sZ;
+  const m13 = cY * sZ * sX + cZ * sY;
 
-  var m21 = cY * sZ + cZ * sX * sY;
-  var m22 = cZ * cX;
-  var m23 = sZ * sY - cZ * cY * sX;
+  const m21 = cY * sZ + cZ * sX * sY;
+  const m22 = cZ * cX;
+  const m23 = sZ * sY - cZ * cY * sX;
 
-  var m31 = -cX * sY;
-  var m32 = sX;
-  var m33 = cX * cY;
+  const m31 = -cX * sY;
+  const m32 = sX;
+  const m33 = cX * cY;
 
   return [m11, m12, m13, m21, m22, m23, m31, m32, m33];
 }

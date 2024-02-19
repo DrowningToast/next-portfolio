@@ -1,7 +1,7 @@
 import { useThree } from "@react-three/fiber";
-import { FC, useEffect, useRef } from "react";
+import { type FC, useEffect, useRef } from "react";
 import useWindowSize from "../../hooks/useWindowSize";
-import { PerspectiveCamera as ThreePerspectiveCamera } from "three";
+import { type PerspectiveCamera as ThreePerspectiveCamera } from "three";
 import { PerspectiveCamera } from "@react-three/drei";
 
 const Camera: FC = () => {

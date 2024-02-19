@@ -130,7 +130,7 @@ export default function Tv({ ...props }) {
                 delay: 0,
               }}
             >
-              <motion.div className="w-34 h-28 flex justify-center items-center flex-col relative">
+              <motion.div className="w-34 relative flex h-28 flex-col items-center justify-center">
                 <AnimatePresence mode="wait">
                   {props.selected === null && (
                     <>
@@ -160,7 +160,7 @@ export default function Tv({ ...props }) {
                         exit={{
                           opacity: 0,
                         }}
-                        className="text-2xl pointer-events-none"
+                        className="pointer-events-none text-2xl"
                       >
                         Get in touch!
                       </motion.h1>

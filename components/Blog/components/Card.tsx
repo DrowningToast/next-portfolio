@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { type FC, useState } from "react";
 import { motion } from "framer-motion";
 import useCMSpath from "@components/utils/useCMSpath";
 import Link from "next/link";
@@ -21,7 +21,7 @@ const Card: FC<Props> = ({ title, backgroundURL, slug }) => {
       target={"_blank"}
       rel="noreferrer"
     >
-      <div className="xl:w-[560px] lg:w-[460px] md:w-96 w-80 md:aspect-video min-h-[190px] relative cursor-pointer">
+      <div className="relative min-h-[190px] w-80 cursor-pointer md:aspect-video md:w-96 lg:w-[460px] xl:w-[560px]">
         <motion.div
           animate={{
             x: "2%",
@@ -34,7 +34,7 @@ const Card: FC<Props> = ({ title, backgroundURL, slug }) => {
               type: "linear",
             },
           }}
-          className="absolute inset-0 border-[4px] border-white rounded-lg"
+          className="absolute inset-0 rounded-lg border-[4px] border-white"
         ></motion.div>
         <motion.div
           style={{
@@ -48,9 +48,9 @@ const Card: FC<Props> = ({ title, backgroundURL, slug }) => {
           //   x: "0%",
           //   y: "0%",
           // }}
-          className="pointer-events-none bg-cover bg-center bg-no-repeat overflow-hidden absolute inset-0  border-white rounded-lg"
+          className="pointer-events-none absolute inset-0 overflow-hidden rounded-lg border-white bg-cover  bg-center bg-no-repeat"
         >
-          <span className="uppercase bg-white px-2 py-1 rounded-lg md:text-base text-sm font-extrabold text-primary font-mono md:top-4 md:left-4 top-2 left-2 absolute">
+          <span className="absolute left-2 top-2 rounded-lg bg-white px-2 py-1 font-mono text-sm font-extrabold uppercase text-primary md:left-4 md:top-4 md:text-base">
             Event
           </span>
           <motion.article
@@ -67,10 +67,10 @@ const Card: FC<Props> = ({ title, backgroundURL, slug }) => {
             //     type: "tween",
             //   },
             // }}
-            className={`absolute transform 
-                block w-full bg-white px-2 py-1 bottom-0 shadow-2xl`}
+            className={`absolute bottom-0 
+                block w-full bg-white px-2 py-1 shadow-2xl`}
           >
-            <header className="font-sans lg:text-xl md:text-lg font-semibold py-0.5">
+            <header className="py-0.5 font-sans font-semibold md:text-lg lg:text-xl">
               {title ??
                 `
                     Placeholder Title

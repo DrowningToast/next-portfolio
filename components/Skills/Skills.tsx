@@ -98,12 +98,12 @@ const Skills: React.FC = () => {
   }, [width]);
 
   return (
-    <section className="h-svh w-full flex flex-col gap-y-16 justify-start items-center py-10 ">
-      <h1 className="font-eb md:text-9xl text-5xl text-white font-bold z-20">
+    <section className="flex h-svh w-full flex-col items-center justify-start gap-y-16 py-10 ">
+      <h1 className="font-eb z-20 text-5xl font-bold text-white md:text-9xl">
         I can
       </h1>
-      <div className="flex flex-col justify-center items-center lg:gap-y-10 gap-y-20 font-eb z-20 overflow-hidden max-w-full">
-        <div className="flex justify-start items-center lg:gap-x-80 gap-x-16 overflow-hidden max-w-full">
+      <div className="font-eb z-20 flex max-w-full flex-col items-center justify-center gap-y-20 overflow-hidden lg:gap-y-10">
+        <div className="flex max-w-full items-center justify-start gap-x-16 overflow-hidden lg:gap-x-80">
           <motion.div
             animate={{
               translateX: ["0%", "-100%"],
@@ -113,16 +113,16 @@ const Skills: React.FC = () => {
                 ease: "linear",
               },
             }}
-            className="flex justify-start items-center lg:gap-x-80 gap-x-16 max-w-full"
+            className="flex max-w-full items-center justify-start gap-x-16 lg:gap-x-80"
           >
             {row1.map((element, i) => {
               return (
                 <span
                   key={i}
                   className={`${!element.highlighted
-                    ? "text-tertiary md:text-4xl text-2xl"
-                    : "text-primary md:text-6xl text-4xl"
-                    } font-semibold text-4xl w-max whitespace-nowrap`}
+                    ? "text-2xl text-tertiary md:text-4xl"
+                    : "text-4xl text-primary md:text-6xl"
+                    } w-max whitespace-nowrap text-4xl font-semibold`}
                 >
                   {element.value}
                 </span>
@@ -133,9 +133,9 @@ const Skills: React.FC = () => {
                 <span
                   key={i * -1}
                   className={`${!element.highlighted
-                    ? "text-tertiary md:text-4xl text-2xl"
-                    : "text-primary md:text-6xl text-4xl"
-                    } font-semibold text-4xl w-max whitespace-nowrap`}
+                    ? "text-2xl text-tertiary md:text-4xl"
+                    : "text-4xl text-primary md:text-6xl"
+                    } w-max whitespace-nowrap text-4xl font-semibold`}
                 >
                   {element.value}
                 </span>
@@ -143,7 +143,7 @@ const Skills: React.FC = () => {
             })}
           </motion.div>
         </div>
-        <div className="flex justify-start items-center lg:gap-x-80 gap-x-16 overflow-hidden max-w-full">
+        <div className="flex max-w-full items-center justify-start gap-x-16 overflow-hidden lg:gap-x-80">
           <motion.div
             animate={{
               translateX: ["0%", "-100%"],
@@ -153,16 +153,16 @@ const Skills: React.FC = () => {
                 ease: "linear",
               },
             }}
-            className="flex justify-start items-center lg:gap-x-80 gap-x-16 max-w-full"
+            className="flex max-w-full items-center justify-start gap-x-16 lg:gap-x-80"
           >
             {row2.map((element, i) => {
               return (
                 <span
                   key={i}
                   className={`${!element.highlighted
-                    ? "text-tertiary md:text-4xl text-2xl"
-                    : "text-primary md:text-6xl text-4xl"
-                    } font-semibold text-4xl w-max whitespace-nowrap`}
+                    ? "text-2xl text-tertiary md:text-4xl"
+                    : "text-4xl text-primary md:text-6xl"
+                    } w-max whitespace-nowrap text-4xl font-semibold`}
                 >
                   {element.value}
                 </span>
@@ -173,9 +173,9 @@ const Skills: React.FC = () => {
                 <span
                   key={i * -1}
                   className={`${!element.highlighted
-                    ? "text-tertiary md:text-4xl text-2xl"
-                    : "text-primary md:text-6xl text-4xl"
-                    } font-semibold text-4xl w-max whitespace-nowrap`}
+                    ? "text-2xl text-tertiary md:text-4xl"
+                    : "text-4xl text-primary md:text-6xl"
+                    } w-max whitespace-nowrap text-4xl font-semibold`}
                 >
                   {element.value}
                 </span>
@@ -183,7 +183,7 @@ const Skills: React.FC = () => {
             })}
           </motion.div>
         </div>
-        <div className="flex justify-start items-center lg:gap-x-80 gap-x-16 overflow-hidden max-w-full">
+        <div className="flex max-w-full items-center justify-start gap-x-16 overflow-hidden lg:gap-x-80">
           <motion.div
             animate={{
               translateX: ["0%", "-100%"],
@@ -193,16 +193,16 @@ const Skills: React.FC = () => {
                 ease: "linear",
               },
             }}
-            className="flex justify-start items-center lg:gap-x-80 gap-x-16 max-w-full"
+            className="flex max-w-full items-center justify-start gap-x-16 lg:gap-x-80"
           >
             {row3.map((element, i) => {
               return (
                 <span
                   key={i}
                   className={`${!element.highlighted
-                    ? "text-tertiary md:text-4xl text-2xl"
-                    : "text-primary md:text-6xl text-4xl"
-                    } font-semibold text-4xl w-max whitespace-nowrap`}
+                    ? "text-2xl text-tertiary md:text-4xl"
+                    : "text-4xl text-primary md:text-6xl"
+                    } w-max whitespace-nowrap text-4xl font-semibold`}
                 >
                   {element.value}
                 </span>
@@ -213,9 +213,9 @@ const Skills: React.FC = () => {
                 <span
                   key={i * -1}
                   className={`${!element.highlighted
-                    ? "text-tertiary md:text-4xl text-2xl"
-                    : "text-primary md:text-6xl text-4xl"
-                    } font-semibold text-4xl w-max whitespace-nowrap`}
+                    ? "text-2xl text-tertiary md:text-4xl"
+                    : "text-4xl text-primary md:text-6xl"
+                    } w-max whitespace-nowrap text-4xl font-semibold`}
                 >
                   {element.value}
                 </span>
@@ -223,7 +223,7 @@ const Skills: React.FC = () => {
             })}
           </motion.div>
         </div>
-        <div className="flex justify-start items-center lg:gap-x-80 gap-x-16 overflow-hidden max-w-full">
+        <div className="flex max-w-full items-center justify-start gap-x-16 overflow-hidden lg:gap-x-80">
           <motion.div
             animate={{
               translateX: ["0%", "-100%"],
@@ -233,16 +233,16 @@ const Skills: React.FC = () => {
                 ease: "linear",
               },
             }}
-            className="flex justify-start items-center lg:gap-x-80 gap-x-16 max-w-full"
+            className="flex max-w-full items-center justify-start gap-x-16 lg:gap-x-80"
           >
             {row4.map((element, i) => {
               return (
                 <span
                   key={i}
                   className={`${!element.highlighted
-                    ? "text-tertiary md:text-4xl text-2xl"
-                    : "text-primary md:text-6xl text-4xl"
-                    } font-semibold text-4xl w-max whitespace-nowrap`}
+                    ? "text-2xl text-tertiary md:text-4xl"
+                    : "text-4xl text-primary md:text-6xl"
+                    } w-max whitespace-nowrap text-4xl font-semibold`}
                 >
                   {element.value}
                 </span>
@@ -253,9 +253,9 @@ const Skills: React.FC = () => {
                 <span
                   key={i * -1}
                   className={`${!element.highlighted
-                    ? "text-tertiary md:text-4xl text-2xl"
-                    : "text-primary md:text-6xl text-4xl"
-                    } font-semibold text-4xl w-max whitespace-nowrap`}
+                    ? "text-2xl text-tertiary md:text-4xl"
+                    : "text-4xl text-primary md:text-6xl"
+                    } w-max whitespace-nowrap text-4xl font-semibold`}
                 >
                   {element.value}
                 </span>
